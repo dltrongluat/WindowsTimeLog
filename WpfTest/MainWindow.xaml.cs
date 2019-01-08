@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.ComponentModel;
+using Newtonsoft.Json;
 using RestSharp;
 using RestSharp.Authenticators;
 
@@ -42,14 +43,24 @@ namespace WpfTest
             var client = new RestClient("https://polls.apiblueprint.org/");
            // client.Authenticator = new HttpBasicAuthenticator("admin","0123456789");
       
-            var request = new RestRequest("questions", Method.GET);
+            var request = new RestSharp.RestRequest("questions", Method.GET);
 
-            //IRestResponse response = client.Execute(request);
-            IRestResponse response = client.Execute<Question>(request);
-            //var content = response.Content;
-            //textBox.Text = content;
-            var o = JsonConvert.DeserializeObject<Question>(json);
             
+           IRestResponse response = client.Execute<Question>(request);
+            //textBox.Text = content;
+
+
+
+            var myobjlist = JsonConvert.DeserializeObject<List<Question>>(response.Content);
+            var myobj = myobjlist[0];
+
+            textBox.Text = myobjlist[0].id + myobjlist[0].question + myobjlist[0].published_at;
+
+            //textBox.Text = myobjlist.Cast<Question>().ToArray();
+            // Console.WriteLine(a.question);
+            //MessageBox.Show(a.ToString());
+            //MessageBox.Show("Sds");
+
         }
     }
 }
