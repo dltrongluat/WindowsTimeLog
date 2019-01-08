@@ -5,9 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfTest"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
-        <TextBox Name="textBox" HorizontalAlignment="Left" Height="321" Width="400" Margin="88,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top" />
-        <Button Name="Go" Click="Go_Clickk" Width="50" Height="30" Margin="556,185,186,204">A </Button> 
+        <!--<TextBox Name="textBox" HorizontalAlignment="Left" Height="321" Width="400" Margin="88,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top" />
+        <Button Name="Go" Click="Go_Clickk" Width="50" Height="30" Margin="556,185,186,204">A </Button>-->
+        <ListView Name="wpListView">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="20" Text="{Binding subject}"></TextBlock>
+                        <TextBlock FontSize="10" Text="{Binding spentTime}"></TextBlock>
+                    </StackPanel>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Window>

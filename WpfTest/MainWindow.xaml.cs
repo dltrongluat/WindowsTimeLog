@@ -30,37 +30,65 @@ namespace WpfTest
         {
             InitializeComponent();
         }
-
-        
-        public class Question
+        public class Outer
         {
-            public int id { get; set; }
-            public string question { get; set; }
-            public string published_at { get; set; }
+            public string _type { get; set; }
+            public int total { get; set; }
+            public int count { get; set; }
+           
+            public Embedded2 _embedded { get; set; }
+
         }
-        private void Go_Clickk(object sender, RoutedEventArgs e)
+        public class Embedded
         {
-            var client = new RestClient("https://polls.apiblueprint.org/");
-           // client.Authenticator = new HttpBasicAuthenticator("admin","0123456789");
-      
-            var request = new RestSharp.RestRequest("questions", Method.GET);
+            public List<Project> elements { get; set; }
+        }
+        public class Embedded2
+        {
+            public List<WorkPackage> elements { get; set; }
+        }
+        public class WorkPackage
+        {
+            public string _type { get; set; }
+            public string id { get; set; }
+            public string subject { get; set; }
 
+            public string spentTime { get; set; }
+        }
+        public class Project
+        {
             
-           IRestResponse response = client.Execute<Question>(request);
+            public string id { get; set; }
+            //public string _type { get; set; }
+            public string name { get; set; }
+            public string identifier { get; set; }
+            public string createdAt { get; set; }
+          
+        }
+        //public class Question
+        //{
+        //    public int id { get; set; }
+        //    public string question { get; set; }
+        //    public string published_at { get; set; }
+        //}
+
+     
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            var client = new RestClient("https://project.fromlabs.com/");
+            client.Authenticator = new HttpBasicAuthenticator("apikey", "12692c9ebcb4ba0dc517b78b1f714cf80edb14ad31819c358d55b614301f8f6f");
+
+            var request = new RestSharp.RestRequest("api/v3/projects/194/work_packages", Method.GET);
+
+            IRestResponse response = client.Execute(request);
+            //var content = response.Content;
             //textBox.Text = content;
 
+            var obj = JsonConvert.DeserializeObject<Outer>(response.Content);
 
 
-            var myobjlist = JsonConvert.DeserializeObject<List<Question>>(response.Content);
-            var myobj = myobjlist[0];
-
-            textBox.Text = myobjlist[0].id + myobjlist[0].question + myobjlist[0].published_at;
-
-            //textBox.Text = myobjlist.Cast<Question>().ToArray();
-            // Console.WriteLine(a.question);
-            //MessageBox.Show(a.ToString());
-            //MessageBox.Show("Sds");
-
+           wpListView.ItemsSource = obj._embedded.elements;
+           // MessageBox.Show(obj._embedded.elements[0].spentTime);
         }
     }
 }
