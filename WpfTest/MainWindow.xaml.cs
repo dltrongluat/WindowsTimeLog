@@ -16,6 +16,7 @@ using System.ComponentModel;
 using Newtonsoft.Json;
 using RestSharp;
 using RestSharp.Authenticators;
+using System.Text.RegularExpressions;
 
 namespace WpfTest
 {
@@ -36,14 +37,14 @@ namespace WpfTest
             public int total { get; set; }
             public int count { get; set; }
            
-            public Embedded2 _embedded { get; set; }
+            public EmbeddedWorkPackage _embedded { get; set; }
 
         }
-        public class Embedded
+        public class EmbeddedProject
         {
             public List<Project> elements { get; set; }
         }
-        public class Embedded2
+        public class EmbeddedWorkPackage
         {
             public List<WorkPackage> elements { get; set; }
         }
@@ -54,6 +55,19 @@ namespace WpfTest
             public string subject { get; set; }
 
             public string spentTime { get; set; }
+
+            public static WorkPackage SubjectWithoutNewline(WorkPackage wp)
+            {
+                WorkPackage new_wp = new WorkPackage()
+                {
+                    _type = wp._type,
+                    id = wp.id,
+                    subject = Regex.Replace(wp.subject, @"\t|\n|\r", ""),
+                    spentTime = wp.spentTime
+                };
+
+                return new_wp;
+            }
         }
         public class Project
         {
@@ -86,9 +100,12 @@ namespace WpfTest
 
             var obj = JsonConvert.DeserializeObject<Outer>(response.Content);
 
+            List<WorkPackage> wp_without_newline = obj._embedded.elements.ConvertAll(
+                new Converter<WorkPackage, WorkPackage>(WorkPackage.SubjectWithoutNewline));
 
-           wpListView.ItemsSource = obj._embedded.elements;
-           // MessageBox.Show(obj._embedded.elements[0].spentTime);
+            wpListView.ItemsSource = wp_without_newline;
+
+            // MessageBox.Show(obj._embedded.elements[0].spentTime);
         }
     }
 }
