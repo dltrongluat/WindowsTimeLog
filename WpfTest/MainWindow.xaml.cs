@@ -25,8 +25,7 @@ namespace WpfTest
     /// </summary>
     public partial class MainWindow : Window
     {
-       
-
+  
         public MainWindow()
         {
             InitializeComponent();
@@ -63,14 +62,15 @@ namespace WpfTest
                     _type = wp._type,
                     id = wp.id,
                     subject = Regex.Replace(wp.subject, @"\t|\n|\r", ""),
-                    spentTime = wp.spentTime
+                    spentTime = Regex.Replace(wp.spentTime,@"PT","")
+                  
                 };
 
                 return new_wp;
             }
         }
         public class Project
-        {
+        {                                                                                                                                                   
             
             public string id { get; set; }
             //public string _type { get; set; }
@@ -106,6 +106,11 @@ namespace WpfTest
             wpListView.ItemsSource = wp_without_newline;
 
             // MessageBox.Show(obj._embedded.elements[0].spentTime);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
