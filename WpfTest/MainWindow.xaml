@@ -5,11 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfTest"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
-    <Grid>
-        <!--<TextBox Name="textBox" HorizontalAlignment="Left" Height="321" Width="400" Margin="88,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top" />
-        <Button Name="Go" Click="Go_Clickk" Width="50" Height="30" Margin="556,185,186,204">A </Button>-->
-        <ListView Name="wpListView">
+        Title="MainWindow" Height="450" Width="800"  >
+   
+   <!--Get API--> 
+    <!--<Grid> 
+        
+        <StackPanel Margin="0,0,0,357">
+       
+        </StackPanel>
+        <ListView Name="wpListView" Margin="0,62,0,0">
         <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Work Package Subject" Width="200" DisplayMemberBinding="{Binding subject}"></GridViewColumn>
@@ -25,5 +29,10 @@
                 </GridView>
         </ListView.View>
         </ListView>
+    </Grid>-->
+    <Grid>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="321" Width="400" Margin="88,28,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" />
+        <Button Name="Get_Click" Click="Get_Clickk" Width="50" Height="30" Margin="556,185,186,204">Get</Button>
+        <Button Name="Post_Click" Click="Post_Clickk" Width="50" Height="30" Margin="556,242,186,147">Post</Button>
     </Grid>
 </Window>
