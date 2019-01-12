@@ -6,9 +6,15 @@
         xmlns:local="clr-namespace:WpfTest"
         mc:Ignorable="d"
         Title="Login" Height="450" Width="800">
-    <Canvas>
-        <Label Content="API Key:" Canvas.Left="109" Canvas.Top="119" Height="30" Width="67"></Label>
-        <TextBox Name="API_Key" Canvas.Left="181" Canvas.Top="119" Width="400" Height="30"></TextBox>
-        <Button Click="loginButton_Click" Content="Log in" Canvas.Left="313" Canvas.Top="179" Height="40" Width="103"></Button>
-    </Canvas>
+    <Grid>
+        <WrapPanel>
+        <Canvas Margin="8,40,-8,224">
+            <Label Content="API Key:" Canvas.Left="109" Canvas.Top="119" Height="30" Width="67"></Label>
+            <TextBox Name="API_Key" Canvas.Left="181" Canvas.Top="119" Width="400" Height="30"></TextBox>
+            <Button Click="loginButton_Click" Content="Log in" Canvas.Left="623" Canvas.Top="105" Height="40" Width="103"></Button>
+        </Canvas>
+
+        <Frame x:Name="Main" Margin="0,271,0,0"/>
+        </WrapPanel>
+    </Grid>
 </Window>

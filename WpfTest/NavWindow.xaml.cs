@@ -15,14 +15,23 @@ using System.Windows.Shapes;
 namespace WpfTest
 {
     /// <summary>
-    /// Interaction logic for ViewWP_Window.xaml
+    /// Interaction logic for NavWindow.xaml
     /// </summary>
-    public partial class ViewWP_Window : Window
+    public partial class NavWindow : Window
     {
-        public ViewWP_Window()
+        public NavWindow()
         {
             InitializeComponent();
         }
-    }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new ViewWP_Page();
+        }
+
+        private void Login_Click(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new ViewWP_Page();
+        }
+    }
 }

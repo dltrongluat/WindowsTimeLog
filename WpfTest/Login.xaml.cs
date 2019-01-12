@@ -46,10 +46,12 @@ namespace WpfTest
             if (numbericStatusCode != 200)
             {
                 MessageBox.Show("Authenticate failed!");
+                
             }
             else
             {
                 MessageBox.Show("Authenticate success!");
+                Main.Content = new ViewWP_Page();
             }
         }
 

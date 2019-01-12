@@ -166,9 +166,12 @@
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NavWindow.xaml.cs">
+      <DependentUpon>NavWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RestClient.cs" />
-    <Compile Include="ViewWP_Window.xaml.cs">
-      <DependentUpon>ViewWP_Window.xaml</DependentUpon>
+    <Compile Include="ViewWP_Page.xaml.cs">
+      <DependentUpon>ViewWP_Page.xaml</DependentUpon>
     </Compile>
     <Page Include="Login.xaml">
       <SubType>Designer</SubType>
@@ -186,7 +189,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="ViewWP_Window.xaml">
+    <Page Include="NavWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewWP_Page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
