@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="NavWindow" Height="450" Width="800">
     <Grid>
-       
+
         <StackPanel Orientation="Horizontal" Height="43" VerticalAlignment="Top">
             <Button Content="Login" Click="Login_Click"></Button>
             <Button Content="View WP" Click="Button_Click" Margin="20,0,0,0"/>

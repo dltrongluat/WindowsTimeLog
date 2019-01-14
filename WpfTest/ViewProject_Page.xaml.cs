@@ -18,6 +18,11 @@ using RestSharp.Authenticators;
 using System.Text.RegularExpressions;
 using DataFormat = RestSharp.DataFormat;
 using System.Net;
+using System.Diagnostics;
+using System.Collections.ObjectModel;
+using System.Web.UI.WebControls;
+using System.Data;
+
 namespace WpfTest
 {
     /// <summary>
@@ -49,6 +54,7 @@ namespace WpfTest
             public string name { get; set; }
             public string identifier { get; set; }
             public string createdAt { get; set; }
+          
 
         }
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -65,9 +71,32 @@ namespace WpfTest
 
             var obj = JsonConvert.DeserializeObject<Outer>(response.Content);
 
-
+            ObservableCollection<Project> Project = new ObservableCollection<Project>(obj._embedded.elements);
             projectListView.ItemsSource = obj._embedded.elements;
+            DataContext = this;
+        }
 
+        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+            e.Handled = true;
+            dynamic selectedItem = (Project)projectListView.SelectedItem;
+       
+            var name = selectedItem.name.ToString();
+
+            MessageBox.Show(name);
+            //Main.Content = new ViewProject_Page();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+           
+           dynamic selectedItem = (Project)projectListView.SelectedItem;
+           // var selectedItem = (Project)projectListView.SelectedItem;
+            var name = selectedItem.name.ToString();
+           
+            MessageBox.Show(name);
         }
     }
 }
+

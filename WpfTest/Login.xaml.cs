@@ -54,7 +54,7 @@ namespace WpfTest
             else
             {
                 MessageBox.Show("Authenticate success!");
-                Main.Content = new ViewWP_Page();
+                Main.Content = new ViewProject_Page();
             }
         }
 
