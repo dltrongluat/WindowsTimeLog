@@ -1,0 +1,14 @@
+﻿<Window x:Class="Wpf_POST_Test.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wpf_POST_Test"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="321" Width="400" Margin="88,28,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" />
+      <!--<Button Name="Get_Click" Click="Get_Clickk" Width="50" Height="30" Margin="556,185,186,204">Get</Button>-->
+        <Button Click="Post_Click_1" Width="50" Height="30" Margin="556,242,186,147">Post</Button>
+    </Grid>
+</Window>

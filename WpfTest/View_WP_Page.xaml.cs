@@ -19,17 +19,18 @@ using RestSharp.Authenticators;
 using System.Text.RegularExpressions;
 using DataFormat = RestSharp.DataFormat;
 using System.Net;
+
 namespace WpfTest
 {
     /// <summary>
+    /// Interaction logic for View_WP_Page.xaml
     /// </summary>
-    public partial class ViewWP_Page : Page
+    public partial class View_WP_Page : Page
     {
-        public ViewWP_Page()
+        public View_WP_Page()
         {
             InitializeComponent();
         }
-        /////////////////////////////////////Start of get///////////////
         public class Outer
         {
             public string _type { get; set; }
@@ -69,7 +70,6 @@ namespace WpfTest
                 return new_wp;
             }
         }
-        public Uri Source { get; set; }
         public class Project
         {
 
@@ -79,43 +79,24 @@ namespace WpfTest
             public string identifier { get; set; }
             public string createdAt { get; set; }
 
-        }
-
-
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            var client = new RestClient("https://luattest.openproject.com/");
-            // password = 
-            //var password = API_Key.Text;
-            var password = ((Login)Application.Current.MainWindow).API_Key.Text;
-            client.Authenticator = new HttpBasicAuthenticator("apikey", password);
-
-            var request = new RestSharp.RestRequest("api/v3/projects/1/work_packages", Method.GET);
-                
-            IRestResponse response = client.Execute(request);
-            //var content = response.Content;
-            //textBox.Text = content;
-
-            var obj = JsonConvert.DeserializeObject<Outer>(response.Content);
-
-            List<WorkPackage> wp_without_newline = obj._embedded.elements.ConvertAll(
-                new Converter<WorkPackage, WorkPackage>(WorkPackage.SubjectWithoutNewline));
-
-            wpListView.ItemsSource = wp_without_newline;
-
-            // MessageBox.Show(obj._embedded.elements[0].spentTime);
+      
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            var client = new RestClient("https://luattest.openproject.com/api/v3/projects/1/");
+            client.Authenticator = new HttpBasicAuthenticator("apikey", "d805ff8636e8661cffe5e4f3a1cddafa326ee6182084e7e0083b669cc3d018f6");
 
+            var request = new RestSharp.RestRequest("work_packages", Method.GET);
+
+            IRestResponse response = client.Execute(request);
+            var content = response.Content;
+            var obj = JsonConvert.DeserializeObject<Outer>(response.Content);
+            List<WorkPackage> wp_without_newline = obj._embedded.elements.ConvertAll(
+                new Converter<WorkPackage, WorkPackage>(WorkPackage.SubjectWithoutNewline));
+
+            wpListView.ItemsSource = wp_without_newline;
+        //    ABC.Text = obj.ToString();
         }
-
-
-
-        ///////////////////////////end of get method ///////////////
-
-
     }
 }

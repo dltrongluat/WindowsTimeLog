@@ -26,7 +26,10 @@ namespace WpfTest
         {
             InitializeComponent();
         }
-
+        public static class Globals
+        {
+            public static string password ;
+        }
         private void loginButton_Click(object sender, RoutedEventArgs e)
         {
             string api_server = "https://luattest.openproject.com/api/v3";

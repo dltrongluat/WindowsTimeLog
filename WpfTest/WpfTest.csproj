@@ -170,6 +170,9 @@
       <DependentUpon>NavWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="RestClient.cs" />
+    <Compile Include="ViewProject_Page.xaml.cs">
+      <DependentUpon>ViewProject_Page.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewWP_Page.xaml.cs">
       <DependentUpon>ViewWP_Page.xaml</DependentUpon>
     </Compile>
@@ -190,6 +193,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="NavWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewProject_Page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
