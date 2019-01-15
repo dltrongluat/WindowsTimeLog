@@ -73,7 +73,7 @@ namespace WpfTest
 
             ObservableCollection<Project> Project = new ObservableCollection<Project>(obj._embedded.elements);
             projectListView.ItemsSource = obj._embedded.elements;
-            DataContext = this;
+           // DataContext = this;
         }
 
         private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
@@ -87,15 +87,22 @@ namespace WpfTest
             MessageBox.Show(name);
             //Main.Content = new ViewProject_Page();
         }
-
+      
         private void Button_Click(object sender, RoutedEventArgs e)
         {
            
            dynamic selectedItem = (Project)projectListView.SelectedItem;
            // var selectedItem = (Project)projectListView.SelectedItem;
             var name = selectedItem.name.ToString();
-           
-            MessageBox.Show(name);
+            var project_id = selectedItem.id.ToString();
+
+            //string mytext = (string)Application.Current.Properties["data"];
+            //App.Current.Properties["data"] = project_id;
+            (App.Current as App).DeptName = project_id;
+           // MessageBox.Show(project_id + " -- "+ name);
+            NavigationService nav = NavigationService.GetNavigationService(this);
+            nav.Navigate(new Uri("ViewWP_Page.xaml", UriKind.RelativeOrAbsolute));
+
         }
     }
 }

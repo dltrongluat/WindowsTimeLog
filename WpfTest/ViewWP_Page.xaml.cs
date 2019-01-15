@@ -19,6 +19,9 @@ using RestSharp.Authenticators;
 using System.Text.RegularExpressions;
 using DataFormat = RestSharp.DataFormat;
 using System.Net;
+using System.Collections.ObjectModel;
+using System.Xml;
+
 namespace WpfTest
 {
     /// <summary>
@@ -49,7 +52,7 @@ namespace WpfTest
         }
         public class WorkPackage
         {
-            public string _type { get; set; }
+          
             public string id { get; set; }
             public string subject { get; set; }
 
@@ -59,10 +62,11 @@ namespace WpfTest
             {
                 WorkPackage new_wp = new WorkPackage()
                 {
-                    _type = wp._type,
+                 
                     id = wp.id,
                     subject = Regex.Replace(wp.subject, @"\t|\n|\r", ""),
-                    spentTime = Regex.Replace(wp.spentTime, @"PT", "")
+                    //TimeSpan aaa = XmlConvert.ToTimeSpan(obj._embedded.elements[0].spentTime)
+                    spentTime = XmlConvert.ToTimeSpan(wp.spentTime).TotalHours.ToString() +"H"
 
                 };
 
@@ -86,31 +90,35 @@ namespace WpfTest
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             var client = new RestClient("https://luattest.openproject.com/");
-            // password = 
-            //var password = API_Key.Text;
+
             var password = ((Login)Application.Current.MainWindow).API_Key.Text;
             client.Authenticator = new HttpBasicAuthenticator("apikey", password);
+            // var project_id = ((ViewProject_Page)Application.Current.MainWindow).Button_Click.Name;
 
-            var request = new RestSharp.RestRequest("api/v3/projects/1/work_packages", Method.GET);
+            string test = (App.Current as App).DeptName;
+            var endpoint= "api/v3/projects/"+ test +"/work_packages";
+            var request = new RestSharp.RestRequest(endpoint, Method.GET);
                 
             IRestResponse response = client.Execute(request);
-            //var content = response.Content;
-            //textBox.Text = content;
+          
 
             var obj = JsonConvert.DeserializeObject<Outer>(response.Content);
 
             List<WorkPackage> wp_without_newline = obj._embedded.elements.ConvertAll(
                 new Converter<WorkPackage, WorkPackage>(WorkPackage.SubjectWithoutNewline));
-
+            //ObservableCollection<WorkPackage> WorkPackage = obj._embedded.elements.ConvertAll(new Converter<WorkPackage, WorkPackage>(WorkPackage.SubjectWithoutNewline));
             wpListView.ItemsSource = wp_without_newline;
-
-            // MessageBox.Show(obj._embedded.elements[0].spentTime);
+            
+           
+           
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
         }
+
+       
 
 
 

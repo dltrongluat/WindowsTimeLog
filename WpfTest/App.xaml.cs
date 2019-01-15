@@ -13,5 +13,7 @@ namespace WpfTest
     /// </summary>
     public partial class App : Application
     {
+        public string DeptName { get; set; }
     }
+  
 }
