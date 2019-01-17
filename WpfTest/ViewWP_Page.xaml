@@ -11,8 +11,6 @@
         <Grid Width="800">
             <DataGrid Name="wpListView" ItemsSource="{Binding}" CanUserAddRows="false" HeadersVisibility="Column" IsReadOnly="True">
                 <DataGrid.Columns>
-                    <!--<DataGridTextColumn Header="Work Packge name" Binding="{Binding subject}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Time logged total" Binding="{Binding spentTime}"></DataGridTextColumn>-->
                     <DataGridTemplateColumn Header="Log Time">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
@@ -23,24 +21,7 @@
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
-        <!--<ListView Name="wpListView" Margin="10,10,-10,-451" ScrollViewer.VerticalScrollBarVisibility="Auto">
-        <ListView.View >
-                <GridView>
      
-                    <GridViewColumn Header="Work Package Subject" Width="200" DisplayMemberBinding="{Binding subject}"></GridViewColumn>
-                    <GridViewColumn Header="Time Logged" Width="100" DisplayMemberBinding="{Binding spentTime}" />
-                    <GridViewColumn Width="100" Header="Log Time">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                    <Button > Log Time</Button>
-                                --><!--<Button Width="50" FontSize="10" VerticalAlignment="Center" Height="50" Content="Log Time" Click="Button_Click"></Button>--><!--
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-
-                    </GridViewColumn>
-                </GridView>
-        </ListView.View>
-        </ListView>-->
     </Grid>
     </Canvas>
 </Page>

@@ -42,10 +42,7 @@ namespace WpfTest
             public EmbeddedWorkPackage _embedded { get; set; }
 
         }
-        public class EmbeddedProject
-        {
-            public List<Project> elements { get; set; }
-        }
+     
         public class EmbeddedWorkPackage
         {
             public List<WorkPackage> elements { get; set; }
@@ -74,16 +71,16 @@ namespace WpfTest
             }
         }
         public Uri Source { get; set; }
-        public class Project
-        {
+        //public class Project
+        //{
 
-            public string id { get; set; }
-            //public string _type { get; set; }
-            public string name { get; set; }
-            public string identifier { get; set; }
-            public string createdAt { get; set; }
+        //    public string id { get; set; }
+        //    //public string _type { get; set; }
+        //    public string name { get; set; }
+        //    public string identifier { get; set; }
+        //    public string createdAt { get; set; }
 
-        }
+        //}
 
 
 
@@ -95,8 +92,8 @@ namespace WpfTest
             client.Authenticator = new HttpBasicAuthenticator("apikey", password);
             // var project_id = ((ViewProject_Page)Application.Current.MainWindow).Button_Click.Name;
 
-            string test = (App.Current as App).DeptName;
-            var endpoint= "api/v3/projects/"+ test +"/work_packages";
+            string project_id = (App.Current as App).project_id;
+            var endpoint= "api/v3/projects/"+ project_id + "/work_packages";
             var request = new RestSharp.RestRequest(endpoint, Method.GET);
                 
             IRestResponse response = client.Execute(request);
@@ -108,14 +105,26 @@ namespace WpfTest
                 new Converter<WorkPackage, WorkPackage>(WorkPackage.SubjectWithoutNewline));
             //ObservableCollection<WorkPackage> WorkPackage = obj._embedded.elements.ConvertAll(new Converter<WorkPackage, WorkPackage>(WorkPackage.SubjectWithoutNewline));
             wpListView.ItemsSource = wp_without_newline;
-            
-           
-           
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            // get project id & name
+          
+           // string project_name = (App.Current as App).project_name;
 
+            //set work package id from click action
+            dynamic selected_WP = (WorkPackage)wpListView.SelectedItem;
+            var workpackage_id = selected_WP.id.ToString();
+            var workpackage_name = selected_WP.subject.ToString();
+           
+            (App.Current as App).workpackage_id = workpackage_id;
+            (App.Current as App).workpackage_name = workpackage_name;
+
+            //nav to log time manual page
+            NavigationService nav = NavigationService.GetNavigationService(this);
+            nav.Navigate(new Uri("LogTimeManual_Page.xaml", UriKind.RelativeOrAbsolute));
         }
 
        

@@ -85,21 +85,21 @@ namespace WpfTest
             var name = selectedItem.name.ToString();
 
             MessageBox.Show(name);
-            //Main.Content = new ViewProject_Page();
+         
         }
       
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-           
-           dynamic selectedItem = (Project)projectListView.SelectedItem;
-           // var selectedItem = (Project)projectListView.SelectedItem;
-            var name = selectedItem.name.ToString();
-            var project_id = selectedItem.id.ToString();
+            //set project id from click action
 
-            //string mytext = (string)Application.Current.Properties["data"];
-            //App.Current.Properties["data"] = project_id;
-            (App.Current as App).DeptName = project_id;
-           // MessageBox.Show(project_id + " -- "+ name);
+            dynamic selected_Project = (Project)projectListView.SelectedItem;
+
+            //var name = selected_Project.name.ToString();
+            var project_id = selected_Project.id.ToString();
+            var project_name = selected_Project.name.ToString();
+            (App.Current as App).project_name = project_name;
+            (App.Current as App).project_id = project_id;
+
             NavigationService nav = NavigationService.GetNavigationService(this);
             nav.Navigate(new Uri("ViewWP_Page.xaml", UriKind.RelativeOrAbsolute));
 

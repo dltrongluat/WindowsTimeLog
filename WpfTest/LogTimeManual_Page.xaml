@@ -1,0 +1,30 @@
+﻿<Page x:Class="WpfTest.LogTimeManual_Page"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfTest"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="LogTimeManual_Page" Loaded="Page_Loaded">
+
+    <Grid>
+        <Canvas>
+
+            <Label Content="Project" Canvas.Top="73" Height="30" Width="67"/>
+            <TextBlock Name="Project" Canvas.Left="72" Canvas.Top="73" Width="218" Height="30"></TextBlock>
+            <Label Content="WorkPackage" Canvas.Top="119" Height="30" Width="67"/>
+            <TextBlock Name="WorkPackage" Canvas.Left="71" Canvas.Top="124" Width="219" Height="30" RenderTransformOrigin="0.5,0.5">
+                    AA
+            </TextBlock>
+            <Label Content="Activity" Canvas.Top="163" Height="30" Width="67"/>
+            <TextBox Name="Activity" Canvas.Left="72" Canvas.Top="163" Width="218" Height="30"></TextBox>
+            <Label Content="LogHour" Canvas.Top="199" Height="30" Width="67" Canvas.Left="-1"/>
+            <TextBox Name="LogHour" Canvas.Left="71" Canvas.Top="199" Width="218" Height="30"></TextBox>
+            <Label Content="Comment" Canvas.Top="242" Height="30" Width="67"/>
+            <TextBox Name="Comment" Canvas.Left="72" Canvas.Top="242" Width="218" Height="30"></TextBox>
+            <Button Click="Post_Click_1" Width="50" Height="30" Margin="556,242,186,147">Post</Button>
+        </Canvas>
+
+    </Grid>
+</Page>

@@ -13,7 +13,19 @@ namespace WpfTest
     /// </summary>
     public partial class App : Application
     {
-        public string DeptName { get; set; }
+        public string project_id { get; set; }
+        public string project_name { get; set; }
+
+
+        public string workpackage_id { get; set; }
+
+        public string workpackage_name { get; set; }
+        public string activity_id { get; set; }
+        public string activity_name { get; set; }
+
+        public string u_id { get; set; }
+
+        
     }
   
 }
