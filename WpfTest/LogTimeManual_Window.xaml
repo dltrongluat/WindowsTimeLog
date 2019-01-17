@@ -21,7 +21,9 @@
                 <TextBox Name="LogHour" Canvas.Left="71" Canvas.Top="199" Width="218" Height="30"></TextBox>
                 <Label Content="Comment" Canvas.Top="242" Height="30" Width="67"/>
                 <TextBox Name="Comment" Canvas.Left="72" Canvas.Top="242" Width="218" Height="30"></TextBox>
-                <Button Click="Post_Click_1" Width="50" Height="30" Margin="556,242,186,147">Post</Button>
+            <DatePicker Height="25" HorizontalAlignment="Left" Margin="42,26,0,0" Name="datePicker" VerticalAlignment="Top" Width="115" />
+
+            <Button Click="Post_Click_1" Width="50" Height="30" Margin="556,242,186,147">Post</Button>
             </Canvas>
       
     </Grid>

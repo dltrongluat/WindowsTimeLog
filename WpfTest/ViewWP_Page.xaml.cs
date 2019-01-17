@@ -112,7 +112,6 @@ namespace WpfTest
         {
             // get project id & name
           
-           // string project_name = (App.Current as App).project_name;
 
             //set work package id from click action
             dynamic selected_WP = (WorkPackage)wpListView.SelectedItem;
@@ -122,16 +121,21 @@ namespace WpfTest
             (App.Current as App).workpackage_id = workpackage_id;
             (App.Current as App).workpackage_name = workpackage_name;
 
-            //nav to log time manual page
-            NavigationService nav = NavigationService.GetNavigationService(this);
-            nav.Navigate(new Uri("LogTimeManual_Page.xaml", UriKind.RelativeOrAbsolute));
+            ////nav to log time manual page
+            //NavigationService nav = NavigationService.GetNavigationService(this);
+            //nav.Navigate(new Uri("LogTimeManual_Page.xaml", UriKind.RelativeOrAbsolute));
+
+            //display a new MainWindow
+            LogTimeManual_Window LogTime_window = new LogTimeManual_Window();
+            LogTime_window.Show();
+
+            //close Window1
+            //Window1 w = Application.Current.Windows.OfType<Window1>().FirstOrDefault();
+            //w.Close();
         }
 
-       
+         
 
-
-
-        ///////////////////////////end of get method ///////////////
 
 
     }

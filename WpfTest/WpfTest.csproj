@@ -166,9 +166,6 @@
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LogTimeManual_Page.xaml.cs">
-      <DependentUpon>LogTimeManual_Page.xaml</DependentUpon>
-    </Compile>
     <Compile Include="LogTimeManual_Window.xaml.cs">
       <DependentUpon>LogTimeManual_Window.xaml</DependentUpon>
     </Compile>
@@ -183,10 +180,6 @@
       <DependentUpon>ViewWP_Page.xaml</DependentUpon>
     </Compile>
     <Page Include="Login.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="LogTimeManual_Page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

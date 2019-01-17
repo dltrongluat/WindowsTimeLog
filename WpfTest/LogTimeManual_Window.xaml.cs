@@ -48,42 +48,57 @@ namespace WpfTest
             public string comment { get; set; }
             public string spentOn { get; set; }
         }
-
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            string project_id = (App.Current as App).project_id;
+            string workpackage_id = (App.Current as App).workpackage_id;
+            string project_name = (App.Current as App).project_name;
+            string workpackage_name = (App.Current as App).workpackage_name;
+            Project.Text = project_name;
+            WorkPackage.Text = workpackage_name;
+         
+        }
         private void Post_Click_1(object sender, RoutedEventArgs e)
         {
-
+            string project_id = (App.Current as App).project_id;
+            string workpackage_id = (App.Current as App).workpackage_id;
+            string activity_type = Activity.Text;
+            string log_hour = LogHour.Text;
+            string comment = Comment.Text;
+            DateTime date = (DateTime)datePicker.SelectedDate;
+            string result = date.ToString("yyyy-MM-dd");
             RootObject time_entry = new RootObject()
             {
                 _links = new Links
                 {
                     project = new LinksProperty
                     {
-                        href = "/api/v3/projects/2"
+                        href = "/api/v3/projects/" + project_id
                     },
                     activity = new LinksProperty
                     {
-                        href = "/api/v3/time_entries/activities/2"
+                        href = "/api/v3/time_entries/activities/" + activity_type
                     },
                     workPackage = new LinksProperty
                     {
-                        href = "/api/v3/work_packages/24"
+                        href = "/api/v3/work_packages/" + workpackage_id
                     },
                     customField4 = new LinksProperty
                     {
                         href = "/api/v3/users/1"
                     }
                 },
-                hours = "PT2H",
-                comment = "test ne ne",
-                spentOn = "2018-01-01"
+                hours = "PT" + log_hour + "H",
+                comment = comment,
+                spentOn = result
             };
 
             var json = JsonConvert.SerializeObject(time_entry);
 
             var client = new RestClient("https://luattest.openproject.com/api/v3/");
             var request = new RestRequest("time_entries", Method.POST);
-
-            client.Authenticator = new HttpBasicAuthenticator("apikey", "d72418d210c301b0a8c6275a2c34f6df51f300947d9f1206baa9464afb683454");
+            var password = ((Login)Application.Current.MainWindow).API_Key.Text;
+            client.Authenticator = new HttpBasicAuthenticator("apikey", password);
 
 
             request.AddHeader("Content-Type", "application/json");
@@ -102,14 +117,6 @@ namespace WpfTest
         }
 
      
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            string project_id = (App.Current as App).project_id;
-            string workpackage_id = (App.Current as App).workpackage_id;
-            string project_name = (App.Current as App).project_name;
-            string workpackage_name = (App.Current as App).workpackage_name;
-            Project.Text = project_name;
-            WorkPackage.Text = workpackage_name;
-        }
+   
     }
 }
