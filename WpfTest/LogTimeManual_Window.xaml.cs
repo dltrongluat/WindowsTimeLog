@@ -32,7 +32,18 @@ namespace WpfTest
         {
             public string href { get; set; }
         }
+        // create a class of combobox activity type
+        public class ComboBoxActivity
+        {
+            public string key { get; set; }
+            public string value { get; set; }
+            public ComboBoxActivity(string _key, string _value)
+            {
+                key = _key;
+                value = _value;
+            }
 
+        }
         public class Links
         {
             public LinksProperty project { get; set; }
@@ -48,6 +59,7 @@ namespace WpfTest
             public string comment { get; set; }
             public string spentOn { get; set; }
         }
+       
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             string project_id = (App.Current as App).project_id;
@@ -56,13 +68,32 @@ namespace WpfTest
             string workpackage_name = (App.Current as App).workpackage_name;
             Project.Text = project_name;
             WorkPackage.Text = workpackage_name;
-         
+
+            //Add activity type to combo box
+            List<ComboBoxActivity> cbA = new List<ComboBoxActivity>();
+            cbA.Add(new ComboBoxActivity("1", "Management"));
+            cbA.Add(new ComboBoxActivity("2", "Specification"));
+            cbA.Add(new ComboBoxActivity("3", "Development"));
+            cbA.Add(new ComboBoxActivity("4", "Testing"));
+            cbA.Add(new ComboBoxActivity("5", "Support"));
+            cbA.Add(new ComboBoxActivity("6", "Other"));
+            //bind to the Activity combobox in xaml
+            Activity.DisplayMemberPath = "value";
+            Activity.SelectedValuePath = "key";
+            Activity.ItemsSource = cbA;
+
         }
+
+    
+       
         private void Post_Click_1(object sender, RoutedEventArgs e)
         {
             string project_id = (App.Current as App).project_id;
             string workpackage_id = (App.Current as App).workpackage_id;
-            string activity_type = Activity.Text;
+            //get access to cbox key
+            ComboBoxActivity cbA = (ComboBoxActivity)Activity.SelectedItem;
+            string activity_type = cbA.key;
+            
             string log_hour = LogHour.Text;
             string comment = Comment.Text;
             DateTime date = (DateTime)datePicker.SelectedDate;
@@ -106,12 +137,12 @@ namespace WpfTest
 
             request.AddJsonBody(json);
 
-            //textBox.Text = json;
+          
 
             IRestResponse response = client.Execute(request);
             HttpStatusCode statusCode = response.StatusCode;
 
-
+           
             MessageBox.Show(statusCode.ToString());
 
         }
@@ -119,4 +150,6 @@ namespace WpfTest
      
    
     }
+
+  
 }

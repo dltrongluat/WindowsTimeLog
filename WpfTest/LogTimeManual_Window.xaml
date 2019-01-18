@@ -5,26 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfTest"
         mc:Ignorable="d"
-        Title="LogTimeManual_Window" Height="300" Width="300" Loaded="Window_Loaded">
-    <Grid Margin="0,0,0.333,-128.333">
-        <Canvas Margin="0,0,10,-116">
+        Title="LogTimeManual_Window" Height="457.311" Width="681.176" Loaded="Window_Loaded">
+    
+    <Grid Margin="10,10,190,-2">
 
-                <Label Content="Project" Canvas.Top="73" Height="30" Width="67"/>
-                <TextBlock Name="Project" Canvas.Left="72" Canvas.Top="73" Width="218" Height="30"></TextBlock>
-                <Label Content="WorkPackage" Canvas.Top="119" Height="30" Width="67"/>
-                <TextBlock Name="WorkPackage" Canvas.Left="71" Canvas.Top="124" Width="219" Height="30" RenderTransformOrigin="0.5,0.5">
-                    AA
-                </TextBlock>
-                <Label Content="Activity" Canvas.Top="163" Height="30" Width="67"/>
-                <TextBox Name="Activity" Canvas.Left="72" Canvas.Top="163" Width="218" Height="30"></TextBox>
-                <Label Content="LogHour" Canvas.Top="199" Height="30" Width="67" Canvas.Left="-1"/>
-                <TextBox Name="LogHour" Canvas.Left="71" Canvas.Top="199" Width="218" Height="30"></TextBox>
-                <Label Content="Comment" Canvas.Top="242" Height="30" Width="67"/>
-                <TextBox Name="Comment" Canvas.Left="72" Canvas.Top="242" Width="218" Height="30"></TextBox>
-            <DatePicker Height="25" HorizontalAlignment="Left" Margin="42,26,0,0" Name="datePicker" VerticalAlignment="Top" Width="115" />
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="472*"/>
+            <ColumnDefinition Width="80*"/>
+            <ColumnDefinition Width="121*"/>
+        </Grid.ColumnDefinitions>
+        <Canvas Margin="0,0,51,1" Grid.ColumnSpan="2">
 
-            <Button Click="Post_Click_1" Width="50" Height="30" Margin="556,242,186,147">Post</Button>
-            </Canvas>
-      
+            <Label Content="Project" Canvas.Top="73" Height="30" Width="67"/>
+            <TextBlock Name="Project" Canvas.Left="72" Canvas.Top="73" Width="218" Height="30"></TextBlock>
+            <Label Content="WorkPackage" Canvas.Top="119" Height="30" Width="67"/>
+            <TextBlock Name="WorkPackage" Canvas.Left="71" Canvas.Top="124" Width="219" Height="30" RenderTransformOrigin="0.5,0.5">
+                    
+            </TextBlock>
+            <Label Content="Activity" Canvas.Top="163" Height="30" Width="67"/>
+          
+            <ComboBox Name="Activity" Canvas.Left="72" Canvas.Top="171"  Width="150"  ></ComboBox>
+
+            <Label Content="LogHour" Canvas.Top="199" Height="30" Width="67" Canvas.Left="-1"/>
+            <TextBox Name="LogHour" Canvas.Left="71" Canvas.Top="199" Width="218" Height="30"></TextBox>
+            <Label Content="Comment" Canvas.Top="242" Height="30" Width="67"/>
+            <TextBox Name="Comment" Canvas.Left="72" Canvas.Top="242" Width="218" Height="30"></TextBox>
+            <Label Content="Date" Canvas.Top="292" Height="30" Width="67" Canvas.Left="5"/>
+            <DatePicker Height="25" HorizontalAlignment="Left" Name="datePicker" VerticalAlignment="Top" Width="115" Canvas.Left="72" Canvas.Top="292" />
+
+            <Button Click="Post_Click_1" Width="50" Height="30" Margin="556,242,186,147">LogTime</Button>
+        </Canvas>
+
     </Grid>
 </Window>

@@ -24,8 +24,7 @@ using System.Xml;
 
 namespace WpfTest
 {
-    /// <summary>
-    /// </summary>
+   
     public partial class ViewWP_Page : Page
     {
         public ViewWP_Page()
@@ -71,16 +70,7 @@ namespace WpfTest
             }
         }
         public Uri Source { get; set; }
-        //public class Project
-        //{
-
-        //    public string id { get; set; }
-        //    //public string _type { get; set; }
-        //    public string name { get; set; }
-        //    public string identifier { get; set; }
-        //    public string createdAt { get; set; }
-
-        //}
+      
 
 
 
@@ -90,7 +80,7 @@ namespace WpfTest
 
             var password = ((Login)Application.Current.MainWindow).API_Key.Text;
             client.Authenticator = new HttpBasicAuthenticator("apikey", password);
-            // var project_id = ((ViewProject_Page)Application.Current.MainWindow).Button_Click.Name;
+         
 
             string project_id = (App.Current as App).project_id;
             var endpoint= "api/v3/projects/"+ project_id + "/work_packages";
@@ -121,9 +111,7 @@ namespace WpfTest
             (App.Current as App).workpackage_id = workpackage_id;
             (App.Current as App).workpackage_name = workpackage_name;
 
-            ////nav to log time manual page
-            //NavigationService nav = NavigationService.GetNavigationService(this);
-            //nav.Navigate(new Uri("LogTimeManual_Page.xaml", UriKind.RelativeOrAbsolute));
+           
 
             //display a new MainWindow
             LogTimeManual_Window LogTime_window = new LogTimeManual_Window();
