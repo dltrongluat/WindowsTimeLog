@@ -11,10 +11,11 @@
     <Canvas>
         <Grid Width="800">
 
-            <DataGrid Name="projectListView" CanUserAddRows="false" HeadersVisibility="Column" IsReadOnly="True">
+            <DataGrid Name="projectListView" CanUserAddRows="false" HeadersVisibility="Column" IsReadOnly="True" AutoGenerateColumns="False">
                 <DataGrid.Columns>
-                    <!--<DataGridTextColumn Header="id" Binding="{Binding id}" ></DataGridTextColumn>
-                    <DataGridTextColumn Header="name" Binding="{Binding name}" ></DataGridTextColumn>-->
+                    <DataGridTextColumn Header="id" Binding="{Binding id}" ></DataGridTextColumn>
+                    <DataGridTextColumn Header="name" Binding="{Binding name}" ></DataGridTextColumn>
+                    
                     <DataGridTemplateColumn >
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>

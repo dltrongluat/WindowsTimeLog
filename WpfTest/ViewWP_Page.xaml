@@ -9,17 +9,21 @@
       Title="ViewWP_Page" Loaded="Window_Loaded">
     <Canvas>
         <Grid Width="800">
-            <DataGrid Name="wpListView" ItemsSource="{Binding}" CanUserAddRows="false" HeadersVisibility="Column" IsReadOnly="True">
+            <DataGrid Name="wpListView" ItemsSource="{Binding}" CanUserAddRows="false" HeadersVisibility="Column" IsReadOnly="True" AutoGenerateColumns="False">
                 <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding id}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Work Package" Binding="{Binding subject}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Total Time Spent" Binding="{Binding spentTime}"></DataGridTextColumn>
                     <DataGridTemplateColumn Header="Log Time">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Button Click=" Button_Click" >Log Time</Button>
-
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
+                  
                 </DataGrid.Columns>
+                
             </DataGrid>
      
     </Grid>

@@ -34,7 +34,7 @@ namespace WpfTest
         {
             string api_server = "https://luattest.openproject.com/api/v3";
             string username = "apikey";
-            string password = API_Key.Text;
+            string password = API_Key.Password;
             var client = new RestClient(api_server);
             client.Authenticator = new HttpBasicAuthenticator(username, password);
             //  get

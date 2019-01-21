@@ -21,7 +21,7 @@ using DataFormat = RestSharp.DataFormat;
 using System.Net;
 using System.Collections.ObjectModel;
 using System.Xml;
-
+using System.ComponentModel;
 namespace WpfTest
 {
    
@@ -78,7 +78,7 @@ namespace WpfTest
         {
             var client = new RestClient("https://luattest.openproject.com/");
 
-            var password = ((Login)Application.Current.MainWindow).API_Key.Text;
+            var password = ((Login)Application.Current.MainWindow).API_Key.Password;
             client.Authenticator = new HttpBasicAuthenticator("apikey", password);
          
 
@@ -93,8 +93,11 @@ namespace WpfTest
 
             List<WorkPackage> wp_without_newline = obj._embedded.elements.ConvertAll(
                 new Converter<WorkPackage, WorkPackage>(WorkPackage.SubjectWithoutNewline));
-            //ObservableCollection<WorkPackage> WorkPackage = obj._embedded.elements.ConvertAll(new Converter<WorkPackage, WorkPackage>(WorkPackage.SubjectWithoutNewline));
-            wpListView.ItemsSource = wp_without_newline;
+            //convert list to observable collection
+            var WP = new ObservableCollection<WorkPackage>();
+            foreach (var item in wp_without_newline)
+                WP.Add(item);
+            wpListView.ItemsSource = WP;
 
         }
 

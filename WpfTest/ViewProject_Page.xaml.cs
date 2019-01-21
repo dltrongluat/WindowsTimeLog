@@ -60,8 +60,8 @@ namespace WpfTest
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             var client = new RestClient("https://luattest.openproject.com/");
-      
-            var password = ((Login)Application.Current.MainWindow).API_Key.Text;
+
+            var password = ((Login)Application.Current.MainWindow).API_Key.Password;
             client.Authenticator = new HttpBasicAuthenticator("apikey", password);
 
             var request = new RestSharp.RestRequest("api/v3/projects", Method.GET);
@@ -72,8 +72,9 @@ namespace WpfTest
             var obj = JsonConvert.DeserializeObject<Outer>(response.Content);
 
             ObservableCollection<Project> Project = new ObservableCollection<Project>(obj._embedded.elements);
-            projectListView.ItemsSource = obj._embedded.elements;
-           // DataContext = this;
+            //  projectListView.ItemsSource = obj._embedded.elements;
+            projectListView.ItemsSource = Project;
+           
         }
 
         private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
