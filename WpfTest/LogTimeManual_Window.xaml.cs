@@ -81,23 +81,31 @@ namespace WpfTest
             Activity.DisplayMemberPath = "value";
             Activity.SelectedValuePath = "key";
             Activity.ItemsSource = cbA;
+           
+
+
+
+
 
         }
 
-    
-       
+
+
         private void Post_Click_1(object sender, RoutedEventArgs e)
         {
             string project_id = (App.Current as App).project_id;
             string workpackage_id = (App.Current as App).workpackage_id;
-            //get access to cbox key
+           // get access to cbox key
             ComboBoxActivity cbA = (ComboBoxActivity)Activity.SelectedItem;
             string activity_type = cbA.key;
-            
+
             string log_hour = LogHour.Text;
             string comment = Comment.Text;
             DateTime date = (DateTime)datePicker.SelectedDate;
             string result = date.ToString("yyyy-MM-dd");
+            string user_id = (App.Current as App).u_id;
+
+            MessageBox.Show(user_id);
             RootObject time_entry = new RootObject()
             {
                 _links = new Links
@@ -116,7 +124,7 @@ namespace WpfTest
                     },
                     customField4 = new LinksProperty
                     {
-                        href = "/api/v3/users/1"
+                        href = "/api/v3/users/" + user_id
                     }
                 },
                 hours = "PT" + log_hour + "H",
@@ -128,7 +136,7 @@ namespace WpfTest
 
             var client = new RestClient("https://luattest.openproject.com/api/v3/");
             var request = new RestRequest("time_entries", Method.POST);
-            var password = ((Login)Application.Current.MainWindow).API_Key.Password;
+            var password = ((Login)Application.Current.MainWindow).API_Key.Text;
             client.Authenticator = new HttpBasicAuthenticator("apikey", password);
 
 
@@ -137,12 +145,12 @@ namespace WpfTest
 
             request.AddJsonBody(json);
 
-          
+
 
             IRestResponse response = client.Execute(request);
             HttpStatusCode statusCode = response.StatusCode;
 
-           
+
             MessageBox.Show(statusCode.ToString());
 
         }
