@@ -256,6 +256,7 @@
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
+    <Compile Include="LogTime.cs" />
     <Compile Include="LogTimeManual_Window.xaml.cs">
       <DependentUpon>LogTimeManual_Window.xaml</DependentUpon>
     </Compile>

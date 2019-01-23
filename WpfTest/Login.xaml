@@ -10,19 +10,14 @@
         <WrapPanel Margin="0,0,0.333,-0.333">
         <Canvas Margin="8,40,-8,224" Height="244" Width="750">
             <Label Content="API Key:" Canvas.Left="109" Canvas.Top="119" Height="30" Width="67"></Label>
-                <TextBox x:Name="API_Key" Canvas.Left="181" Canvas.Top="119" Width="400" Height="30" Style="{StaticResource textBoxInError}" Validation.ErrorTemplate="{StaticResource validationErrorTemplate}">
-                    <TextBox.Text>
-                        <Binding Path="Name" Mode="TwoWay" UpdateSourceTrigger="LostFocus">
-                            <Binding.ValidationRules>
-                                <local:NameValidator></local:NameValidator>
-                            </Binding.ValidationRules>
-                        </Binding>
-                    </TextBox.Text>
+                <TextBox x:Name="API_Key" Canvas.Left="181" Canvas.Top="119" Width="400" Height="30" >
+            
                 </TextBox>
             <Button Name="Login_button" Click="loginButton_Click" Content="Log in" Canvas.Left="623" Canvas.Top="105" Height="40" Width="103"></Button>
-        </Canvas>
+                <Frame x:Name="Main" Height="108" Canvas.Top="271" Width="746" Canvas.Left="4"/>
+            </Canvas>
 
-            <Frame x:Name="Main" Margin="0,271,0,0"></Frame>
+           
         </WrapPanel>
     </Grid>
 </Window>

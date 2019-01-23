@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Navigation;
 using Newtonsoft.Json;
 using RestSharp;
 using RestSharp.Authenticators;
@@ -24,10 +25,42 @@ namespace WpfTest
     /// </summary>
     public partial class LogTimeManual_Window : Window
     {
+        private int _noOfErrorsOnScreen = 0;
+        private LogTime _logtime = new LogTime();
+
+
         public LogTimeManual_Window()
         {
             InitializeComponent();
+            grid.DataContext = _logtime;
+
         }
+        private void Validation_Error(object sender, ValidationErrorEventArgs e)
+        {
+            if (e.Action == ValidationErrorEventAction.Added)
+                _noOfErrorsOnScreen++;
+            else
+                _noOfErrorsOnScreen--;
+        }
+
+        private void Add_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = _noOfErrorsOnScreen == 0;
+            e.Handled = true;
+        }
+
+        private void Add_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            LogTime cust = grid.DataContext as LogTime;
+            // write code here to add Customer
+
+            // reset UI
+            _logtime = new LogTime();
+            grid.DataContext = _logtime;
+            e.Handled = true;
+
+        }
+
         public class LinksProperty
         {
             public string href { get; set; }
@@ -95,12 +128,12 @@ namespace WpfTest
         {
             string project_id = (App.Current as App).project_id;
             string workpackage_id = (App.Current as App).workpackage_id;
-           // get access to cbox key
+            // get access to cbox key
             ComboBoxActivity cbA = (ComboBoxActivity)Activity.SelectedItem;
             string activity_type = cbA.key;
 
-            string log_hour = LogHour.Text;
-            string comment = Comment.Text;
+            string log_hour = tb_LogHour.Text;
+            string comment = tb_Comment.Text;
             DateTime date = (DateTime)datePicker.SelectedDate;
             string result = date.ToString("yyyy-MM-dd");
             string user_id = (App.Current as App).u_id;
@@ -155,8 +188,8 @@ namespace WpfTest
 
         }
 
-     
-   
+
+
     }
 
   
