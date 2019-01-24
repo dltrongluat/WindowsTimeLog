@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="LogTimeManual_Window" Height="457.311" Width="681.176" Loaded="Window_Loaded">
     <Window.Resources>
-        <!--<local:Customer x:Key="customer" />-->
+     
         <Style TargetType="{x:Type Label}">
             <Setter Property="Margin" Value="5,0,5,0" />
             <Setter Property="HorizontalAlignment" Value="Left" />

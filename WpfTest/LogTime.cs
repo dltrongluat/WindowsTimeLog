@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
-
+using System.Text.RegularExpressions;
 
 namespace WpfTest
 {
@@ -28,11 +28,16 @@ namespace WpfTest
                 {
                     if (string.IsNullOrEmpty(Comment))
                         result = "Please enter comment";
+                    
                 }
                 if (columnName == "LogHour")
                 {
+              
                     if (string.IsNullOrEmpty(LogHour))
                         result = "Please enter log hour";
+                   
+                    else if (!Regex.IsMatch(LogHour, @"^[0-9]*(?:\.[0-9]*)?$"))
+                        result = "Please enter a valid number";
                 }
             
                 return result;
