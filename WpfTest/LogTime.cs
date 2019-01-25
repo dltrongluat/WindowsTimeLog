@@ -9,7 +9,7 @@ using System.Text.RegularExpressions;
 namespace WpfTest
 {
 
-  
+   //use for validations
     public class LogTime : IDataErrorInfo
     {
         public string LogHour { get; set; }

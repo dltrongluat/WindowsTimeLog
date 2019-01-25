@@ -27,40 +27,6 @@ namespace WpfTest
     {
         private int _noOfErrorsOnScreen = 0;
         private LogTime _logtime = new LogTime();
-
-
-        public LogTimeManual_Window()
-        {
-            InitializeComponent();
-            grid.DataContext = _logtime;
-
-        }
-        private void Validation_Error(object sender, ValidationErrorEventArgs e)
-        {
-            if (e.Action == ValidationErrorEventAction.Added)
-                _noOfErrorsOnScreen++;
-            else
-                _noOfErrorsOnScreen--;
-        }
-
-        private void Add_CanExecute(object sender, CanExecuteRoutedEventArgs e)
-        {
-            e.CanExecute = _noOfErrorsOnScreen == 0;
-            e.Handled = true;
-        }
-
-        private void Add_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-            LogTime cust = grid.DataContext as LogTime;
-            // write code here to add Customer
-
-            // reset UI
-            _logtime = new LogTime();
-            grid.DataContext = _logtime;
-            e.Handled = true;
-
-        }
-
         public class LinksProperty
         {
             public string href { get; set; }
@@ -92,6 +58,37 @@ namespace WpfTest
             public string comment { get; set; }
             public string spentOn { get; set; }
         }
+        public LogTimeManual_Window()
+        {
+            InitializeComponent();
+            grid.DataContext = _logtime;
+        }
+        private void Validation_Error(object sender, ValidationErrorEventArgs e)
+        {
+            if (e.Action == ValidationErrorEventAction.Added)
+                _noOfErrorsOnScreen++;
+            else
+                _noOfErrorsOnScreen--;
+        }
+
+        private void Add_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = _noOfErrorsOnScreen == 0;
+            e.Handled = true;
+        }
+
+        private void Add_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            LogTime cust = grid.DataContext as LogTime;
+            // write code here to add Customer
+
+            // reset UI
+            _logtime = new LogTime();
+            grid.DataContext = _logtime;
+            e.Handled = true;
+
+        }
+
        
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -114,15 +111,8 @@ namespace WpfTest
             Activity.DisplayMemberPath = "value";
             Activity.SelectedValuePath = "key";
             Activity.ItemsSource = cbA;
-           
-
-
-
-
 
         }
-
-
 
         private void Post_Click_1(object sender, RoutedEventArgs e)
         {
@@ -172,14 +162,9 @@ namespace WpfTest
             var password = ((Login)Application.Current.MainWindow).API_Key.Text;
             client.Authenticator = new HttpBasicAuthenticator("apikey", password);
 
-
             request.AddHeader("Content-Type", "application/json");
 
-
             request.AddJsonBody(json);
-
-
-
             IRestResponse response = client.Execute(request);
             HttpStatusCode statusCode = response.StatusCode;
 

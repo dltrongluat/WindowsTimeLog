@@ -20,6 +20,7 @@ namespace WpfTest
         //store work package id and name
         public string workpackage_id { get; set; }
         public string workpackage_name { get; set; }
+   
         //store activity id and name
         public string activity_id { get; set; }
         public string activity_name { get; set; }

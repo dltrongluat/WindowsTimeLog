@@ -8,7 +8,6 @@
         mc:Ignorable="d"
         Title="LogTimeManual_Window" Height="457.311" Width="681.176" Loaded="Window_Loaded">
     <Window.Resources>
-     
         <Style TargetType="{x:Type Label}">
             <Setter Property="Margin" Value="5,0,5,0" />
             <Setter Property="HorizontalAlignment" Value="Left" />
@@ -41,7 +40,7 @@
         <Grid.CommandBindings>
             <CommandBinding Command="New" CanExecute="Add_CanExecute" Executed="Add_Executed" />
         </Grid.CommandBindings>
-        <Canvas Margin="0,0,0,1" Grid.ColumnSpan="3">
+        <Canvas Margin="0,0,0,1" Grid.ColumnSpan="4">
 
             <Label Content="Project" Canvas.Top="73" Height="30" Width="67"/>
             <TextBlock Name="Project" Canvas.Left="72" Canvas.Top="73" Width="218" Height="30"></TextBlock>
@@ -56,8 +55,8 @@
             <Label Content="Comment"  Target="{Binding ElementName=tb_Comment}" Canvas.Top="242" Height="30" Width="67"/>
             <TextBox x:Name="tb_Comment" Canvas.Left="72" Canvas.Top="242" Width="218" Height="30" Validation.Error="Validation_Error"  Text="{Binding UpdateSourceTrigger=PropertyChanged, Path=Comment,
                     ValidatesOnDataErrors=true, NotifyOnValidationError=true}"></TextBox>
-            <Label Content="Date" Target="{Binding ElementName=datePicker}" Canvas.Top="292" Height="30" Width="67" Canvas.Left="5"/>
-            <DatePicker x:Name="datePicker" Height="25" HorizontalAlignment="Left"  VerticalAlignment="Top"  SelectedDate="{x:Static sys:DateTime.Now}" Width="115" Canvas.Left="72" Canvas.Top="292" Text="{Binding UpdateSourceTrigger=PropertyChanged, Path=SpentOn, ValidatesOnDataErrors=true, NotifyOnValidationError=true}" />
+            <Label Content="Date" Canvas.Top="292" Height="30" Width="67" Canvas.Left="5"/>
+            <DatePicker x:Name="datePicker" Height="25" HorizontalAlignment="Left"  VerticalAlignment="Top"  SelectedDate="{x:Static sys:DateTime.Now}" Width="115" Canvas.Left="72" Canvas.Top="292"  />
             <Button Content="Log Time" Grid.ColumnSpan="2" Grid.Row="3" Grid.Column="1"
                 HorizontalAlignment="right" VerticalAlignment="Center" Command="New" Click="Post_Click_1" Canvas.Left="99" Canvas.Top="346" />
           

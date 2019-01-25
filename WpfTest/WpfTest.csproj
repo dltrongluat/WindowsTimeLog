@@ -263,9 +263,6 @@
     <Compile Include="LogTimeManual_Window.xaml.cs">
       <DependentUpon>LogTimeManual_Window.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NavWindow.xaml.cs">
-      <DependentUpon>NavWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ViewProject_Page.xaml.cs">
       <DependentUpon>ViewProject_Page.xaml</DependentUpon>
     </Compile>
@@ -284,22 +281,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Page Include="NavWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="ViewProject_Page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

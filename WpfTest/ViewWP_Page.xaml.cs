@@ -101,11 +101,10 @@ namespace WpfTest
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void LogTimeMan_Click(object sender, RoutedEventArgs e)
         {
             // get project id & name
-          
-
+         
             //set work package id from click action
             dynamic selected_WP = (WorkPackage)wpListView.SelectedItem;
             var workpackage_id = selected_WP.id.ToString();
@@ -117,17 +116,24 @@ namespace WpfTest
            
 
             //display a new MainWindow
-            LogTimeManual_Window LogTime_window = new LogTimeManual_Window();
-            LogTime_window.Show();
+            LogTimeManual_Window LogTimeMan_window = new LogTimeManual_Window();
+            LogTimeMan_window.Show();
 
             //close Window1
             //Window1 w = Application.Current.Windows.OfType<Window1>().FirstOrDefault();
             //w.Close();
         }
 
-         
+        private void LogTimeAuto_Click(object sender, RoutedEventArgs e)
+        {
+            dynamic selected_WP = (WorkPackage)wpListView.SelectedItem;
+            var workpackage_id = selected_WP.id.ToString();
+            var workpackage_name = selected_WP.subject.ToString();
+            (App.Current as App).workpackage_id = workpackage_id;
+            (App.Current as App).workpackage_name = workpackage_name;
 
-
-
+            LogTimeAuto_Window LogTimeAuto_window = new LogTimeAuto_Window();
+            LogTimeAuto_window.Show();
+        }
     }
 }

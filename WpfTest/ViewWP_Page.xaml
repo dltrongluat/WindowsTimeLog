@@ -9,16 +9,34 @@
       Title="ViewWP_Page" Loaded="Window_Loaded">
     <Canvas>
         <Grid Width="800">
-            <DataGrid Name="wpListView" ItemsSource="{Binding}" CanUserAddRows="false" HeadersVisibility="Column" IsReadOnly="True" AutoGenerateColumns="False">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="350" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="300" />
+            </Grid.RowDefinitions>
+            <DataGrid Name="wpListView" ItemsSource="{Binding}" CanUserAddRows="false" HeadersVisibility="Column" IsReadOnly="True" AutoGenerateColumns="False" Grid.Column="0" Grid.Row="0" ScrollViewer.CanContentScroll="True" 
+      ScrollViewer.VerticalScrollBarVisibility="Auto"
+      ScrollViewer.HorizontalScrollBarVisibility="Auto" Margin="0,0,-438.667,0">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding="{Binding id}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Work Package" Binding="{Binding subject}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Total Time Spent" Binding="{Binding spentTime}"></DataGridTextColumn>
-                    <DataGridTemplateColumn Header="Log Time">
+                    <DataGridTemplateColumn Header="Log Time Manual">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Click=" Button_Click" >Log Time</Button>
+                                <Button Click="LogTimeMan_Click" >Log Time</Button>
                             </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Log time Auto" >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                            <Button Click="LogTimeAuto_Click">
+                                Log Time
+                            </Button>
+                            
+                        </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
                   
