@@ -43,6 +43,18 @@ namespace WpfTest
             }
 
         }
+        // class for time entries activities object
+        public class TE_Activity
+        {
+            public string id { get; set; }
+            public string name { get; set; }
+        }
+
+        public class RootObjectActivity
+        {
+            public List<TE_Activity> activities { get; set; }
+        }
+        // class for log time object
         public class Links
         {
             public LinksProperty project { get; set; }
@@ -50,7 +62,7 @@ namespace WpfTest
             public LinksProperty workPackage { get; set; }
             public LinksProperty customField4 { get; set; }
         }
-
+        
         public class RootObject
         {
             public Links _links { get; set; }
@@ -80,7 +92,7 @@ namespace WpfTest
         private void Add_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             LogTime cust = grid.DataContext as LogTime;
-            // write code here to add Customer
+
 
             // reset UI
             _logtime = new LogTime();
@@ -101,12 +113,16 @@ namespace WpfTest
 
             //Add activity type to combo box
             List<ComboBoxActivity> cbA = new List<ComboBoxActivity>();
-            cbA.Add(new ComboBoxActivity("1", "Management"));
-            cbA.Add(new ComboBoxActivity("2", "Specification"));
-            cbA.Add(new ComboBoxActivity("3", "Development"));
-            cbA.Add(new ComboBoxActivity("4", "Testing"));
-            cbA.Add(new ComboBoxActivity("5", "Support"));
-            cbA.Add(new ComboBoxActivity("6", "Other"));
+            var client = new RestClient("http://localhost:3000/api/time_entries/");
+            var request = new RestSharp.RestRequest("activities", Method.GET);        
+            IRestResponse response = client.Execute(request);
+            RootObjectActivity te_activity = JsonConvert.DeserializeObject<RootObjectActivity>(response.Content);
+            var tea_id = 0;
+            while (tea_id < te_activity.activities.Count)
+            {
+                cbA.Add(new ComboBoxActivity(te_activity.activities[tea_id].id, te_activity.activities[tea_id].name));
+                tea_id++;
+            }
             //bind to the Activity combobox in xaml
             Activity.DisplayMemberPath = "value";
             Activity.SelectedValuePath = "key";
@@ -157,7 +173,7 @@ namespace WpfTest
 
             var json = JsonConvert.SerializeObject(time_entry);
 
-            var client = new RestClient("https://luattest.openproject.com/api/v3/");
+            var client = new RestClient("https://luattest2.openproject.com/api/v3/");
             var request = new RestRequest("time_entries", Method.POST);
             var password = ((Login)Application.Current.MainWindow).API_Key.Text;
             client.Authenticator = new HttpBasicAuthenticator("apikey", password);

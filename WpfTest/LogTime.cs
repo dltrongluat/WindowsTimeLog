@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Text.RegularExpressions;
+using System.Globalization;
 
 namespace WpfTest
 {
@@ -32,12 +33,14 @@ namespace WpfTest
                 }
                 if (columnName == "LogHour")
                 {
-              
+
                     if (string.IsNullOrEmpty(LogHour))
                         result = "Please enter log hour";
-                   
+
                     else if (!Regex.IsMatch(LogHour, @"^[0-9]*(?:\.[0-9]*)?$"))
                         result = "Please enter a valid number";
+                    else if (float.Parse(LogHour, CultureInfo.InvariantCulture.NumberFormat) == 0)
+                        result = "Must not = 0";
                 }
             
                 return result;

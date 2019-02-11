@@ -59,7 +59,7 @@ namespace WpfTest
         }
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            var client = new RestClient("https://luattest.openproject.com/");
+            var client = new RestClient("https://luattest2.openproject.com/");
 
             var password = ((Login)Application.Current.MainWindow).API_Key.Text;
             client.Authenticator = new HttpBasicAuthenticator("apikey", password);

@@ -38,7 +38,7 @@ namespace WpfTest
        
         private void loginButton_Click(object sender, RoutedEventArgs e)
         {
-            string api_server = "https://luattest.openproject.com/api/v3";
+            string api_server = "https://luattest2.openproject.com/api/v3";
             string username = "apikey";
             string password = API_Key.Text;
             var client = new RestClient(api_server);

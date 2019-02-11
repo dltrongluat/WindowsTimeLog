@@ -39,7 +39,6 @@ namespace WpfTest
             public int count { get; set; }
 
             public EmbeddedWorkPackage _embedded { get; set; }
-
         }
      
         public class EmbeddedWorkPackage
@@ -58,7 +57,6 @@ namespace WpfTest
             {
                 WorkPackage new_wp = new WorkPackage()
                 {
-                 
                     id = wp.id,
                     subject = Regex.Replace(wp.subject, @"\t|\n|\r", ""),
                     //TimeSpan aaa = XmlConvert.ToTimeSpan(obj._embedded.elements[0].spentTime)
@@ -76,7 +74,7 @@ namespace WpfTest
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            var client = new RestClient("https://luattest.openproject.com/");
+            var client = new RestClient("https://luattest2.openproject.com/");
 
             var password = ((Login)Application.Current.MainWindow).API_Key.Text;
             client.Authenticator = new HttpBasicAuthenticator("apikey", password);

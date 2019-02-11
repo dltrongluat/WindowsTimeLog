@@ -172,7 +172,7 @@ namespace WpfTest
 
             var json = JsonConvert.SerializeObject(time_entry);
 
-            var client = new RestClient("https://luattest.openproject.com/api/v3/");
+            var client = new RestClient("https://luattest2.openproject.com/api/v3/");
             var request = new RestRequest("time_entries", Method.POST);
             var password = ((Login)Application.Current.MainWindow).API_Key.Text;
             client.Authenticator = new HttpBasicAuthenticator("apikey", password);
