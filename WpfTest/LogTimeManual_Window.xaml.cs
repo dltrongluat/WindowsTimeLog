@@ -18,12 +18,14 @@ using RestSharp.Authenticators;
 using System.Text.RegularExpressions;
 using DataFormat = RestSharp.DataFormat;
 using System.Net;
+using MahApps.Metro.Controls;
+
 namespace WpfTest
 {
     /// <summary>
     /// Interaction logic for LogTimeManual_Window.xaml
     /// </summary>
-    public partial class LogTimeManual_Window : Window
+    public partial class LogTimeManual_Window : MetroWindow
     {
         private int _noOfErrorsOnScreen = 0;
         private LogTime _logtime = new LogTime();

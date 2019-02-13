@@ -16,6 +16,10 @@ using Newtonsoft.Json;
 using RestSharp;
 using RestSharp.Authenticators;
 
+using System.Windows.Forms;
+using MahApps.Metro.Controls;
+using MessageBox = System.Windows.Forms.MessageBox;
+
 namespace WpfTest
 {
     /// <summary>
@@ -24,7 +28,7 @@ namespace WpfTest
     /// 
 
    
-    public partial class Login : Window
+    public partial class Login : MetroWindow
     {
         public Login()
         {
@@ -64,7 +68,7 @@ namespace WpfTest
             }
             else
             {
-             
+
                 MessageBox.Show("Authenticate success!");
                 //store user id for log time function
                 (App.Current as App).u_id = obj.id;
@@ -73,6 +77,7 @@ namespace WpfTest
             }
         }
 
+       
     }
    
 

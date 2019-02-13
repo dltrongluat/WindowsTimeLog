@@ -1,3 +1,3 @@
 WindowsTimeLog application
 
-For dev, install 2 package : Restsharp and Newtonsoft.Json from NuGet package manager in visual studio
+For dev, install packages : Restsharp and Newtonsoft.Json, MahApps.Metro(for modern UI) from NuGet package manager in visual studio

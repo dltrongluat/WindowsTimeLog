@@ -18,6 +18,7 @@ using System.Windows.Threading;
 using Newtonsoft.Json;
 using RestSharp;
 using RestSharp.Authenticators;
+using MahApps.Metro.Controls;
 using System.Text.RegularExpressions;
 using DataFormat = RestSharp.DataFormat;
 using System.Net;
@@ -26,7 +27,7 @@ namespace WpfTest
     /// <summary>
     /// Interaction logic for LogTimeAuto_Window.xaml
     /// </summary>
-    public partial class LogTimeAuto_Window : Window
+    public partial class LogTimeAuto_Window : MetroWindow
     {
         public class LinksProperty
         {
