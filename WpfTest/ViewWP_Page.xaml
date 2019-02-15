@@ -15,12 +15,13 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="300" />
             </Grid.RowDefinitions>
-            <DataGrid Name="wpListView" ItemsSource="{Binding}" CanUserAddRows="false" HeadersVisibility="Column" IsReadOnly="True" AutoGenerateColumns="False" Grid.Column="0" Grid.Row="0" ScrollViewer.CanContentScroll="True" 
+            <DataGrid Name="wpListView" ItemsSource="{Binding WorkPackageList}" CanUserAddRows="false" HeadersVisibility="Column" IsReadOnly="True" AutoGenerateColumns="False" Grid.Column="0" Grid.Row="0" ScrollViewer.CanContentScroll="True" 
       ScrollViewer.VerticalScrollBarVisibility="Auto"
       ScrollViewer.HorizontalScrollBarVisibility="Auto" Margin="0,0,-438.667,0">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding="{Binding id}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Work Package" Binding="{Binding subject}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Version" Binding="{Binding _links.version.title}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Total Time Spent" Binding="{Binding spentTime}"></DataGridTextColumn>
                     <DataGridTemplateColumn Header="Log Time Manual">
                         <DataGridTemplateColumn.CellTemplate>

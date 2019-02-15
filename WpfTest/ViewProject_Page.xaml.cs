@@ -39,9 +39,7 @@ namespace WpfTest
             public string _type { get; set; }
             public int total { get; set; }
             public int count { get; set; }
-
             public EmbeddedProject _embedded { get; set; }
-
         }
         public class EmbeddedProject
         {
@@ -49,53 +47,42 @@ namespace WpfTest
         }
         public class Project
         {
-
             public string id { get; set; }
             public string name { get; set; }
             public string identifier { get; set; }
             public string createdAt { get; set; }
-          
 
         }
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             var client = new RestClient("https://luattest2.openproject.com/");
-
             var password = ((Login)Application.Current.MainWindow).API_Key.Text;
             client.Authenticator = new HttpBasicAuthenticator("apikey", password);
-
             var request = new RestSharp.RestRequest("api/v3/projects", Method.GET);
-
             IRestResponse response = client.Execute(request);
-          
-
             var obj = JsonConvert.DeserializeObject<Outer>(response.Content);
-
             ObservableCollection<Project> Project = new ObservableCollection<Project>(obj._embedded.elements);
-            //  projectListView.ItemsSource = obj._embedded.elements;
+          
             projectListView.ItemsSource = Project;
-           
+      
         }
 
-        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
-        {
-            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
-            e.Handled = true;
-            dynamic selectedItem = (Project)projectListView.SelectedItem;
-       
-            var name = selectedItem.name.ToString();
+        //private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        //{
+        //    Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+        //    e.Handled = true;
+        //    dynamic selectedItem = (Project)projectListView.SelectedItem; 
+        //    var name = selectedItem.name.ToString();
 
-            MessageBox.Show(name);
-         
-        }
+        //    MessageBox.Show(name);
+
+        //}
       
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             //set project id from click action
 
             dynamic selected_Project = (Project)projectListView.SelectedItem;
-
-            //var name = selected_Project.name.ToString();
             var project_id = selected_Project.id.ToString();
             var project_name = selected_Project.name.ToString();
             (App.Current as App).project_name = project_name;

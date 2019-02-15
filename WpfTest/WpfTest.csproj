@@ -276,6 +276,12 @@
     <Compile Include="ViewProject_Page.xaml.cs">
       <DependentUpon>ViewProject_Page.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewVersionWP_Page.xaml.cs">
+      <DependentUpon>ViewVersionWP_Page.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewVersion_Page.xaml.cs">
+      <DependentUpon>ViewVersion_Page.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewWP_Page.xaml.cs">
       <DependentUpon>ViewWP_Page.xaml</DependentUpon>
     </Compile>
@@ -296,6 +302,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="ViewProject_Page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewVersionWP_Page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewVersion_Page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

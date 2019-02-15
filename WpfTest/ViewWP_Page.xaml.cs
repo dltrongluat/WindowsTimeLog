@@ -52,7 +52,7 @@ namespace WpfTest
             public string subject { get; set; }
 
             public string spentTime { get; set; }
-
+            public Links _links { get; set; }
             public static WorkPackage SubjectWithoutNewline(WorkPackage wp)
             {
                 WorkPackage new_wp = new WorkPackage()
@@ -60,13 +60,25 @@ namespace WpfTest
                     id = wp.id,
                     subject = Regex.Replace(wp.subject, @"\t|\n|\r", ""),
                     //TimeSpan aaa = XmlConvert.ToTimeSpan(obj._embedded.elements[0].spentTime)
-                    spentTime = XmlConvert.ToTimeSpan(wp.spentTime).TotalHours.ToString() +"H"
-
+                    spentTime = XmlConvert.ToTimeSpan(wp.spentTime).TotalHours.ToString() + "H",
+                    _links = wp._links
                 };
 
                 return new_wp;
             }
+          
         }
+        public class Links
+        {
+            public Version version { get; set; }
+        }
+        public class Version
+        {
+            public string href { get; set; }
+            public string title { get; set; }
+        }
+
+
         public Uri Source { get; set; }
       
 
@@ -91,11 +103,17 @@ namespace WpfTest
 
             List<WorkPackage> wp_without_newline = obj._embedded.elements.ConvertAll(
                 new Converter<WorkPackage, WorkPackage>(WorkPackage.SubjectWithoutNewline));
+            
+           // var filteredContacts = wp_without_newline.Where(WPA => WPA._links.version.title.StartsWith("T"));
+
+            //wpListView.ItemsSource = filteredContacts.ToList();
             //convert list to observable collection
             var WP = new ObservableCollection<WorkPackage>();
             foreach (var item in wp_without_newline)
                 WP.Add(item);
+
             wpListView.ItemsSource = WP;
+
 
         }
 
@@ -110,8 +128,6 @@ namespace WpfTest
            
             (App.Current as App).workpackage_id = workpackage_id;
             (App.Current as App).workpackage_name = workpackage_name;
-
-           
 
             //display a new MainWindow
             LogTimeManual_Window LogTimeMan_window = new LogTimeManual_Window();
