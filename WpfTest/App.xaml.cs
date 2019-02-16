@@ -17,6 +17,9 @@ namespace WpfTest
         public string project_id { get; set; }
         public string project_name { get; set; }
 
+        //store version id and name
+        public string version_id { get; set; }
+        public string version_name { get; set; }
         //store work package id and name
         public string workpackage_id { get; set; }
         public string workpackage_name { get; set; }

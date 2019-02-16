@@ -77,17 +77,23 @@ namespace WpfTest
             var client = new RestClient("https://luattest2.openproject.com/");
             var password = ((Login)Application.Current.MainWindow).API_Key.Text;
             client.Authenticator = new HttpBasicAuthenticator("apikey", password);
-            var request = new RestSharp.RestRequest("api/v3/projects/2/versions", Method.GET);
+            string project_id = (App.Current as App).project_id;
+            var request = new RestSharp.RestRequest("api/v3/projects/" + project_id + "/versions", Method.GET);
             IRestResponse response = client.Execute(request);
             var obj = JsonConvert.DeserializeObject<RootObject>(response.Content);
             ObservableCollection<Version> Version = new ObservableCollection<Version>(obj._embedded.elements);
-          
             versionListView.ItemsSource = Version;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ViewWP_Click(object sender, RoutedEventArgs e)
         {
-
+            dynamic selected_Version = (Version)versionListView.SelectedItem;
+            var version_id = selected_Version.id.ToString();
+            var version_name = selected_Version.name.ToString();
+            (App.Current as App).version_id = version_id;
+            (App.Current as App).version_name = version_name;
+            NavigationService nav = NavigationService.GetNavigationService(this);
+            nav.Navigate(new Uri("ViewVersionWP_Page.xaml", UriKind.RelativeOrAbsolute));
         }
     }
 }

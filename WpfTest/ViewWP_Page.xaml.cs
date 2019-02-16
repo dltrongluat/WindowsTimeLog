@@ -53,6 +53,13 @@ namespace WpfTest
 
             public string spentTime { get; set; }
             public Links _links { get; set; }
+            //public WorkPackage(string id, string subject, string spentTime, Links _links)
+            //{
+            //    this.id = id;
+            //    this.subject = subject;
+            //    this.spentTime = spentTime;
+            //    this._links = _links;
+            //}
             public static WorkPackage SubjectWithoutNewline(WorkPackage wp)
             {
                 WorkPackage new_wp = new WorkPackage()
@@ -63,10 +70,9 @@ namespace WpfTest
                     spentTime = XmlConvert.ToTimeSpan(wp.spentTime).TotalHours.ToString() + "H",
                     _links = wp._links
                 };
-
                 return new_wp;
             }
-          
+
         }
         public class Links
         {
@@ -77,44 +83,28 @@ namespace WpfTest
             public string href { get; set; }
             public string title { get; set; }
         }
-
-
         public Uri Source { get; set; }
-      
-
-
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             var client = new RestClient("https://luattest2.openproject.com/");
-
             var password = ((Login)Application.Current.MainWindow).API_Key.Text;
             client.Authenticator = new HttpBasicAuthenticator("apikey", password);
-         
-
             string project_id = (App.Current as App).project_id;
             var endpoint= "api/v3/projects/"+ project_id + "/work_packages";
-            var request = new RestSharp.RestRequest(endpoint, Method.GET);
-                
+            var request = new RestSharp.RestRequest(endpoint, Method.GET);           
             IRestResponse response = client.Execute(request);
-          
-
             var obj = JsonConvert.DeserializeObject<Outer>(response.Content);
-
+           
             List<WorkPackage> wp_without_newline = obj._embedded.elements.ConvertAll(
                 new Converter<WorkPackage, WorkPackage>(WorkPackage.SubjectWithoutNewline));
-            
-           // var filteredContacts = wp_without_newline.Where(WPA => WPA._links.version.title.StartsWith("T"));
 
-            //wpListView.ItemsSource = filteredContacts.ToList();
-            //convert list to observable collection
             var WP = new ObservableCollection<WorkPackage>();
             foreach (var item in wp_without_newline)
                 WP.Add(item);
 
             wpListView.ItemsSource = WP;
-
-
+          
         }
 
         private void LogTimeMan_Click(object sender, RoutedEventArgs e)
