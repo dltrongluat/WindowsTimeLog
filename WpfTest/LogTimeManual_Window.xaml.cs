@@ -145,8 +145,6 @@ namespace WpfTest
             DateTime date = (DateTime)datePicker.SelectedDate;
             string result = date.ToString("yyyy-MM-dd");
             string user_id = (App.Current as App).u_id;
-
-            MessageBox.Show(user_id);
             RootObject time_entry = new RootObject()
             {
                 _links = new Links
@@ -177,7 +175,7 @@ namespace WpfTest
 
             var client = new RestClient("https://luattest2.openproject.com/api/v3/");
             var request = new RestRequest("time_entries", Method.POST);
-            var password = ((Login)Application.Current.MainWindow).API_Key.Text;
+            string password = (App.Current as App).api_key;
             client.Authenticator = new HttpBasicAuthenticator("apikey", password);
 
             request.AddHeader("Content-Type", "application/json");
@@ -186,13 +184,18 @@ namespace WpfTest
             IRestResponse response = client.Execute(request);
             HttpStatusCode statusCode = response.StatusCode;
 
+            int numbericStatusCode = (int)statusCode;
+            if (numbericStatusCode == 200 || numbericStatusCode == 201 || numbericStatusCode == 301)
+            {
+                MessageBox.Show("Log time success!");
 
-            MessageBox.Show(statusCode.ToString());
+            }
+            else
+            {
 
+                MessageBox.Show("Log time failed!");
+            }
         }
-
-
-
     }
 
   

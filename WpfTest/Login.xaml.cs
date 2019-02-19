@@ -15,25 +15,23 @@ using System.Windows.Shapes;
 using Newtonsoft.Json;
 using RestSharp;
 using RestSharp.Authenticators;
-
 using System.Windows.Forms;
 using MahApps.Metro.Controls;
 using MessageBox = System.Windows.Forms.MessageBox;
+using Application = System.Windows.Application;
+using System.Collections.ObjectModel;
 
 namespace WpfTest
 {
-    /// <summary>
-    /// Interaction logic for Login.xaml
-    /// </summary>
-    /// 
 
-   
     public partial class Login : MetroWindow
     {
         public Login()
         {
             InitializeComponent();
             this.DataContext = this;
+          //  Login = new Login()
+
         }
         class User
         {
@@ -53,10 +51,9 @@ namespace WpfTest
             request.AddHeader("Content-Type", "application/json");
             //  execute request
             IRestResponse response = client.Execute(request);
-
             //get User id 
             var obj = JsonConvert.DeserializeObject<User>(response.Content);
-         
+          
 
             //  get status code of the response
             HttpStatusCode statusCode = response.StatusCode;
@@ -64,7 +61,7 @@ namespace WpfTest
             if (numbericStatusCode != 200)
             {
                 MessageBox.Show("Authenticate failed!");
-                
+
             }
             else
             {
@@ -72,8 +69,17 @@ namespace WpfTest
                 MessageBox.Show("Authenticate success!");
                 //store user id for log time function
                 (App.Current as App).u_id = obj.id;
+                (App.Current as App).api_key = password;
                 // display view project page
-                Main.Content = new ViewProject_Page();
+
+                //   Main.Content = new ViewProject_Page();
+                //rameWindow window = new FrameWindow(string obj.id);
+                FrameWindow window = new FrameWindow();
+                window.Show();
+                this.Close();
+                //Application.Current.MainWindow.Hide();
+                //  Main.Content = new ViewProject_Page();
+                //Application.Current.MainWindow.Close();
             }
         }
 

@@ -56,7 +56,8 @@ namespace WpfTest
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             var client = new RestClient("https://luattest2.openproject.com/");
-            var password = ((Login)Application.Current.MainWindow).API_Key.Text;
+            string password = (App.Current as App).api_key;
+          //  var password = ((Login)Application.Current.MainWindow).API_Key.Text;
             client.Authenticator = new HttpBasicAuthenticator("apikey", password);
             var request = new RestSharp.RestRequest("api/v3/projects", Method.GET);
             IRestResponse response = client.Execute(request);
@@ -87,10 +88,8 @@ namespace WpfTest
             var project_name = selected_Project.name.ToString();
             (App.Current as App).project_name = project_name;
             (App.Current as App).project_id = project_id;
-
             NavigationService nav = NavigationService.GetNavigationService(this);
             nav.Navigate(new Uri("ViewWP_Page.xaml", UriKind.RelativeOrAbsolute));
-
         }
 
         private void ViewVersion_Click(object sender, RoutedEventArgs e)
@@ -100,7 +99,6 @@ namespace WpfTest
             var project_name = selected_Project.name.ToString();
             (App.Current as App).project_name = project_name;
             (App.Current as App).project_id = project_id;
-
             NavigationService nav = NavigationService.GetNavigationService(this);
             nav.Navigate(new Uri("ViewVersion_Page.xaml", UriKind.RelativeOrAbsolute));
         }

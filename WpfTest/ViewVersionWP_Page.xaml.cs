@@ -74,7 +74,7 @@ namespace WpfTest
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             var client = new RestClient("https://luattest2.openproject.com/");
-            var password = ((Login)Application.Current.MainWindow).API_Key.Text;
+            string password = (App.Current as App).api_key;
             client.Authenticator = new HttpBasicAuthenticator("apikey", password);
             string project_id = (App.Current as App).project_id;
             string version_name = (App.Current as App).version_name;

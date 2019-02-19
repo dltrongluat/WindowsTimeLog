@@ -175,7 +175,7 @@ namespace WpfTest
 
             var client = new RestClient("https://luattest2.openproject.com/api/v3/");
             var request = new RestRequest("time_entries", Method.POST);
-            var password = ((Login)Application.Current.MainWindow).API_Key.Text;
+            string password = (App.Current as App).api_key;
             client.Authenticator = new HttpBasicAuthenticator("apikey", password);
 
             request.AddHeader("Content-Type", "application/json");

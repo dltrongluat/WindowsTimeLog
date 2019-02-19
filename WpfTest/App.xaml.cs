@@ -13,6 +13,8 @@ namespace WpfTest
     /// </summary>
     public partial class App : Application
     {
+        //store apikey
+        public string api_key { get; set; }
         //store project id and name
         public string project_id { get; set; }
         public string project_name { get; set; }
@@ -30,7 +32,6 @@ namespace WpfTest
         // store user id
         public string u_id { get; set; }
        
-
     }
-  
+    
 }

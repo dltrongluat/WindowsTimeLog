@@ -75,7 +75,7 @@ namespace WpfTest
         {
 
             var client = new RestClient("https://luattest2.openproject.com/");
-            var password = ((Login)Application.Current.MainWindow).API_Key.Text;
+            string password = (App.Current as App).api_key;
             client.Authenticator = new HttpBasicAuthenticator("apikey", password);
             string project_id = (App.Current as App).project_id;
             var request = new RestSharp.RestRequest("api/v3/projects/" + project_id + "/versions", Method.GET);

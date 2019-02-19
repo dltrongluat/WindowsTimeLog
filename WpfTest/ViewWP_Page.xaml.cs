@@ -53,13 +53,7 @@ namespace WpfTest
 
             public string spentTime { get; set; }
             public Links _links { get; set; }
-            //public WorkPackage(string id, string subject, string spentTime, Links _links)
-            //{
-            //    this.id = id;
-            //    this.subject = subject;
-            //    this.spentTime = spentTime;
-            //    this._links = _links;
-            //}
+         
             public static WorkPackage SubjectWithoutNewline(WorkPackage wp)
             {
                 WorkPackage new_wp = new WorkPackage()
@@ -88,7 +82,7 @@ namespace WpfTest
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             var client = new RestClient("https://luattest2.openproject.com/");
-            var password = ((Login)Application.Current.MainWindow).API_Key.Text;
+            string password = (App.Current as App).api_key;
             client.Authenticator = new HttpBasicAuthenticator("apikey", password);
             string project_id = (App.Current as App).project_id;
             var endpoint= "api/v3/projects/"+ project_id + "/work_packages";
