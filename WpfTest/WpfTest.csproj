@@ -276,6 +276,7 @@
     <Compile Include="LogTimeManual_Window.xaml.cs">
       <DependentUpon>LogTimeManual_Window.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Setting.cs" />
     <Compile Include="ViewProject_Page.xaml.cs">
       <DependentUpon>ViewProject_Page.xaml</DependentUpon>
     </Compile>

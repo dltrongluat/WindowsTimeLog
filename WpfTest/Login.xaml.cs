@@ -20,6 +20,7 @@ using MahApps.Metro.Controls;
 using MessageBox = System.Windows.Forms.MessageBox;
 using Application = System.Windows.Application;
 using System.Collections.ObjectModel;
+using System.IO;
 
 namespace WpfTest
 {
@@ -30,7 +31,7 @@ namespace WpfTest
         {
             InitializeComponent();
             this.DataContext = this;
-          //  Login = new Login()
+       
 
         }
         class User
@@ -40,13 +41,16 @@ namespace WpfTest
        
         private void loginButton_Click(object sender, RoutedEventArgs e)
         {
-            string api_server = "https://luattest2.openproject.com/api/v3";
+
+            //  string api_server = "https://luattest2.openproject.com/api/v3";
+
+            string api_server = (App.Current as App).api_server;
             string username = "apikey";
             string password = API_Key.Text;
             var client = new RestClient(api_server);
             client.Authenticator = new HttpBasicAuthenticator(username, password);
             //  get
-            var request = new RestRequest("users/me", Method.GET);
+            var request = new RestRequest("/users/me", Method.GET);
             //  add header
             request.AddHeader("Content-Type", "application/json");
             //  execute request
@@ -77,13 +81,41 @@ namespace WpfTest
                 FrameWindow window = new FrameWindow();
                 window.Show();
                 this.Close();
-                //Application.Current.MainWindow.Hide();
-                //  Main.Content = new ViewProject_Page();
-                //Application.Current.MainWindow.Close();
+              
             }
         }
 
-       
+        private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            string file_path = @"D:\WP\WindowsTimeLog\WpfTest\Test.txt";
+            List<Setting> setting = new List<Setting>();
+            List<string> lines = File.ReadAllLines(file_path).ToList();
+            foreach (var  line in lines)
+            {
+                string[] entries = line.Split(',');
+                Setting new_setting = new Setting();
+                new_setting.id = entries[0];
+                new_setting.href = entries[1];
+                setting.Add(new_setting);
+            }
+            string api_server = setting[0].href.ToString();
+            string api_mockup_server = setting[1].href.ToString();
+            (App.Current as App).api_server = api_server;
+            (App.Current as App).api_mockup_server = api_mockup_server;
+        }
+
+        //private void setting_Click(object sender, RoutedEventArgs e)
+        //{
+        //    //OpenFileDialog ofd = new OpenFileDialog();
+        //    //ofd.DefaultExt = ".txt";
+        //    //ofd.Filter = "Text Document (.txt)|*.txt";
+        //    //if (ofd.ShowDialog()==true)
+        //    //{
+        //    //    string filename = ofd.FileName;
+                
+        //    //}
+
+        //}
     }
    
 

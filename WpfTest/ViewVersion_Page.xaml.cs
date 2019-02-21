@@ -74,11 +74,12 @@ namespace WpfTest
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
 
-            var client = new RestClient("https://luattest2.openproject.com/");
+            string api_server = (App.Current as App).api_server;
+            var client = new RestClient(api_server);
             string password = (App.Current as App).api_key;
             client.Authenticator = new HttpBasicAuthenticator("apikey", password);
             string project_id = (App.Current as App).project_id;
-            var request = new RestSharp.RestRequest("api/v3/projects/" + project_id + "/versions", Method.GET);
+            var request = new RestSharp.RestRequest("/projects/" + project_id + "/versions", Method.GET);
             IRestResponse response = client.Execute(request);
             var obj = JsonConvert.DeserializeObject<RootObject>(response.Content);
             ObservableCollection<Version> Version = new ObservableCollection<Version>(obj._embedded.elements);

@@ -115,7 +115,8 @@ namespace WpfTest
 
             //Add activity type to combo box
             List<ComboBoxActivity> cbA = new List<ComboBoxActivity>();
-            var client = new RestClient("http://localhost:3000/api/time_entries/");
+            string api_mockup_server = (App.Current as App).api_mockup_server;
+            var client = new RestClient(api_mockup_server);
             var request = new RestSharp.RestRequest("activities", Method.GET);        
             IRestResponse response = client.Execute(request);
             RootObjectActivity te_activity = JsonConvert.DeserializeObject<RootObjectActivity>(response.Content);
@@ -173,8 +174,9 @@ namespace WpfTest
 
             var json = JsonConvert.SerializeObject(time_entry);
 
-            var client = new RestClient("https://luattest2.openproject.com/api/v3/");
-            var request = new RestRequest("time_entries", Method.POST);
+            string api_server = (App.Current as App).api_server;
+            var client = new RestClient(api_server);
+            var request = new RestRequest("/time_entries", Method.POST);
             string password = (App.Current as App).api_key;
             client.Authenticator = new HttpBasicAuthenticator("apikey", password);
 

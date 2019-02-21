@@ -22,6 +22,8 @@ using MahApps.Metro.Controls;
 using System.Text.RegularExpressions;
 using DataFormat = RestSharp.DataFormat;
 using System.Net;
+using static WpfTest.LogTimeManual_Window;
+
 namespace WpfTest
 {
     /// <summary>
@@ -118,12 +120,17 @@ namespace WpfTest
             WorkPackage.Text = workpackage_name;
             //Add activity type to combo box
             List<ComboBoxActivity> cbA = new List<ComboBoxActivity>();
-            cbA.Add(new ComboBoxActivity("1", "Management"));
-            cbA.Add(new ComboBoxActivity("2", "Specification"));
-            cbA.Add(new ComboBoxActivity("3", "Development"));
-            cbA.Add(new ComboBoxActivity("4", "Testing"));
-            cbA.Add(new ComboBoxActivity("5", "Support"));
-            cbA.Add(new ComboBoxActivity("6", "Other"));
+            string api_mockup_server = (App.Current as App).api_mockup_server;
+            var client = new RestClient(api_mockup_server);
+            var request = new RestSharp.RestRequest("activities", Method.GET);
+            IRestResponse response = client.Execute(request);
+            RootObjectActivity te_activity = JsonConvert.DeserializeObject<RootObjectActivity>(response.Content);
+            var tea_id = 0;
+            while (tea_id < te_activity.activities.Count)
+            {
+                cbA.Add(new ComboBoxActivity(te_activity.activities[tea_id].id, te_activity.activities[tea_id].name));
+                tea_id++;
+            }
             //bind to the Activity combobox in xaml
             Activity.DisplayMemberPath = "value";
             Activity.SelectedValuePath = "key";
@@ -172,9 +179,9 @@ namespace WpfTest
             };
 
             var json = JsonConvert.SerializeObject(time_entry);
-
-            var client = new RestClient("https://luattest2.openproject.com/api/v3/");
-            var request = new RestRequest("time_entries", Method.POST);
+            string api_server = (App.Current as App).api_server;
+            var client = new RestClient(api_server);
+            var request = new RestRequest("/time_entries", Method.POST);
             string password = (App.Current as App).api_key;
             client.Authenticator = new HttpBasicAuthenticator("apikey", password);
 

@@ -13,6 +13,10 @@ namespace WpfTest
     /// </summary>
     public partial class App : Application
     {
+        //store api server
+        public string api_server { get; set; }
+        //store api mockup server
+        public string api_mockup_server { get; set; }
         //store apikey
         public string api_key { get; set; }
         //store project id and name
