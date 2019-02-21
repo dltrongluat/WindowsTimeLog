@@ -22,6 +22,9 @@ using System.Diagnostics;
 using System.Collections.ObjectModel;
 using System.Web.UI.WebControls;
 using System.Data;
+using WpfTest.Class.Version;
+using Version = WpfTest.Class.Version.Version;
+
 namespace WpfTest
 {
     /// <summary>
@@ -33,44 +36,7 @@ namespace WpfTest
         {
             InitializeComponent();
         }
-        public class Self
-        {
-            public string href { get; set; }
-            public string title { get; set; }
-        }
-
-        public class DefiningProject
-        {
-            public string href { get; set; }
-            public string title { get; set; }
-        }
-
-        public class Links
-        {
-            public Self self { get; set; }
-            public DefiningProject definingProject { get; set; }
-        }
-
-        public class Version
-        {
-            public int id { get; set; }
-            public string name { get; set; }
-            public string startDate { get; set; }
-            public string endDate { get; set; }
-            public string status { get; set; }
-            public Links _links { get; set; }
-        }
-
-        public class Embedded
-        {
-            public List<Version> elements { get; set; }
-        }
-
-        public class RootObject
-        {
-            public Embedded _embedded { get; set; }
-        }
-
+    
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
 

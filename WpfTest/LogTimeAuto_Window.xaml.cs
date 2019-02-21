@@ -23,6 +23,7 @@ using System.Text.RegularExpressions;
 using DataFormat = RestSharp.DataFormat;
 using System.Net;
 using static WpfTest.LogTimeManual_Window;
+using WpfTest.Class.Log;
 
 namespace WpfTest
 {
@@ -31,44 +32,42 @@ namespace WpfTest
     /// </summary>
     public partial class LogTimeAuto_Window : MetroWindow
     {
-        public class LinksProperty
-        {
-            public string href { get; set; }
-        }
-        // create a class of combobox activity type
-        public class ComboBoxActivity
-        {
-            public string key { get; set; }
-            public string value { get; set; }
-            public ComboBoxActivity(string _key, string _value)
-            {
-                key = _key;
-                value = _value;
-            }
-        }
-        public class Links
-        {
-            public LinksProperty project { get; set; }
-            public LinksProperty activity { get; set; }
-            public LinksProperty workPackage { get; set; }
-            public LinksProperty customField4 { get; set; }
-        }
-        public class RootObject
-        {
-            public Links _links { get; set; }
-            public string hours { get; set; }
-            public string comment { get; set; }
-            public string spentOn { get; set; }
-        }
-
+        //validate
+        private int _noOfErrorsOnScreen = 0;
+        private Log_Hour _logtime = new Log_Hour();
+        //timer
         DispatcherTimer dt = new DispatcherTimer();
         Stopwatch sw = new Stopwatch();
         string currentTime = string.Empty;
         public LogTimeAuto_Window()
         {
             InitializeComponent();
+            grid.DataContext = _logtime;
             dt.Tick += new EventHandler(dt_Tick);
             dt.Interval = new TimeSpan(0, 0, 0, 1);
+
+        }
+        private void Validation_Error(object sender, ValidationErrorEventArgs e)
+        {
+            if (e.Action == ValidationErrorEventAction.Added)
+                _noOfErrorsOnScreen++;
+            else
+                _noOfErrorsOnScreen--;
+        }
+
+        private void Add_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = _noOfErrorsOnScreen == 0;
+            e.Handled = true;
+        }
+
+        private void Add_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            Log_Hour cust = grid.DataContext as Log_Hour;
+            // reset UI
+            _logtime = new Log_Hour();
+            grid.DataContext = _logtime;
+            e.Handled = true;
 
         }
         void dt_Tick(object sender, EventArgs e)
@@ -97,12 +96,9 @@ namespace WpfTest
                 //roundup to 2 decimal place
                 dec = Math.Round(dec, 2);
 
-                elapsedtimeitem.Text = dec.ToString(new CultureInfo("en-US"));
+                tb_LogHour.Text = dec.ToString(new CultureInfo("en-US"));
             }
-            else
-            {
-                ;
-            }
+            
         }
         private void resetbtn_Click(object sender, RoutedEventArgs e)
         {
@@ -118,6 +114,7 @@ namespace WpfTest
             string workpackage_name = (App.Current as App).workpackage_name;
             Project.Text = project_name;
             WorkPackage.Text = workpackage_name;
+
             //Add activity type to combo box
             List<ComboBoxActivity> cbA = new List<ComboBoxActivity>();
             string api_mockup_server = (App.Current as App).api_mockup_server;
@@ -145,13 +142,12 @@ namespace WpfTest
             ComboBoxActivity cbA = (ComboBoxActivity)Activity.SelectedItem;
             string activity_type = cbA.key;
 
-            string log_hour = elapsedtimeitem.Text;
+            string log_hour = tb_LogHour.Text;
             string comment = tb_Comment.Text;
             DateTime date = (DateTime)datePicker.SelectedDate;
             string result = date.ToString("yyyy-MM-dd");
             string user_id = (App.Current as App).u_id;
-
-            MessageBox.Show(user_id);
+  
             RootObject time_entry = new RootObject()
             {
                 _links = new Links
@@ -190,8 +186,16 @@ namespace WpfTest
             request.AddJsonBody(json);
             IRestResponse response = client.Execute(request);
             HttpStatusCode statusCode = response.StatusCode;
+            int numbericStatusCode = (int)statusCode;
+            if (numbericStatusCode == 200 || numbericStatusCode == 201 || numbericStatusCode == 301)
+            {
+                MessageBox.Show("Log time success!");
+            }
+            else
+            {
+                MessageBox.Show("Log time failed!");
+            }
 
-            MessageBox.Show(statusCode.ToString());
         }
     }
 }

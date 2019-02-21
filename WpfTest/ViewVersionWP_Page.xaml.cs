@@ -18,6 +18,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml;
+using WpfTest.Class.Work_Package_Version;
 
 namespace WpfTest
 {
@@ -29,47 +30,6 @@ namespace WpfTest
         public ViewVersionWP_Page()
         {
             InitializeComponent();
-        }
-        public class Outer
-        {
-            public string _type { get; set; }
-            public int total { get; set; }
-            public int count { get; set; }
-
-            public EmbeddedWorkPackage _embedded { get; set; }
-        }
-
-        public class EmbeddedWorkPackage
-        {
-            public List<WorkPackage> elements { get; set; }
-        }
-        public class Links
-        {
-            public Version version { get; set; }
-        }
-        public class Version
-        {
-            public string href { get; set; }
-            public string title { get; set; }
-        }
-        public class WorkPackage
-        {
-
-            public string id { get; set; }
-            public string subject { get; set; }
-            public string spentTime { get; set; }
-            public Links _links { get; set; }
-            public static WorkPackage SubjectWithoutNewline(WorkPackage wp)
-            {
-                WorkPackage new_wp = new WorkPackage()
-                {
-                    id = wp.id,
-                    subject = Regex.Replace(wp.subject, @"\t|\n|\r", ""),
-                    spentTime = XmlConvert.ToTimeSpan(wp.spentTime).TotalHours.ToString() + "H",
-                    _links = wp._links
-                };
-                return new_wp;
-            }
         }
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {

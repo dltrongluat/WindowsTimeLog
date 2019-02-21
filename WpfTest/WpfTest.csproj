@@ -263,20 +263,25 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Class\Log.cs" />
+    <Compile Include="Class\Project.cs" />
+    <Compile Include="Class\Version.cs" />
+    <Compile Include="Class\Work_Package.cs" />
+    <Compile Include="Class\Work_Package_Version.cs" />
     <Compile Include="FrameWindow.xaml.cs">
       <DependentUpon>FrameWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LogTime.cs" />
+    <Compile Include="Class\Log_Hour.cs" />
     <Compile Include="LogTimeAuto_Window.xaml.cs">
       <DependentUpon>LogTimeAuto_Window.xaml</DependentUpon>
     </Compile>
     <Compile Include="LogTimeManual_Window.xaml.cs">
       <DependentUpon>LogTimeManual_Window.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Setting.cs" />
+    <Compile Include="Class\Setting.cs" />
     <Compile Include="ViewProject_Page.xaml.cs">
       <DependentUpon>ViewProject_Page.xaml</DependentUpon>
     </Compile>

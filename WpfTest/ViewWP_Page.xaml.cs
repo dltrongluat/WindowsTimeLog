@@ -22,6 +22,8 @@ using System.Net;
 using System.Collections.ObjectModel;
 using System.Xml;
 using System.ComponentModel;
+using WpfTest.Class.Work_Package;
+
 namespace WpfTest
 {
    
@@ -31,54 +33,6 @@ namespace WpfTest
         {
             InitializeComponent();
         }
-        /////////////////////////////////////Start of get///////////////
-        public class Outer
-        {
-            public string _type { get; set; }
-            public int total { get; set; }
-            public int count { get; set; }
-
-            public EmbeddedWorkPackage _embedded { get; set; }
-        }
-     
-        public class EmbeddedWorkPackage
-        {
-            public List<WorkPackage> elements { get; set; }
-        }
-        public class WorkPackage
-        {
-          
-            public string id { get; set; }
-            public string subject { get; set; }
-
-            public string spentTime { get; set; }
-            public Links _links { get; set; }
-         
-            public static WorkPackage SubjectWithoutNewline(WorkPackage wp)
-            {
-                WorkPackage new_wp = new WorkPackage()
-                {
-                    id = wp.id,
-                    subject = Regex.Replace(wp.subject, @"\t|\n|\r", ""),
-                    //TimeSpan aaa = XmlConvert.ToTimeSpan(obj._embedded.elements[0].spentTime)
-                    spentTime = XmlConvert.ToTimeSpan(wp.spentTime).TotalHours.ToString() + "H",
-                    _links = wp._links
-                };
-                return new_wp;
-            }
-
-        }
-        public class Links
-        {
-            public Version version { get; set; }
-        }
-        public class Version
-        {
-            public string href { get; set; }
-            public string title { get; set; }
-        }
-        public Uri Source { get; set; }
-
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             string api_server = (App.Current as App).api_server;
@@ -89,7 +43,7 @@ namespace WpfTest
             var endpoint= "/projects/"+ project_id + "/work_packages";
             var request = new RestSharp.RestRequest(endpoint, Method.GET);           
             IRestResponse response = client.Execute(request);
-            var obj = JsonConvert.DeserializeObject<Outer>(response.Content);
+            var obj = JsonConvert.DeserializeObject<Outer_WP>(response.Content);
            
             List<WorkPackage> wp_without_newline = obj._embedded.elements.ConvertAll(
                 new Converter<WorkPackage, WorkPackage>(WorkPackage.SubjectWithoutNewline));

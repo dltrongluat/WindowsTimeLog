@@ -38,7 +38,6 @@ namespace WpfTest
         {
             public string id { get; set; }
         }
-       
         private void loginButton_Click(object sender, RoutedEventArgs e)
         {
 
@@ -74,10 +73,7 @@ namespace WpfTest
                 //store user id for log time function
                 (App.Current as App).u_id = obj.id;
                 (App.Current as App).api_key = password;
-                // display view project page
-
-                //   Main.Content = new ViewProject_Page();
-                //rameWindow window = new FrameWindow(string obj.id);
+                // display frame window
                 FrameWindow window = new FrameWindow();
                 window.Show();
                 this.Close();
@@ -104,18 +100,7 @@ namespace WpfTest
             (App.Current as App).api_mockup_server = api_mockup_server;
         }
 
-        //private void setting_Click(object sender, RoutedEventArgs e)
-        //{
-        //    //OpenFileDialog ofd = new OpenFileDialog();
-        //    //ofd.DefaultExt = ".txt";
-        //    //ofd.Filter = "Text Document (.txt)|*.txt";
-        //    //if (ofd.ShowDialog()==true)
-        //    //{
-        //    //    string filename = ofd.FileName;
-                
-        //    //}
 
-        //}
     }
    
 

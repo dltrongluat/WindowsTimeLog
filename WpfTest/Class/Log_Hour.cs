@@ -11,7 +11,7 @@ namespace WpfTest
 {
 
    //use for validations
-    public class LogTime : IDataErrorInfo
+    public class Log_Hour : IDataErrorInfo
     {
         public string LogHour { get; set; }
         public string Comment { get; set; }
