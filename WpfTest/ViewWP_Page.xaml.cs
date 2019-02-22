@@ -58,9 +58,8 @@ namespace WpfTest
 
         private void LogTimeMan_Click(object sender, RoutedEventArgs e)
         {
-            // get project id & name
-         
-            //set work package id from click action
+
+            //get work package id,name from click action
             dynamic selected_WP = (WorkPackage)wpListView.SelectedItem;
             var workpackage_id = selected_WP.id.ToString();
             var workpackage_name = selected_WP.subject.ToString();
@@ -72,13 +71,12 @@ namespace WpfTest
             LogTimeManual_Window LogTimeMan_window = new LogTimeManual_Window();
             LogTimeMan_window.Show();
 
-            //close Window1
-            //Window1 w = Application.Current.Windows.OfType<Window1>().FirstOrDefault();
-            //w.Close();
+           
         }
 
         private void LogTimeAuto_Click(object sender, RoutedEventArgs e)
         {
+            //get work package id,name from click action
             dynamic selected_WP = (WorkPackage)wpListView.SelectedItem;
             var workpackage_id = selected_WP.id.ToString();
             var workpackage_name = selected_WP.subject.ToString();

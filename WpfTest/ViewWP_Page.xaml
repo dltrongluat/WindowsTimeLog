@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:WpfTest"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
+      WindowTitle="View Work Packages Page"
       Title="ViewWP_Page" Loaded="Window_Loaded">
     <Canvas>
         <Grid Width="800">
@@ -17,7 +18,7 @@
             </Grid.RowDefinitions>
             <DataGrid Name="wpListView" ItemsSource="{Binding WorkPackageList}" CanUserAddRows="false" HeadersVisibility="Column" IsReadOnly="True" AutoGenerateColumns="False" Grid.Column="0" Grid.Row="0" ScrollViewer.CanContentScroll="True" 
       ScrollViewer.VerticalScrollBarVisibility="Auto"
-      ScrollViewer.HorizontalScrollBarVisibility="Auto" Margin="0,0,-438.667,0">
+      ScrollViewer.HorizontalScrollBarVisibility="Auto" Margin="0,0,-439,-143">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding="{Binding id}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Work Package" Binding="{Binding subject}"></DataGridTextColumn>

@@ -7,7 +7,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfTest"
         mc:Ignorable="d"
-        Title="LogTimeManual_Window" Height="457.311" Width="681.176" Loaded="Window_Loaded">
+        Title="Log Time Manual Window" Height="457.311" Width="681.176" Loaded="Window_Loaded">
     <Window.Resources>
         <Style TargetType="{x:Type Label}">
             <Setter Property="Margin" Value="5,0,5,0" />

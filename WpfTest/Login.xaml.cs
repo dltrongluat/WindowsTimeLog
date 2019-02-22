@@ -73,7 +73,9 @@ namespace WpfTest
                 //store user id for log time function
                 (App.Current as App).u_id = obj.id;
                 (App.Current as App).api_key = password;
+           
                 // display frame window
+            
                 FrameWindow window = new FrameWindow();
                 window.Show();
                 this.Close();

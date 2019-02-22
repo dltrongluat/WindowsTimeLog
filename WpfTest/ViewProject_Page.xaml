@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:WpfTest"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
+      WindowTitle="View Project Page"
       Title="ViewProject_Page" Loaded="Page_Loaded">
    
     <Canvas>
