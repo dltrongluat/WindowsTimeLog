@@ -4,17 +4,26 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:tb="http://www.hardcodet.net/taskbar" 
+         xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"  
         xmlns:local="clr-namespace:WpfApp2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid Margin="0,351,492,0">
-        <Grid Background="BlanchedAlmond" Margin="271,-165,-271,165">
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <Grid Margin="0,60,-8,0">
+        <Grid Background="BlanchedAlmond" Margin="10,-10,-10,10">
+             
+            <TextBlock Name="status" Margin="-243,-90,243,90">Status</TextBlock>
             <TextBlock FontSize="50" Margin="200,-12,175,258" RenderTransformOrigin="1.443,0.195">Timer</TextBlock>
-            <TextBlock x:Name="clocktxtblock" FontSize="70" Canvas.Left="249" Canvas.Top="-2" Margin="13,-163,-13,163">Timer</TextBlock>
+            <TextBlock x:Name="clocktxtblock" FontSize="70" Canvas.Left="249" Canvas.Top="-2" Margin="0,-10,0,10">Timer</TextBlock>
             <Button x:Name="startbtn" Background="SkyBlue" Content="Start" FontSize="30" Click="startbtn_Click" Width="100" Height="50" Canvas.Left="271" Canvas.Top="296" Margin="-141,149,341,-131" />
             <Button x:Name="stopbtn" Width="100" Height="50" Background="SkyBlue" Content="Stop" FontSize="30" Click="stopbtn_Click" Canvas.Left="376" Canvas.Top="296" Margin="180,162,20,-144" />
             <Button x:Name="resetbtn" Width="100" Height="50" Background="SkyBlue" Content="Reset" FontSize="30" Click="resetbtn_Click" Canvas.Left="481" Canvas.Top="296" Margin="56,149,144,-131" />
             <ListBox x:Name="elapsedtimeitem" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="433" Margin="56,199,0,0"/>
+        </Grid>
+        <Grid Name="grid1" Width="200" Margin="552,43,48,143" >
+            <!--<WindowsFormsHost>
+                <wf:TextBox >HAHA</wf:TextBox> />
+            </WindowsFormsHost>-->
+
         </Grid>
 
 

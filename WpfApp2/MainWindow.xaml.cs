@@ -16,7 +16,10 @@ using System.Windows.Forms;
 using System.Drawing;
 using Hardcodet.Wpf.TaskbarNotification;
 using System.Windows.Threading;
+using Tulpep.NotificationWindow;
 using System.Diagnostics;
+using ContextMenu = System.Windows.Controls.ContextMenu;
+using MessageBox = System.Windows.MessageBox;
 
 namespace WpfApp2
 {
@@ -28,6 +31,8 @@ namespace WpfApp2
         DispatcherTimer dt = new DispatcherTimer();
         Stopwatch sw = new Stopwatch();
         string currentTime = string.Empty;
+        bool stat = false;
+       
         public MainWindow()
         {
             InitializeComponent();
@@ -50,12 +55,57 @@ namespace WpfApp2
         {
             sw.Start();
             dt.Start();
+            stat = true;
+            status.Text = stat.ToString();
+
+
+            //System.Windows.Forms.NotifyIcon notifyIconn = new System.Windows.Forms.NotifyIcon();
+            //notifyIconn.Icon = new System.Drawing.Icon("Bulb.ico");
+            //notifyIconn.Visible = true;
+            //notifyIconn.MouseClick += new System.Windows.Forms.MouseEventHandler(notifyIcon_Click);
+            //notifyIconn.ShowBalloonTip(12000, "aaaa", "bbbb", System.Windows.Forms.ToolTipIcon.Info);
+            //notifyIconn.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(notifyIcon_DClick);
+            //System.Windows.Forms.ContextMenu contextMenu = new System.Windows.Forms.ContextMenu();
+            Tulpep.NotificationWindow.PopupNotifier popup = new Tulpep.NotificationWindow.PopupNotifier();
+            popup.TitleText = "motfk";
+            popup.ContentText = "wff";
+            System.Windows.Forms.CheckBox cb = new System.Windows.Forms.CheckBox();
+           
+            popup.Popup();
+
+            
+            //contextMenu.MenuItems.Add("closeded", new EventHandler(Close));
+
+            //notifyIcon.ContextMenu = notifyIconContextMenu;
+        }
+
+        //private void notifyIcon_DClick(object sender, System.Windows.Forms.MouseEventArgs e)
+        //{
+        //    if (e.Button == System.Windows.Forms.MouseButtons.Left)
+        //    {
+        //        MessageBox.Show("dobuel clsick");
+        //    }
+        //}
+
+        private void Close(object sender, EventArgs e)
+        {
+            MessageBox.Show("haha");
+        }
+
+        private void notifyIcon_Click(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            {
+                MessageBox.Show("notify icon cleicke");
+            }
         }
 
         private void stopbtn_Click(object sender, RoutedEventArgs e)
         {
             if (sw.IsRunning)
             {
+                stat = false;
+                status.Text = stat.ToString();
                 sw.Stop();
             }
             elapsedtimeitem.Items.Add(currentTime);
@@ -64,7 +114,16 @@ namespace WpfApp2
         private void resetbtn_Click(object sender, RoutedEventArgs e)
         {
             sw.Reset();
+            stat = false;
+            status.Text = stat.ToString();
             clocktxtblock.Text = "00:00:00";
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            status.Text = stat.ToString();
+
+          
         }
     }
 }

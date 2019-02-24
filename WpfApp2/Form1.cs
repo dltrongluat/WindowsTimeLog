@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.Integration;
 using Tulpep.NotificationWindow;
 
 namespace WpfApp2
@@ -19,14 +20,32 @@ namespace WpfApp2
         }
 
    
-        private void button1_Click(object sender, EventArgs e)
-        {
-            PopupNotifier popup = new PopupNotifier();
-           
-            popup.TitleText = "wtssdsadsadf";
-            popup.ContentText = "hahsadasda";
-            
-            popup.Popup();//show
-        }
+        //private void button1_Click(object sender, EventArgs e)
+        //{
+        //    NotifyIcon notifyIcon = new NotifyIcon();
+
+        //    notifyIcon1.BalloonTipTitle = string.Format(Common.Properties.Resources.ApplicationMinimizeHelpText, _window.Title);
+
+        //    notifyIcon1.MouseClick += notifyIcon_MouseClick;
+
+        //    notifyIcon1.MouseDoubleClick += notifyIcon_MouseDoubleClick;
+
+        //    notifyIcon1.BalloonTipClicked += notifyIcon_BalloonTipClicked;
+        //    var _trayMenu = new ContextMenu();
+
+        //    _trayMenu.MenuItems.Add("Open", (sender, args) => HandleSystemTrayVisibility(false));
+
+        //    _trayMenu.MenuItems.Add("Exit", (sender, args) =>
+
+        //    {
+
+        //        _exitRequested = true;
+
+        //        Application.Current.Shutdown();
+
+        //    });
+
+        //    _notifyIcon.ContextMenu = _trayMenu;
+        //}
     }
 }
