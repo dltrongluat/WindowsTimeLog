@@ -5,12 +5,6 @@ VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfTest", "WpfTest\WpfTest.csproj", "{8196C05C-F612-467D-82D3-F9B18AD9F0DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp2", "WpfApp2\WpfApp2.csproj", "{59746F0B-C613-43FF-9AD2-4023C59D8DA3}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample Project", "..\..\wpf-notifyicon\Sample Project\Sample Project.csproj", "{71C74F29-F1C2-49C5-969F-C25AC4CDFCCC}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotifyIconGUI", "..\..\NotifyIconGUI\NotifyIconGUI.csproj", "{C91AEF26-5752-446D-B35B-CEB62A6AF0F7}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,30 +21,6 @@ Global
 		{8196C05C-F612-467D-82D3-F9B18AD9F0DA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8196C05C-F612-467D-82D3-F9B18AD9F0DA}.Release|x86.ActiveCfg = Release|Any CPU
 		{8196C05C-F612-467D-82D3-F9B18AD9F0DA}.Release|x86.Build.0 = Release|Any CPU
-		{59746F0B-C613-43FF-9AD2-4023C59D8DA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{59746F0B-C613-43FF-9AD2-4023C59D8DA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{59746F0B-C613-43FF-9AD2-4023C59D8DA3}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{59746F0B-C613-43FF-9AD2-4023C59D8DA3}.Debug|x86.Build.0 = Debug|Any CPU
-		{59746F0B-C613-43FF-9AD2-4023C59D8DA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{59746F0B-C613-43FF-9AD2-4023C59D8DA3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{59746F0B-C613-43FF-9AD2-4023C59D8DA3}.Release|x86.ActiveCfg = Release|Any CPU
-		{59746F0B-C613-43FF-9AD2-4023C59D8DA3}.Release|x86.Build.0 = Release|Any CPU
-		{71C74F29-F1C2-49C5-969F-C25AC4CDFCCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{71C74F29-F1C2-49C5-969F-C25AC4CDFCCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{71C74F29-F1C2-49C5-969F-C25AC4CDFCCC}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{71C74F29-F1C2-49C5-969F-C25AC4CDFCCC}.Debug|x86.Build.0 = Debug|Any CPU
-		{71C74F29-F1C2-49C5-969F-C25AC4CDFCCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{71C74F29-F1C2-49C5-969F-C25AC4CDFCCC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{71C74F29-F1C2-49C5-969F-C25AC4CDFCCC}.Release|x86.ActiveCfg = Release|Any CPU
-		{71C74F29-F1C2-49C5-969F-C25AC4CDFCCC}.Release|x86.Build.0 = Release|Any CPU
-		{C91AEF26-5752-446D-B35B-CEB62A6AF0F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C91AEF26-5752-446D-B35B-CEB62A6AF0F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C91AEF26-5752-446D-B35B-CEB62A6AF0F7}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{C91AEF26-5752-446D-B35B-CEB62A6AF0F7}.Debug|x86.Build.0 = Debug|Any CPU
-		{C91AEF26-5752-446D-B35B-CEB62A6AF0F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C91AEF26-5752-446D-B35B-CEB62A6AF0F7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C91AEF26-5752-446D-B35B-CEB62A6AF0F7}.Release|x86.ActiveCfg = Release|Any CPU
-		{C91AEF26-5752-446D-B35B-CEB62A6AF0F7}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
