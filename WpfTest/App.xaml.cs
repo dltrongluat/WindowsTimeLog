@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hardcodet.Wpf.TaskbarNotification;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -35,7 +36,14 @@ namespace WpfTest
         public string activity_name { get; set; }
         // store user id
         public string u_id { get; set; }
-       
+        //define Taskbar icon for app resource
+        private TaskbarIcon tb;
+
+        private void InitApplication()
+        {
+            //initialize NotifyIcon
+            tb = (TaskbarIcon)FindResource("MyNotifyIcon");
+        }
     }
     
 }

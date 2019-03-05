@@ -72,9 +72,10 @@ namespace WpfTest
             //get work package id,name from click action
             dynamic selected_WP = (WorkPackage)wpListView.SelectedItem;
             var workpackage_id = selected_WP.id.ToString();
-            var workpackage_name = selected_WP.subject.ToString()
+            var workpackage_name = selected_WP.subject.ToString();
             (App.Current as App).workpackage_id = workpackage_id;
             (App.Current as App).workpackage_name = workpackage_name;
+
             LogTimeAuto_Window LogTimeAuto_window = new LogTimeAuto_Window();
             LogTimeAuto_window.Show();
         }

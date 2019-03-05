@@ -24,6 +24,8 @@ using DataFormat = RestSharp.DataFormat;
 using System.Net;
 using static WpfTest.LogTimeManual_Window;
 using WpfTest.Class.Log;
+using System.Windows.Controls.Primitives;
+using Hardcodet.Wpf.TaskbarNotification;
 
 namespace WpfTest
 {
@@ -35,13 +37,20 @@ namespace WpfTest
         //validate
         private int _noOfErrorsOnScreen = 0;
         private Log_Hour _logtime = new Log_Hour();
-        //timer
+        //timer track for log time
         DispatcherTimer dt = new DispatcherTimer();
         Stopwatch sw = new Stopwatch();
         string currentTime = string.Empty;
+    //    bool stat = false;
+        //countdown timer for popup
+        DispatcherTimer _timer;
+        TimeSpan _time;
+
+    
         public LogTimeAuto_Window()
         {
             InitializeComponent();
+          
             grid.DataContext = _logtime;
             dt.Tick += new EventHandler(dt_Tick);
             dt.Interval = new TimeSpan(0, 0, 0, 1);
@@ -83,9 +92,28 @@ namespace WpfTest
         {
             sw.Start();
             dt.Start();
+
+            ///for countdown timer to popup notifications
+            countdown_Start();
+        }
+        public void countdown_Start()
+        {
+            _time = TimeSpan.FromSeconds(5);
+            _timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
+            {
+                tbTime.Text = _time.ToString("c");
+                if (_time == TimeSpan.Zero)
+                {
+                    _timer.Stop();
+                    ShowStandardBalloon();
+                }
+                _time = _time.Add(TimeSpan.FromSeconds(-1));
+            }, Application.Current.Dispatcher);
+
+            _timer.Start();
         }
   
-        private void stopbtn_Click(object sender, RoutedEventArgs e)
+        public void stopbtn_Click(object sender, RoutedEventArgs e)
         {
           
             if (sw.IsRunning)
@@ -98,16 +126,24 @@ namespace WpfTest
 
                 tb_LogHour.Text = dec.ToString(new CultureInfo("en-US"));
             }
-            
+            _timer.Stop();
         }
         private void resetbtn_Click(object sender, RoutedEventArgs e)
         {
             sw.Reset();
             clocktxtblock.Text = "00:00:00";
         }
+        private void ShowStandardBalloon()
+        {
 
+            FancyBalloon balloon = new FancyBalloon();
+            tb.ShowCustomBalloon(balloon, PopupAnimation.Fade, 15000);
+
+        }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+          
+            TaskbarIcon tbi = new TaskbarIcon();
             string project_id = (App.Current as App).project_id;
             string workpackage_id = (App.Current as App).workpackage_id;
             string project_name = (App.Current as App).project_name;

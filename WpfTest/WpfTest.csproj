@@ -49,6 +49,9 @@
     <Reference Include="Google.Protobuf, Version=3.5.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Protobuf.3.5.1\lib\net45\Google.Protobuf.dll</HintPath>
     </Reference>
+    <Reference Include="Hardcodet.Wpf.TaskbarNotification, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hardcodet.NotifyIcon.Wpf.1.0.8\lib\net451\Hardcodet.Wpf.TaskbarNotification.dll</HintPath>
+    </Reference>
     <Reference Include="MahApps.Metro, Version=1.6.5.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.1.6.5\lib\net46\MahApps.Metro.dll</HintPath>
     </Reference>
@@ -268,9 +271,23 @@
     <Compile Include="Class\Version.cs" />
     <Compile Include="Class\Work_Package.cs" />
     <Compile Include="Class\Work_Package_Version.cs" />
+    <Compile Include="FancyBalloon.xaml.cs" />
     <Compile Include="FrameWindow.xaml.cs">
       <DependentUpon>FrameWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Interop\BalloonFlags.cs" />
+    <Compile Include="Interop\IconDataMembers.cs" />
+    <Compile Include="Interop\IconState.cs" />
+    <Compile Include="Interop\MouseEvent.cs" />
+    <Compile Include="Interop\NotifyCommand.cs" />
+    <Compile Include="Interop\NotifyIconData.cs" />
+    <Compile Include="Interop\NotifyIconVersion.cs" />
+    <Compile Include="Interop\Point.cs" />
+    <Compile Include="Interop\SystemInfo.cs" />
+    <Compile Include="Interop\TrayInfo.cs" />
+    <Compile Include="Interop\WinApi.cs" />
+    <Compile Include="Interop\WindowClass.cs" />
+    <Compile Include="Interop\WindowMessageSink.cs" />
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
@@ -294,6 +311,10 @@
     <Compile Include="ViewWP_Page.xaml.cs">
       <DependentUpon>ViewWP_Page.xaml</DependentUpon>
     </Compile>
+    <Page Include="FancyBalloon.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="FrameWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -357,6 +378,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\Bulb.ico" />
+    <Resource Include="Icons\Computers.ico" />
+    <Resource Include="Icons\Error.ico" />
+    <Resource Include="Icons\Inactive.ico" />
+    <Resource Include="Icons\NetDrives.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Add.png" />
+    <Resource Include="Images\Close.png" />
+    <Resource Include="Images\Info.png" />
+    <Resource Include="Images\Logo.png" />
+    <Resource Include="Images\Preferences.png" />
+    <Resource Include="Images\Remove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Test.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
