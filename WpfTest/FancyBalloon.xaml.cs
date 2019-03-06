@@ -107,9 +107,20 @@ namespace WpfTest
             Popup pp = (Popup) Parent;
             pp.IsOpen = false;
         }
+        public event EventHandler ExecuteMethod;
 
+        protected virtual void OnExecuteMethod()
+        {
+            if (ExecuteMethod != null) ExecuteMethod(this, EventArgs.Empty);
+        }
+
+        public void ChildButton_Click(object sender, EventArgs e)
+        {
+            OnExecuteMethod();
+        }
         private void Yes_Click(object sender, RoutedEventArgs e)
         {
+           
             System.Windows.Application.Current.Windows.OfType<LogTimeAuto_Window>().SingleOrDefault(x => x.IsActive).countdown_Start();
             TaskbarIcon taskbarIcon = TaskbarIcon.GetParentTaskbarIcon(this);
 
@@ -119,7 +130,9 @@ namespace WpfTest
       //  public event No_ClickedEventHandler NoClick;
         private void No_Click(object sender, RoutedEventArgs e)
         {
-            System.Windows.Application.Current.Windows.OfType<LogTimeAuto_Window>().SingleOrDefault(x => x.IsActive).stopbtn_Click(sender,e);
+            //LogTimeAuto_Window win = (LogTimeAuto_Window)Window.GetWindow(this);
+            //win.stopbtn_Click(sender,e);
+            System.Windows.Application.Current.Windows.OfType<LogTimeAuto_Window>().SingleOrDefault(x => x.IsActive).stopbtn_Click(sender, e);
             TaskbarIcon taskbarIcon = TaskbarIcon.GetParentTaskbarIcon(this);
             taskbarIcon.CloseBalloon();
         }

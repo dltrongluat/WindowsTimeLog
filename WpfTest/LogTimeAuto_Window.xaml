@@ -8,7 +8,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfTest"
         mc:Ignorable="d"
+                
         Title="Log Time Auto Window" Height="450" Width="800" Loaded="Window_Loaded" >
+    
     <Window.Resources>
         <Style TargetType="{x:Type Label}">
             <Setter Property="Margin" Value="5,0,5,0" />
@@ -39,14 +41,15 @@
 
     </Window.Resources>
     <Grid x:Name="grid" Margin="10,10,181,-2">
-    
+      
         <Grid.CommandBindings>
         <CommandBinding Command="New" CanExecute="Add_CanExecute" Executed="Add_Executed" />
         </Grid.CommandBindings>
         <Canvas Margin="0,10,0.333,-9.333">
-            <tb:TaskbarIcon Name="tb"
+            <tb:TaskbarIcon
+            x:Name="MyNotifyIcon"
             IconSource="/Icons/Error.ico"
-           ToolTipText="hello ddworld"/>
+            ToolTipText="Balloon Sample Icon" />
             <TextBlock Width="200" Name="tbTime" Height="36" />
             <Label Content="Project" Canvas.Top="73" Height="30" Width="67"/>
             <TextBlock Name="Project" Canvas.Left="72" Canvas.Top="73" Width="218" Height="30"></TextBlock>

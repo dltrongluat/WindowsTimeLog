@@ -112,7 +112,7 @@ namespace WpfTest
 
             _timer.Start();
         }
-  
+       
         public void stopbtn_Click(object sender, RoutedEventArgs e)
         {
           
@@ -136,14 +136,18 @@ namespace WpfTest
         private void ShowStandardBalloon()
         {
 
+            //TaskbarIcon tb = new TaskbarIcon();
+            //tb = (TaskbarIcon)FindResource("NotifyIcon");
             FancyBalloon balloon = new FancyBalloon();
-            tb.ShowCustomBalloon(balloon, PopupAnimation.Fade, 15000);
+            MyNotifyIcon.ShowCustomBalloon(balloon, PopupAnimation.Fade, 15000);
 
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+
+            //TaskbarIcon tb = new TaskbarIcon();
           
-            TaskbarIcon tbi = new TaskbarIcon();
+
             string project_id = (App.Current as App).project_id;
             string workpackage_id = (App.Current as App).workpackage_id;
             string project_name = (App.Current as App).project_name;
