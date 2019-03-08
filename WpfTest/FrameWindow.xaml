@@ -6,8 +6,8 @@
         xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:local="clr-namespace:WpfTest"
         mc:Ignorable="d"
-        Title="{Binding ElementName=Main, Path=Content.DataContext.Title}" Height="450" Width="800" Loaded="Window_Loaded">
+       Title="{Binding Main.Title, RelativeSource={RelativeSource Self}}" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
-        <Frame x:Name="Main" Canvas.Top="271" Width="746" Canvas.Left="4" Margin="23,24,23,56"/>
+        <Frame x:Name="Main" Canvas.Top="271" Width="746" Canvas.Left="4" Margin="23,24,23,10"/>
     </Grid>
 </Controls:MetroWindow>

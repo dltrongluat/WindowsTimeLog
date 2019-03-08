@@ -1,0 +1,6 @@
+﻿1,Management
+2,Specification
+3,Development
+4,Testing
+5,Support
+6,Other

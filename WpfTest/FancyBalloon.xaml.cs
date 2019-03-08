@@ -121,7 +121,7 @@ namespace WpfTest
         private void Yes_Click(object sender, RoutedEventArgs e)
         {
            
-            System.Windows.Application.Current.Windows.OfType<LogTimeAuto_Window>().SingleOrDefault(x => x.IsActive).countdown_Start();
+            System.Windows.Application.Current.Windows.OfType<LogTimeAuto_Window>().SingleOrDefault().countdown_Start();
             TaskbarIcon taskbarIcon = TaskbarIcon.GetParentTaskbarIcon(this);
 
             taskbarIcon.CloseBalloon();
@@ -132,7 +132,7 @@ namespace WpfTest
         {
             //LogTimeAuto_Window win = (LogTimeAuto_Window)Window.GetWindow(this);
             //win.stopbtn_Click(sender,e);
-            System.Windows.Application.Current.Windows.OfType<LogTimeAuto_Window>().SingleOrDefault(x => x.IsActive).stopbtn_Click(sender, e);
+            System.Windows.Application.Current.Windows.OfType<LogTimeAuto_Window>().SingleOrDefault().stopbtn_Click(sender, e);
             TaskbarIcon taskbarIcon = TaskbarIcon.GetParentTaskbarIcon(this);
             taskbarIcon.CloseBalloon();
         }

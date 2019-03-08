@@ -397,5 +397,8 @@
   <ItemGroup>
     <Resource Include="Test.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="TE_Activities.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -13,5 +13,9 @@ namespace WpfTest
         public string href { get; set; }
 
     }
-
+    public class TE_Setting
+    {
+        public string id { get; set; }
+        public string name { get; set; }
+    }
 }

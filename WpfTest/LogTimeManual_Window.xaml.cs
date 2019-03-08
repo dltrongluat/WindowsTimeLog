@@ -20,6 +20,7 @@ using DataFormat = RestSharp.DataFormat;
 using System.Net;
 using MahApps.Metro.Controls;
 using WpfTest.Class.Log;
+using System.IO;
 
 namespace WpfTest
 {
@@ -63,24 +64,33 @@ namespace WpfTest
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            //retrieve id from App.current
             string project_id = (App.Current as App).project_id;
             string workpackage_id = (App.Current as App).workpackage_id;
             string project_name = (App.Current as App).project_name;
             string workpackage_name = (App.Current as App).workpackage_name;
             Project.Text = project_name;
             WorkPackage.Text = workpackage_name;
+            ///
+            string file_path = @"D:\New folder\WpfTest\WpfTest\TE_Activities.txt";
+            List<TE_Setting> setting = new List<TE_Setting>();
+            List<string> lines = File.ReadAllLines(file_path).ToList();
+            foreach (var line in lines)
+            {
+                string[] entries = line.Split(',');
+                TE_Setting new_setting = new TE_Setting();
+                new_setting.id = entries[0];
+                new_setting.name = entries[1];
+                setting.Add(new_setting);
+            }
+          
 
             //Add activity type to combo box
             List<ComboBoxActivity> cbA = new List<ComboBoxActivity>();
-            string api_mockup_server = (App.Current as App).api_mockup_server;
-            var client = new RestClient(api_mockup_server);
-            var request = new RestSharp.RestRequest("activities", Method.GET);        
-            IRestResponse response = client.Execute(request);
-            RootObjectActivity te_activity = JsonConvert.DeserializeObject<RootObjectActivity>(response.Content);
             var tea_id = 0;
-            while (tea_id < te_activity.activities.Count)
+            while (tea_id < lines.Count)
             {
-                cbA.Add(new ComboBoxActivity(te_activity.activities[tea_id].id, te_activity.activities[tea_id].name));
+                cbA.Add(new ComboBoxActivity(setting[tea_id].id,setting[tea_id].name));
                 tea_id++;
             }
             //bind to the Activity combobox in xaml

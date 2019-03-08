@@ -35,11 +35,14 @@ namespace WpfTest
         public ViewProject_Page()
         {
             InitializeComponent();
-            
+          
         }
+        public string Title { get; set; }
+        
       
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            Title = "wtf";
           
             string api_server = (App.Current as App).api_server;
             var client = new RestClient(api_server);

@@ -85,7 +85,7 @@ namespace WpfTest
 
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            string file_path = @"D:\WP\WindowsTimeLog\WpfTest\Test.txt";
+            string file_path = @"D:\New folder\WpfTest\WpfTest\Test.txt";
             List<Setting> setting = new List<Setting>();
             List<string> lines = File.ReadAllLines(file_path).ToList();
             foreach (var  line in lines)
