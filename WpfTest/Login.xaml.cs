@@ -21,6 +21,8 @@ using MessageBox = System.Windows.Forms.MessageBox;
 using Application = System.Windows.Application;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Reflection;
+using Path = System.IO.Path;
 
 namespace WpfTest
 {
@@ -85,9 +87,12 @@ namespace WpfTest
 
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            string file_path = @"D:\New folder\WpfTest\WpfTest\Test.txt";
+            var directory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+            var file = Path.Combine(directory, "Test.txt");
+
+            //string fil_path = @"\Test.txt";
             List<Setting> setting = new List<Setting>();
-            List<string> lines = File.ReadAllLines(file_path).ToList();
+            List<string> lines = File.ReadAllLines(file).ToList();
             foreach (var  line in lines)
             {
                 string[] entries = line.Split(',');
@@ -97,9 +102,9 @@ namespace WpfTest
                 setting.Add(new_setting);
             }
             string api_server = setting[0].href.ToString();
-            string api_mockup_server = setting[1].href.ToString();
+         
             (App.Current as App).api_server = api_server;
-            (App.Current as App).api_mockup_server = api_mockup_server;
+          
         }
 
 

@@ -21,6 +21,8 @@ using System.Net;
 using MahApps.Metro.Controls;
 using WpfTest.Class.Log;
 using System.IO;
+using Path = System.IO.Path;
+using System.Reflection;
 
 namespace WpfTest
 {
@@ -72,9 +74,11 @@ namespace WpfTest
             Project.Text = project_name;
             WorkPackage.Text = workpackage_name;
             ///
-            string file_path = @"D:\New folder\WpfTest\WpfTest\TE_Activities.txt";
+            var directory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+            var file = Path.Combine(directory, "TE_Activities.txt");
+
             List<TE_Setting> setting = new List<TE_Setting>();
-            List<string> lines = File.ReadAllLines(file_path).ToList();
+            List<string> lines = File.ReadAllLines(file).ToList();
             foreach (var line in lines)
             {
                 string[] entries = line.Split(',');

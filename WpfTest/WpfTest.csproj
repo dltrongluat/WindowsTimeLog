@@ -395,10 +395,14 @@
     <Resource Include="Images\Remove.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Test.txt" />
+    <Content Include="Test.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="TE_Activities.txt" />
+    <Content Include="TE_Activities.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
