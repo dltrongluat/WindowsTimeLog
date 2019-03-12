@@ -65,8 +65,8 @@ namespace WpfTest
             int numbericStatusCode = (int)statusCode;
             if (numbericStatusCode != 200)
             {
-                MessageBox.Show("Authenticate failed!");
-
+                MessageBox.Show("Authenticate failed!, wrong API key or endpoint server");
+                
             }
             else
             {
@@ -104,7 +104,8 @@ namespace WpfTest
             string api_server = setting[0].href.ToString();
          
             (App.Current as App).api_server = api_server;
-          
+            Url.Text = "Currently connect to " + api_server + "\nPlease log in using API Key"; 
+
         }
 
 

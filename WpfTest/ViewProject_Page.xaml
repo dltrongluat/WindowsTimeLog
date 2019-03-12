@@ -8,9 +8,9 @@
       d:DesignHeight="300"
       Loaded="Page_Loaded" Width="798.319">
 
-    <Canvas Margin="0,0,-500,0">
+    
         <Grid Width="800">
-
+        <StackPanel>
             <DataGrid Name="projectListView" CanUserAddRows="false" HeadersVisibility="Column" IsReadOnly="True" AutoGenerateColumns="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="id" Binding="{Binding id}" ></DataGridTextColumn>
@@ -32,6 +32,7 @@
                 </DataGrid.Columns>
 
             </DataGrid>
-        </Grid>
-    </Canvas>
+        </StackPanel>
+    </Grid>
+ 
 </Page>

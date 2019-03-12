@@ -8,6 +8,9 @@
         mc:Ignorable="d"
        Title="{Binding Main.Title, RelativeSource={RelativeSource Self}}" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
-        <Frame x:Name="Main" Canvas.Top="271" Width="746" Canvas.Left="4" Margin="23,24,23,10"/>
+        <StackPanel>
+            <Frame x:Name="Main" Canvas.Top="271" Width="746" Canvas.Left="4" Margin="23,24,23,10"/>
+        </StackPanel>
+        
     </Grid>
 </Controls:MetroWindow>

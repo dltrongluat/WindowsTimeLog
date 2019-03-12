@@ -10,7 +10,8 @@
       Title="ViewVersionWP_Page" Loaded="Page_Loaded">
 
     <Grid>
-        <DataGrid Name="wpListView"  CanUserAddRows="false" HeadersVisibility="Column" IsReadOnly="True" AutoGenerateColumns="False" Grid.Column="0" Grid.Row="0" ScrollViewer.CanContentScroll="True" 
+        <StackPanel>
+            <DataGrid Name="wpListView"  CanUserAddRows="false" HeadersVisibility="Column" IsReadOnly="True" AutoGenerateColumns="False" Grid.Column="0" Grid.Row="0" ScrollViewer.CanContentScroll="True" 
       ScrollViewer.HorizontalScrollBarVisibility="Auto" Margin="0,0,0,-295">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding id}"></DataGridTextColumn>
@@ -37,5 +38,6 @@
             </DataGrid.Columns>
 
         </DataGrid>
+            </StackPanel>
     </Grid>
 </Page>

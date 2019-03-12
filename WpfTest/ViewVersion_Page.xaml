@@ -11,7 +11,8 @@
 
     <Canvas>
         <Grid Width="800">
-            <DataGrid Name="versionListView" CanUserAddRows="false" HeadersVisibility="Column" IsReadOnly="True" AutoGenerateColumns="False">
+            <StackPanel>
+                <DataGrid Name="versionListView" CanUserAddRows="false" HeadersVisibility="Column" IsReadOnly="True" AutoGenerateColumns="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="id" Binding="{Binding id}" ></DataGridTextColumn>
                     <DataGridTextColumn Header="name" Binding="{Binding name}" ></DataGridTextColumn>
@@ -24,6 +25,7 @@
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
+                </StackPanel>
         </Grid>
     </Canvas>
 </Page>

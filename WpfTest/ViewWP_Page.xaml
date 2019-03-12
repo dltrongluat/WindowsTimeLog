@@ -10,12 +10,13 @@
       Title="ViewWP_Page" Loaded="Window_Loaded">
     <Canvas>
         <Grid Width="800">
-            <Grid.ColumnDefinitions>
+            <StackPanel>
+                <!--<Grid.ColumnDefinitions>
               <ColumnDefinition Width="350" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="300" />
-            </Grid.RowDefinitions>
+            </Grid.RowDefinitions>-->
             <DataGrid Name="wpListView" ItemsSource="{Binding WorkPackageList}" CanUserAddRows="false" HeadersVisibility="Column" IsReadOnly="True" AutoGenerateColumns="False" Grid.Column="0" Grid.Row="0" ScrollViewer.CanContentScroll="True" 
       ScrollViewer.VerticalScrollBarVisibility="Auto"
       ScrollViewer.HorizontalScrollBarVisibility="Auto" Margin="0,0,-439,-143">
@@ -45,7 +46,7 @@
                 </DataGrid.Columns>
                 
             </DataGrid>
-     
-    </Grid>
+                </StackPanel>
+        </Grid>
     </Canvas>
 </Page>
