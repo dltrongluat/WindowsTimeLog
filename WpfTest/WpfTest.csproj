@@ -302,6 +302,12 @@
       <DependentUpon>LogTimeManual_Window.xaml</DependentUpon>
     </Compile>
     <Compile Include="Class\Setting.cs" />
+    <Compile Include="Setting_Window.xaml.cs">
+      <DependentUpon>Setting_Window.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TEActivity_Window.xaml.cs">
+      <DependentUpon>TEActivity_Window.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewProject_Page.xaml.cs">
       <DependentUpon>ViewProject_Page.xaml</DependentUpon>
     </Compile>
@@ -338,6 +344,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Setting_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TEActivity_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ViewProject_Page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Documents;
 
 namespace WpfTest
 {
@@ -38,6 +39,13 @@ namespace WpfTest
         public string u_id { get; set; }
         //define Taskbar icon for app resource
         private TaskbarIcon tb;
+
+        //public List TE_setting { get; set; }
+        //public class TE_Activity
+        //{
+        //    public string id { get; set; }
+        //    public string name { get; set; }
+        //}
 
         private void InitApplication()
         {

@@ -11,11 +11,11 @@
 
     <Controls:MetroWindow.RightWindowCommands>
         <Controls:WindowCommands>
-            <Button Content="settings" />
+            <Button Click="Button_Click" Content="settings" />
             <Button>
                 <StackPanel Orientation="Horizontal">
                     <iconPacks:PackIconModern Width="24" Height="24" Kind="Beer" />
-                    <TextBlock Margin="4 0 0 0" VerticalAlignment="Center" Text="deploy cupcakes" />
+                    <TextBlock Margin="4 0 0 0" VerticalAlignment="Center"  Text="deploy cupcakes" />
                 </StackPanel>
             </Button>
         </Controls:WindowCommands>
@@ -31,7 +31,7 @@
         </Grid.ColumnDefinitions>-->
         <StackPanel Margin="0,0,0.333,-0.333">
             <Canvas Margin="8,40,-8,224" Height="368" Width="750">
-                <Label Canvas.Left="277" Canvas.Top="20">
+                <Label Canvas.Left="277" Canvas.Top="20" >
                     Windows Time Log Application
                 </Label>
                 <TextBlock Name="Url" Width="581" Canvas.Left="109" Canvas.Top="65">
@@ -42,7 +42,8 @@
                 <TextBox x:Name="API_Key" Canvas.Left="181" Canvas.Top="119" Width="400" Height="30" >
 
                 </TextBox>
-                <Button Name="Login_button" Click="loginButton_Click" Content="Log in" Canvas.Left="623" Canvas.Top="113" Height="40" Width="103"></Button>
+              
+                <Button  Name="Login_button" Click="loginButton_Click" Content="Log in" Canvas.Left="623" Canvas.Top="113" Height="40" Width="103"></Button>
 
             </Canvas>
 

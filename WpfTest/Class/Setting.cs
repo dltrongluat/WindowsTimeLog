@@ -13,6 +13,7 @@ namespace WpfTest
         public string href { get; set; }
 
     }
+    //public List<TE_Setting> Setting = new List<TE_Setting>();
     public class TE_Setting
     {
         public string id { get; set; }

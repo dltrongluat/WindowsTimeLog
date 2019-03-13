@@ -1,0 +1,35 @@
+﻿<Window x:Class="WpfTest.Setting_Window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfTest"
+        mc:Ignorable="d"
+        Title="Setting_Window" Height="450" Width="800" Loaded="Window_Loaded">
+    <Grid>
+        <DockPanel Margin="10">
+            <!--<WrapPanel HorizontalAlignment="Center" DockPanel.Dock="Top" Margin="0,0,0,10">
+                -->
+            <!--<Button Name="btnOpenFile" Click="btnOpenFile_Click">Open file</Button>
+                <Button Name="btnSaveFile" Click="btnSaveFile_Click">Save file</Button>-->
+            <!--
+            </WrapPanel>-->
+            <!--<ListBox Name="lbFiles" />-->
+            <ListBox Name="listBox" Margin="20" ItemsSource="{Binding Setting}" Width="359">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=id}" />
+                            <TextBlock Text="{Binding Path=name}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+      
+            <Button Click="Add_Click"></Button>
+            <!--<TextBox Name="txtEditor" TextWrapping="Wrap" AcceptsReturn="True" ScrollViewer.VerticalScrollBarVisibility="Auto" />
+            -->
+            <!--<TextBox Name="txtEditor" />-->
+        </DockPanel>
+    </Grid>
+</Window>

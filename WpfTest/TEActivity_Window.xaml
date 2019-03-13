@@ -1,0 +1,13 @@
+﻿<Window x:Class="WpfTest.TEActivity_Window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfTest"
+        mc:Ignorable="d"
+        Title="TEActivity_Window" Height="450" Width="800" Loaded="Window_Loaded">
+    <Grid>
+        <TextBox Name="ID" Margin="0,224,0,83" Width="203">ID</TextBox>
+        <TextBox Name="Subject" Margin="0,224,0,83" Width="146">Subjec</TextBox>
+    </Grid>
+</Window>

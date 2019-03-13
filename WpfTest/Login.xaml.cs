@@ -43,7 +43,6 @@ namespace WpfTest
         private void loginButton_Click(object sender, RoutedEventArgs e)
         {
 
-         
 
             string api_server = (App.Current as App).api_server;
             string username = "apikey";
@@ -108,7 +107,11 @@ namespace WpfTest
 
         }
 
-
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Setting_Window setting_Window = new Setting_Window();
+            setting_Window.Show();
+        }
     }
    
 
