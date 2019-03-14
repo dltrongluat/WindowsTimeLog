@@ -8,28 +8,29 @@
         Title="Setting_Window" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
         <DockPanel Margin="10">
-            <!--<WrapPanel HorizontalAlignment="Center" DockPanel.Dock="Top" Margin="0,0,0,10">
-                -->
-            <!--<Button Name="btnOpenFile" Click="btnOpenFile_Click">Open file</Button>
-                <Button Name="btnSaveFile" Click="btnSaveFile_Click">Save file</Button>-->
-            <!--
-            </WrapPanel>-->
-            <!--<ListBox Name="lbFiles" />-->
-            <ListBox Name="listBox" Margin="20" ItemsSource="{Binding Setting}" Width="359">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding Path=id}" />
-                            <TextBlock Text="{Binding Path=name}" />
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-      
-            <Button Click="Add_Click"></Button>
-            <!--<TextBox Name="txtEditor" TextWrapping="Wrap" AcceptsReturn="True" ScrollViewer.VerticalScrollBarVisibility="Auto" />
-            -->
-            <!--<TextBox Name="txtEditor" />-->
+            <DataGrid x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" x:Name="listBox" Margin="91,10,350,189" ItemsSource="{Binding Setting}" Width="359">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" IsReadOnly="True" Binding="{Binding Path=id}" Width="50"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Name" IsReadOnly="True"  Binding="{Binding Path=name}" Width="130"></DataGridTextColumn>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="Action"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Name="Insert_Click" Content="Insert" Click="Insert_Click"/>
+                                    <Button Name="Update_Click" Content="Update" Click="Update_Click"/>
+                                    <Button Name="Delete_Click" Content="Delete" Click="Delete_Click"/>
+
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
         </DockPanel>
     </Grid>
 </Window>

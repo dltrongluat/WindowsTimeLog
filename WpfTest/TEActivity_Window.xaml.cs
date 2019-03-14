@@ -27,11 +27,28 @@ namespace WpfTest
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
            
-         TE_Setting new_setting = new TE_Setting();
-            new_setting.id = ID.Text;
-            new_setting.name = Subject.Text;
-            Setting.Add(new_setting);
+       
+          
+            //Setting_Page page1 = new Setting_Page();
+            //this.Content = page1;
             //this.NavigationService.Refresh();
+        }
+
+
+        private void Add_Click_1(object sender, RoutedEventArgs e)
+        {
+            //App.TE_Settingg wtf = (App.Current as App).elements;
+
+            ////App.TE_Settingg new_setting = new App.TE_Settingg(ID.Text, Subject.Text)
+            ////{
+            ////    id = ID.Text,
+            ////    name = Subject.Text
+            ////};
+            ////Setting.id = ID.Text;
+            ////Setting.name = Subject.Text;
+            //Setting.Add(new_setting);
+            //MessageBox.Show("complete");
+            //listBox.ItemsSource = Setting;
         }
     }
 }

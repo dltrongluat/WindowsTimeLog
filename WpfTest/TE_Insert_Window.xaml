@@ -1,0 +1,14 @@
+﻿<Window x:Class="WpfTest.TE_Insert_Window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfTest"
+        mc:Ignorable="d"
+        Title="TE_Insert_Window" Height="450" Width="800">
+    <Grid>
+        <TextBox x:Name="ID" HorizontalAlignment="Left" Margin="104,33,0,0" TextWrapping="Wrap" Text="ID" VerticalAlignment="Top"/>
+        <TextBox x:Name="Subject" HorizontalAlignment="Left" Margin="39,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top"></TextBox>
+        <Button x:Name="insertBtn" Content="Insert" HorizontalAlignment="Left" Margin="116,148,0,0" VerticalAlignment="Top" Width="130" Click="insertBtn_Click"/>
+    </Grid>
+</Window>

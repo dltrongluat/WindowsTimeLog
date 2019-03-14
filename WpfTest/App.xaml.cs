@@ -40,12 +40,25 @@ namespace WpfTest
         //define Taskbar icon for app resource
         private TaskbarIcon tb;
 
-        //public List TE_setting { get; set; }
-        //public class TE_Activity
-        //{
-        //    public string id { get; set; }
-        //    public string name { get; set; }
-        //}
+        public class TE_Settingg
+        {
+
+
+            public TE_Settingg(string id, string name)
+            {
+                this.id = id;
+                this.name = name;
+            }
+
+            public string id { get; set; }
+            public string name { get; set; }
+        }
+
+        public List<TE_Settingg> elements { get; set; }
+
+
+
+
 
         private void InitApplication()
         {

@@ -16,6 +16,7 @@ using Microsoft.Win32;
 using System.Reflection;
 using Path = System.IO.Path;
 
+using System.Windows.Navigation;
 namespace WpfTest
 {
    
@@ -25,42 +26,57 @@ namespace WpfTest
         {
             InitializeComponent();
         }
-      
-        public List<TE_Setting> Setting = new List<TE_Setting>();
-        //public class TE_Setting
-        //{
-        //    public string id { get; set; }
-        //    public string name { get; set; }
 
-        //}
+        List<App.TE_Settingg> Setting = new List<App.TE_Settingg>();
+        public static DataGrid datagrid;
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            
+           
+
             var directory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
             var file = Path.Combine(directory, "TE_Activities.txt");
-
-            //List<TE_Setting> setting = new List<TE_Setting>();
-
-           
+        
             List<string> lines = File.ReadAllLines(file).ToList();
-            foreach (var line in lines)
+            foreach (var line in lines.Select((x, i) => new { Value = x, Index = i }))
             {
-                string[] entries = line.Split(',');
-                TE_Setting new_setting = new TE_Setting();
-                new_setting.id = entries[0];
-                new_setting.name = entries[1];
+                string[] entries = line.Value.Split(',');
+
+                App.TE_Settingg new_setting = new App.TE_Settingg(entries[0], entries[1])
+                {
+                    id = entries[0],
+                    name = entries[1]
+                };
                 Setting.Add(new_setting);
+
+
             }
-           
-            
+            //(App.Current as App).elements = Setting;
+            (App.Current as App).elements = Setting;
             listBox.ItemsSource = Setting;
+            datagrid = listBox;
 
         }
 
-        private void Add_Click(object sender, RoutedEventArgs e)
+        private void Insert_Click(object sender, RoutedEventArgs e)
         {
-            TEActivity_Window window = new TEActivity_Window();
-            window.Show();
+            TE_Insert_Window window = new TE_Insert_Window();
+
+            window.ShowDialog();
+
+        }
+        private void Update_Click(object sender, RoutedEventArgs e)
+        {
            
+
+
+
+        }
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+           
+
+
 
         }
         //private void btnOpenFile_Click(object sender, RoutedEventArgs e)

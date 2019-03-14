@@ -7,7 +7,9 @@
         mc:Ignorable="d"
         Title="TEActivity_Window" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
-        <TextBox Name="ID" Margin="0,224,0,83" Width="203">ID</TextBox>
-        <TextBox Name="Subject" Margin="0,224,0,83" Width="146">Subjec</TextBox>
+        <ListBox Name="listBox" Margin="0,0,0,115"></ListBox>
+        <TextBox Name="ID" Margin="297,309,292,-2" Width="203">ID</TextBox>
+        <TextBox Name="Subject" Margin="529,309,117,-2" Width="146">Subjec</TextBox>
+        <Button Name="Add_Click" Click="Add_Click_1" Width="200" Height="100" Margin="42,309,550,10"></Button>
     </Grid>
 </Window>

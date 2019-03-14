@@ -23,6 +23,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Reflection;
 using Path = System.IO.Path;
+using System.Windows.Navigation;
 
 namespace WpfTest
 {
@@ -99,6 +100,7 @@ namespace WpfTest
                 new_setting.id = entries[0];
                 new_setting.href = entries[1];
                 setting.Add(new_setting);
+              
             }
             string api_server = setting[0].href.ToString();
          
@@ -109,8 +111,10 @@ namespace WpfTest
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Setting_Window setting_Window = new Setting_Window();
-            setting_Window.Show();
+           
+            Setting_Window window = new Setting_Window();
+            window.ShowDialog();
+            
         }
     }
    

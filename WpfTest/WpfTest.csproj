@@ -302,11 +302,23 @@
       <DependentUpon>LogTimeManual_Window.xaml</DependentUpon>
     </Compile>
     <Compile Include="Class\Setting.cs" />
+    <Compile Include="Setting_Page.xaml.cs">
+      <DependentUpon>Setting_Page.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Setting_Window.xaml.cs">
       <DependentUpon>Setting_Window.xaml</DependentUpon>
     </Compile>
     <Compile Include="TEActivity_Window.xaml.cs">
       <DependentUpon>TEActivity_Window.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TE_Delete_Window.xaml.cs">
+      <DependentUpon>TE_Delete_Window.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TE_Insert_Window.xaml.cs">
+      <DependentUpon>TE_Insert_Window.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TE_Update_Window.xaml.cs">
+      <DependentUpon>TE_Update_Window.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewProject_Page.xaml.cs">
       <DependentUpon>ViewProject_Page.xaml</DependentUpon>
@@ -344,11 +356,27 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Setting_Page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Setting_Window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TEActivity_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TE_Delete_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TE_Insert_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TE_Update_Window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
