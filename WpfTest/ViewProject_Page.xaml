@@ -12,8 +12,8 @@
     
         <Grid Width="800">
         <StackPanel>
-           
-            <DataGrid Name="projectListView" CanUserAddRows="false" HeadersVisibility="Column" IsReadOnly="True" AutoGenerateColumns="False">
+            <Button Name="wwtf" Click="Wwtf_Click"></Button>
+                <DataGrid Name="projectListView" CanUserAddRows="false" HeadersVisibility="Column" IsReadOnly="True" AutoGenerateColumns="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="id" Binding="{Binding id}" >
                         

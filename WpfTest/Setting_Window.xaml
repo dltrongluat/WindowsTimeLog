@@ -22,8 +22,8 @@
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
                                     <Button Name="Insert_Click" Content="Insert" Click="Insert_Click"/>
-                                    <Button Name="Update_Click" Content="Update" Click="Update_Click"/>
-                                    <Button Name="Delete_Click" Content="Delete" Click="Delete_Click"/>
+                                    <!--<Button Name="Update_Click" Content="Update" Click="Update_Click"/>
+                                <Button Name="Delete_Click" Content="Delete" Click="Delete_Click"/>-->
 
                                 </StackPanel>
                             </DataTemplate>

@@ -28,6 +28,7 @@ namespace WpfTest
             InitializeComponent();
         }
         List<App.TE_Settingg> Setting = new List<App.TE_Settingg>();
+        public static DataGrid datagrid;
         private void Add_Click(object sender, RoutedEventArgs e)
         {
             //TE_Insert_Page page = new TE_Insert_Page();
@@ -51,7 +52,6 @@ namespace WpfTest
         {
             var directory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
             var file = Path.Combine(directory, "TE_Activities.txt");
-            //List<TE_Setting> setting = new List<TE_Setting>();
 
             List<string> lines = File.ReadAllLines(file).ToList();
             foreach (var line in lines.Select((x, i) => new { Value = x, Index = i }))
@@ -64,18 +64,21 @@ namespace WpfTest
                     name = entries[1]
                 };
                 Setting.Add(new_setting);
-      
+
 
             }
             //(App.Current as App).elements = Setting;
-            (App.Current as App).elements = Setting ;
+            (App.Current as App).elements = Setting;
             listBox.ItemsSource = Setting;
+            datagrid = listBox;
         }
 
-        //private void Insert_Click(object sender, RoutedEventArgs e)
-        //{
+        private void Insert_Click(object sender, RoutedEventArgs e)
+        {
+            TE_Insert_Window window = new TE_Insert_Window();
 
-        //}
+            window.ShowDialog();
+        }
 
         //private void Update_Click(object sender, RoutedEventArgs e)
         //{

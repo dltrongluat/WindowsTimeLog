@@ -15,7 +15,6 @@ using System.IO;
 using Microsoft.Win32;
 using System.Reflection;
 using Path = System.IO.Path;
-
 using System.Windows.Navigation;
 namespace WpfTest
 {
@@ -31,12 +30,10 @@ namespace WpfTest
         public static DataGrid datagrid;
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            
-           
 
             var directory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
             var file = Path.Combine(directory, "TE_Activities.txt");
-        
+
             List<string> lines = File.ReadAllLines(file).ToList();
             foreach (var line in lines.Select((x, i) => new { Value = x, Index = i }))
             {
@@ -52,10 +49,9 @@ namespace WpfTest
 
             }
             //(App.Current as App).elements = Setting;
-            (App.Current as App).elements = Setting;
+              (App.Current as App).elements = Setting;
             listBox.ItemsSource = Setting;
             datagrid = listBox;
-
         }
 
         private void Insert_Click(object sender, RoutedEventArgs e)
@@ -65,20 +61,20 @@ namespace WpfTest
             window.ShowDialog();
 
         }
-        private void Update_Click(object sender, RoutedEventArgs e)
-        {
+        //private void Update_Click(object sender, RoutedEventArgs e)
+        //{
            
 
 
 
-        }
-        private void Delete_Click(object sender, RoutedEventArgs e)
-        {
+        //}
+        //private void Delete_Click(object sender, RoutedEventArgs e)
+        //{
            
 
 
 
-        }
+        //}
         //private void btnOpenFile_Click(object sender, RoutedEventArgs e)
         //{
         //    OpenFileDialog openFileDialog = new OpenFileDialog();

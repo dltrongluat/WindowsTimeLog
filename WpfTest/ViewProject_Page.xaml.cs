@@ -80,6 +80,12 @@ namespace WpfTest
             NavigationService nav = NavigationService.GetNavigationService(this);
             nav.Navigate(new Uri("ViewVersion_Page.xaml", UriKind.RelativeOrAbsolute));
         }
+
+        private void Wwtf_Click(object sender, RoutedEventArgs e)
+        {
+            Setting_Window window = new Setting_Window();
+            window.ShowDialog();
+        }
     }
 }
 
