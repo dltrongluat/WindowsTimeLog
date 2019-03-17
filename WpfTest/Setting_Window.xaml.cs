@@ -16,6 +16,8 @@ using Microsoft.Win32;
 using System.Reflection;
 using Path = System.IO.Path;
 using System.Windows.Navigation;
+using System.Threading;
+
 namespace WpfTest
 {
    
@@ -24,13 +26,19 @@ namespace WpfTest
         public Setting_Window()
         {
             InitializeComponent();
+            ReadFile();
+            FileWatherConfigure();
         }
 
         List<App.TE_Settingg> Setting = new List<App.TE_Settingg>();
         public static DataGrid datagrid;
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            
 
+        }
+        public void ReadFile()
+        {
             var directory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
             var file = Path.Combine(directory, "TE_Activities.txt");
 
@@ -50,8 +58,24 @@ namespace WpfTest
             }
             //(App.Current as App).elements = Setting;
               (App.Current as App).elements = Setting;
-            listBox.ItemsSource = Setting;
+            listBox.Dispatcher.Invoke(() => this.listBox.ItemsSource = Setting);
             datagrid = listBox;
+        }
+        FileSystemWatcher fileWatcher = new FileSystemWatcher();
+        public void FileWatherConfigure()
+        {
+            string directory = System.IO.Directory.GetParent(System.IO.Directory.GetParent(Environment.CurrentDirectory).ToString()).ToString();
+            var file = Path.Combine(directory, "TE_Activities.txt");
+            fileWatcher.Path = System.IO.Path.GetDirectoryName(file);
+            fileWatcher.Filter = System.IO.Path.GetFileName(file);
+            fileWatcher.Changed += FileWatcher_Changed;
+            fileWatcher.EnableRaisingEvents = true;
+        }
+        private void FileWatcher_Changed(object sender, FileSystemEventArgs e)
+        {
+            Thread.Sleep(TimeSpan.FromSeconds(1));
+
+            ReadFile();
         }
 
         private void Insert_Click(object sender, RoutedEventArgs e)

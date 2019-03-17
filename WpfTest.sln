@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfigurableWindowDemo", ".
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoadingPanelSample", "..\..\LoadingPanelSample\LoadingPanelSample\LoadingPanelSample.csproj", "{307E7E86-8A1A-4CA7-945F-7CB7B3CF0888}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "TestApp\TestApp.csproj", "{78C9F1DA-8A98-4396-8B0C-D9208B707CF3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,14 @@ Global
 		{307E7E86-8A1A-4CA7-945F-7CB7B3CF0888}.Release|Any CPU.ActiveCfg = Release|x86
 		{307E7E86-8A1A-4CA7-945F-7CB7B3CF0888}.Release|x86.ActiveCfg = Release|x86
 		{307E7E86-8A1A-4CA7-945F-7CB7B3CF0888}.Release|x86.Build.0 = Release|x86
+		{78C9F1DA-8A98-4396-8B0C-D9208B707CF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78C9F1DA-8A98-4396-8B0C-D9208B707CF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78C9F1DA-8A98-4396-8B0C-D9208B707CF3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{78C9F1DA-8A98-4396-8B0C-D9208B707CF3}.Debug|x86.Build.0 = Debug|Any CPU
+		{78C9F1DA-8A98-4396-8B0C-D9208B707CF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78C9F1DA-8A98-4396-8B0C-D9208B707CF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78C9F1DA-8A98-4396-8B0C-D9208B707CF3}.Release|x86.ActiveCfg = Release|Any CPU
+		{78C9F1DA-8A98-4396-8B0C-D9208B707CF3}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

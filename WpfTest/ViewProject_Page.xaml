@@ -12,7 +12,8 @@
     
         <Grid Width="800">
         <StackPanel>
-            <Button Name="wwtf" Click="Wwtf_Click"></Button>
+            <TextBlock FontSize="30" Margin="30,0,0,0" HorizontalAlignment="Center" FontFamily="Segoe UI">View Project Screen</TextBlock>
+            <!--<Button Name="wwtf" Click="Wwtf_Click"></Button>-->
                 <DataGrid Name="projectListView" CanUserAddRows="false" HeadersVisibility="Column" IsReadOnly="True" AutoGenerateColumns="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="id" Binding="{Binding id}" >

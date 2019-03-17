@@ -83,8 +83,10 @@ namespace WpfTest
 
         private void Wwtf_Click(object sender, RoutedEventArgs e)
         {
-            Setting_Window window = new Setting_Window();
-            window.ShowDialog();
+            //Setting_Window window = new Setting_Window();
+            //window.ShowDialog();
+            NavigationService nav = NavigationService.GetNavigationService(this);
+            nav.Navigate(new Uri("Setting_Page.xaml", UriKind.RelativeOrAbsolute));
         }
     }
 }

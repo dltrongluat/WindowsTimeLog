@@ -12,6 +12,7 @@
     <Canvas>
         <Grid Width="800">
             <StackPanel>
+                <TextBlock FontSize="30" Margin="30,0,0,0" HorizontalAlignment="Center" FontFamily="Segoe UI">View Versions Screen</TextBlock>
                 <DataGrid Name="versionListView" CanUserAddRows="false" HeadersVisibility="Column" IsReadOnly="True" AutoGenerateColumns="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="id" Binding="{Binding id}" ></DataGridTextColumn>

@@ -22,7 +22,7 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <Button Name="Insert_Click" Content="Insert" Click="Insert_Click"/>
+                                <!--<Button Name="Insert_Click" Content="Insert" Click="Insert_Click"/>-->
                                 <!--<Button Name="Update_Click" Content="Update" Click="Update_Click"/>
                                 <Button Name="Delete_Click" Content="Delete" Click="Delete_Click"/>-->
 
@@ -32,8 +32,8 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <!--<TextBox Name="ID" Margin="297,309,292,-2" Width="203">ID</TextBox>
+        <TextBox Name="ID" Margin="297,309,292,-2" Width="203">ID</TextBox>
         <TextBox Name="Subject" Margin="529,309,117,-2" Width="146">Subjec</TextBox>
-        <Button Click="Add_Click" Margin="51,304,549,10"></Button>-->
+        <Button Click="Insert_Click" Margin="51,304,549,10"></Button>
     </Grid>
 </Page>

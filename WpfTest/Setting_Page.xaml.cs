@@ -16,6 +16,8 @@ using System.IO;
 using Microsoft.Win32;
 using System.Reflection;
 using Path = System.IO.Path;
+using System.Threading;
+
 namespace WpfTest
 {
     /// <summary>
@@ -26,29 +28,12 @@ namespace WpfTest
         public Setting_Page()
         {
             InitializeComponent();
+            ReadFile();
+            FileWatherConfigure();
         }
         List<App.TE_Settingg> Setting = new List<App.TE_Settingg>();
-        public static DataGrid datagrid;
-        private void Add_Click(object sender, RoutedEventArgs e)
-        {
-            //TE_Insert_Page page = new TE_Insert_Page();
-           
-            //App.TE_Settingg new_setting = new App.TE_Settingg(ID.Text, Subject.Text)
-            //{
-            //    id = ID.Text,
-            //    name = Subject.Text
-            //};  
-            //listBox.Items.Add(new_setting);
-            //Setting.Add(new_setting);
-
-
-
-        }
-        //public List<TE_Setting> Setting = new List<TE_Setting>();
-
-      
-     
-        private void Page_Loaded(object sender, RoutedEventArgs e)
+        
+        public void ReadFile()
         {
             var directory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
             var file = Path.Combine(directory, "TE_Activities.txt");
@@ -64,22 +49,62 @@ namespace WpfTest
                     name = entries[1]
                 };
                 Setting.Add(new_setting);
-
-
             }
-            //(App.Current as App).elements = Setting;
-            (App.Current as App).elements = Setting;
-            listBox.ItemsSource = Setting;
-            datagrid = listBox;
+            listBox.Dispatcher.Invoke(() => { this.listBox.ItemsSource = Setting ; });
+            //listBox.ItemsSource = Setting;
+            /*listBox.Dispatcher.Invoke(() => this.listBox.ItemsSource = Setting);*/
+            //datagrid = listBox;
+        }
+        FileSystemWatcher fileWatcher = new FileSystemWatcher();
+        public void FileWatherConfigure()
+        {
+            string directory = System.IO.Directory.GetParent(System.IO.Directory.GetParent(Environment.CurrentDirectory).ToString()).ToString();
+            var file = Path.Combine(directory, "TE_Activities.txt");
+            fileWatcher.Path = System.IO.Path.GetDirectoryName(file);
+            fileWatcher.Filter = System.IO.Path.GetFileName(file);
+            fileWatcher.Changed += FileWatcher_Changed;
+            fileWatcher.EnableRaisingEvents = true;
+        }
+        private void FileWatcher_Changed(object sender, FileSystemEventArgs e)
+        {
+            Thread.Sleep(TimeSpan.FromSeconds(1));
+
+            ReadFile();
         }
 
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            
+        }
+        
         private void Insert_Click(object sender, RoutedEventArgs e)
         {
-            TE_Insert_Window window = new TE_Insert_Window();
-
-            window.ShowDialog();
+            App.TE_Settingg new_setting = new App.TE_Settingg(ID.Text, Subject.Text)
+            {
+                id = ID.Text,
+                name = Subject.Text
+            };
+            Setting.Add(new_setting);
+        
+            WriteFile();
+          
         }
+        private void WriteFile()
+        {
+            string directory = System.IO.Directory.GetParent(System.IO.Directory.GetParent(Environment.CurrentDirectory).ToString()).ToString();
+        
+            var file = Path.Combine(directory, "TE_Activities.txt");
+            StringBuilder strBuilder = new StringBuilder();
 
+            for (int i = 0; i <Setting.Count; i++)
+            {
+                App.TE_Settingg new_setting = (App.TE_Settingg)Setting[i];
+                strBuilder.Append(new_setting.id + "," + new_setting.name + Environment.NewLine);
+            }
+            File.WriteAllText(file, strBuilder.ToString());
+
+          
+        }
         //private void Update_Click(object sender, RoutedEventArgs e)
         //{
 
