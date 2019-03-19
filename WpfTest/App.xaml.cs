@@ -42,14 +42,6 @@ namespace WpfTest
 
         public class TE_Settingg
         {
-
-
-            public TE_Settingg(string id, string name)
-            {
-                this.id = id;
-                this.name = name;
-            }
-
             public string id { get; set; }
             public string name { get; set; }
         }

@@ -112,8 +112,8 @@ namespace WpfTest
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
-            Setting_Window window = new Setting_Window();
-            window.ShowDialog();
+            //Setting_Window window = new Setting_Window();
+            //window.ShowDialog();
             //Setting_Page page = new Setting_Page();
             //page.Sh
 

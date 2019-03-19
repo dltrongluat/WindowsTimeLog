@@ -9,11 +9,19 @@
       WindowTitle="View Version Page"
       Title="ViewVersion_Page" Loaded="Page_Loaded">
 
-    <Canvas>
+
         <Grid Width="800">
-            <StackPanel>
-                <TextBlock FontSize="30" Margin="30,0,0,0" HorizontalAlignment="Center" FontFamily="Segoe UI">View Versions Screen</TextBlock>
-                <DataGrid Name="versionListView" CanUserAddRows="false" HeadersVisibility="Column" IsReadOnly="True" AutoGenerateColumns="False">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="350" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="300" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Margin="0,0,-439,251">
+            <TextBlock FontSize="30" Margin="30,0,0,0" HorizontalAlignment="Center" FontFamily="Segoe UI">View Versions Screen</TextBlock>
+        </StackPanel>
+        <DataGrid Name="versionListView" CanUserAddRows="false" HeadersVisibility="Column" IsReadOnly="True" AutoGenerateColumns="False" Margin="10,55,-459,-55">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="id" Binding="{Binding id}" ></DataGridTextColumn>
                     <DataGridTextColumn Header="name" Binding="{Binding name}" ></DataGridTextColumn>
@@ -26,7 +34,7 @@
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
-                </StackPanel>
+               
         </Grid>
-    </Canvas>
+  
 </Page>

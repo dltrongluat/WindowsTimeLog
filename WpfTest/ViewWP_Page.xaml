@@ -8,19 +8,20 @@
       d:DesignHeight="450" d:DesignWidth="800"
       WindowTitle="View Work Packages Page"
       Title="ViewWP_Page" Loaded="Window_Loaded">
-    <Canvas>
+    <!--<Canvas>-->
         <Grid Width="800">
-            <StackPanel>
-                <!--<Grid.ColumnDefinitions>
-              <ColumnDefinition Width="350" />
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="350" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="300" />
-            </Grid.RowDefinitions>-->
-                <TextBlock FontSize="30" Margin="30,0,0,0" HorizontalAlignment="Center" FontFamily="Segoe UI">View Work Packages Screen</TextBlock>
+            </Grid.RowDefinitions>
+        <StackPanel Margin="0,0,-439,251">
+            <TextBlock FontSize="30" Margin="30,0,0,0" HorizontalAlignment="Center" FontFamily="Segoe UI">View Work Packages Screen</TextBlock>
+        </StackPanel>
             <DataGrid Name="wpListView" ItemsSource="{Binding WorkPackageList}" CanUserAddRows="false" HeadersVisibility="Column" IsReadOnly="True" AutoGenerateColumns="False" Grid.Column="0" Grid.Row="0" ScrollViewer.CanContentScroll="True" 
       ScrollViewer.VerticalScrollBarVisibility="Auto"
-      ScrollViewer.HorizontalScrollBarVisibility="Auto" Margin="0,0,-439,-143">
+      ScrollViewer.HorizontalScrollBarVisibility="Auto" Margin="0,68,-449,-143">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding="{Binding id}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Work Package" Binding="{Binding subject}"></DataGridTextColumn>
@@ -47,7 +48,7 @@
                 </DataGrid.Columns>
                 
             </DataGrid>
-                </StackPanel>
-        </Grid>
-    </Canvas>
+        
+    </Grid>
+     
 </Page>

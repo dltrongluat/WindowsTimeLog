@@ -7,19 +7,23 @@
       xmlns:local="clr-namespace:WpfTest"
       mc:Ignorable="d" 
       d:DesignHeight="300"
-      Loaded="Page_Loaded" Width="798.319">
+      Loaded="Page_Loaded" Width="800">
 
     
         <Grid Width="800">
-        <StackPanel>
-            <TextBlock FontSize="30" Margin="30,0,0,0" HorizontalAlignment="Center" FontFamily="Segoe UI">View Project Screen</TextBlock>
-            <!--<Button Name="wwtf" Click="Wwtf_Click"></Button>-->
-                <DataGrid Name="projectListView" CanUserAddRows="false" HeadersVisibility="Column" IsReadOnly="True" AutoGenerateColumns="False">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="350" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="300" />
+        </Grid.RowDefinitions>
+  
+            <TextBlock FontSize="30" Margin="393,0,-303,218" HorizontalAlignment="Center" FontFamily="Segoe UI">View Project Screen</TextBlock>
+            <Button Name="wwtf" Click="Wwtf_Click" Margin="0,0,0,237"></Button>
+                <DataGrid Name="projectListView" CanUserAddRows="false" HeadersVisibility="Column" IsReadOnly="True" AutoGenerateColumns="False" Margin="0,82,-449,0">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="id" Binding="{Binding id}" >
-                        
                     </DataGridTextColumn>
-                    
                     <DataGridTextColumn Header="name" Binding="{Binding name}" ></DataGridTextColumn>
                     <DataGridTemplateColumn >
                         <DataGridTemplateColumn.CellTemplate>
@@ -38,7 +42,7 @@
                 </DataGrid.Columns>
 
             </DataGrid>
-        </StackPanel>
+      
     </Grid>
  
 </Page>

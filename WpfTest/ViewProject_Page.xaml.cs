@@ -41,7 +41,6 @@ namespace WpfTest
       
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-           
           
             string api_server = (App.Current as App).api_server;
             var client = new RestClient(api_server);

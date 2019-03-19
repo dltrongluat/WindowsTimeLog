@@ -1,12 +1,4 @@
-﻿1,Management
-2,Specification
-3,Development
-4,Testing
-5,Support
-6,Other
-qwe,Subjec
-qưe,Subjec
-22,Subjec
 ID,Subjec
-22,EE
-EE,2
+ID,Subjec
+ID,Subjec
+ID,Subjec

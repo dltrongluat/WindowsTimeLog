@@ -77,7 +77,7 @@ namespace WpfTest
             (App.Current as App).workpackage_name = workpackage_name;
 
             LogTimeAuto_Window LogTimeAuto_window = new LogTimeAuto_Window();
-            LogTimeAuto_window.Show();
+            LogTimeAuto_window.ShowDialog();
         }
 
         private void LogTimeMan_Click(object sender, RoutedEventArgs e)
@@ -92,7 +92,7 @@ namespace WpfTest
 
             //display a new MainWindow
             LogTimeManual_Window LogTimeMan_window = new LogTimeManual_Window();
-            LogTimeMan_window.Show();
+            LogTimeMan_window.ShowDialog();
         }
     }
 }

@@ -10,10 +10,19 @@
       Title="ViewVersionWP_Page" Loaded="Page_Loaded">
 
     <Grid>
-        <StackPanel>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="350" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="300" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Margin="0,0,-439,251">
             <TextBlock FontSize="30" Margin="30,0,0,0" HorizontalAlignment="Center" FontFamily="Segoe UI">View Work Packages of Version Screen</TextBlock>
+        </StackPanel>
+            
             <DataGrid Name="wpListView"  CanUserAddRows="false" HeadersVisibility="Column" IsReadOnly="True" AutoGenerateColumns="False" Grid.Column="0" Grid.Row="0" ScrollViewer.CanContentScroll="True" 
-      ScrollViewer.HorizontalScrollBarVisibility="Auto" Margin="0,0,0,-295">
+      ScrollViewer.HorizontalScrollBarVisibility="Auto" Margin="0,50,-449,-149">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding id}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Work Package" Binding="{Binding subject}"></DataGridTextColumn>
@@ -39,6 +48,6 @@
             </DataGrid.Columns>
 
         </DataGrid>
-            </StackPanel>
+         
     </Grid>
 </Page>

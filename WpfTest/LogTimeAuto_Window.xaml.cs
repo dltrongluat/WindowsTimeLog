@@ -158,7 +158,7 @@ namespace WpfTest
             Project.Text = project_name;
             WorkPackage.Text = workpackage_name;
 
-            var directory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+            string directory = System.IO.Directory.GetParent(System.IO.Directory.GetParent(Environment.CurrentDirectory).ToString()).ToString();
             var file = Path.Combine(directory, "TE_Activities.txt");
 
             List<TE_Setting> setting = new List<TE_Setting>();
@@ -243,10 +243,12 @@ namespace WpfTest
             if (numbericStatusCode == 200 || numbericStatusCode == 201 || numbericStatusCode == 301)
             {
                 MessageBox.Show("Log time success!");
+                this.Close();
             }
             else
             {
                 MessageBox.Show("Log time failed!");
+                this.Close();
             }
 
         }
