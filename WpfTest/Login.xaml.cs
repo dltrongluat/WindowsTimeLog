@@ -80,6 +80,7 @@ namespace WpfTest
             
                 FrameWindow window = new FrameWindow();
                 window.Show();
+                (App.Current as App).window = window;
                 this.Close();
               
             }

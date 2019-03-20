@@ -25,7 +25,7 @@ namespace WpfTest
             InitializeComponent();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        public void Window_Loaded(object sender, RoutedEventArgs e)
         {
             Main.Content = new ViewProject_Page();
             

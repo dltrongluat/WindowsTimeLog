@@ -269,6 +269,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Class\EventArgs.cs" />
     <Compile Include="Class\Log.cs" />
     <Compile Include="Class\Project.cs" />
     <Compile Include="Class\Version.cs" />

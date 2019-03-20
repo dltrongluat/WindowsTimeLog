@@ -33,7 +33,7 @@ namespace WpfTest
         {
             InitializeComponent();
         }
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        public void Window_Loaded(object sender, RoutedEventArgs e)
         {
             string api_server = (App.Current as App).api_server;
             var client = new RestClient(api_server);
@@ -85,6 +85,7 @@ namespace WpfTest
 
             LogTimeAuto_Window LogTimeAuto_window = new LogTimeAuto_Window();
             LogTimeAuto_window.ShowDialog();
+            
         }
     }
 }

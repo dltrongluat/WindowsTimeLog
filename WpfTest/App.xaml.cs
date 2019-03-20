@@ -47,7 +47,7 @@ namespace WpfTest
         }
 
         public List<TE_Settingg> elements { get; set; }
-
+        public FrameWindow window { get; set; }
 
 
 

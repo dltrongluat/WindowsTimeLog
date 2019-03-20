@@ -32,11 +32,14 @@ namespace WpfTest
     public partial class LogTimeManual_Window : MetroWindow
     {
         //validate
+        private ViewWP_Page viewWP;
+        private FrameWindow frameWindow;
         private int _noOfErrorsOnScreen = 0;
         private Log_Hour _logtime = new Log_Hour();
 
         public LogTimeManual_Window()
         {
+            
             InitializeComponent();
             grid.DataContext = _logtime;
         }
@@ -102,7 +105,7 @@ namespace WpfTest
             Activity.SelectedValuePath = "key";
             Activity.ItemsSource = cbA;
         }
-        private void LogTime_Click(object sender, RoutedEventArgs e)
+        public void LogTime_Click(object sender, RoutedEventArgs e)
         {
             string project_id = (App.Current as App).project_id;
             string workpackage_id = (App.Current as App).workpackage_id;
@@ -155,6 +158,8 @@ namespace WpfTest
             {
                 MessageBox.Show("Log time success!");
                 this.Close();
+                
+
             }
             else
             {
