@@ -101,10 +101,10 @@ namespace WpfTest
         }
         public void countdown_Start()
         {
-            _time = TimeSpan.FromSeconds(5);
+            _time = TimeSpan.FromSeconds(10);
             _timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
             {
-                tbTime.Text = _time.ToString("c");
+                //tbTime.Text = _time.ToString("c");
                 if (_time == TimeSpan.Zero)
                 {
                     _timer.Stop();

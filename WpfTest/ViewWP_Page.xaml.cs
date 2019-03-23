@@ -53,7 +53,7 @@ namespace WpfTest
                 WP.Add(item);
 
             wpListView.ItemsSource = WP;
-          
+            Title.Text = "Work packages of project: " + (App.Current as App).project_name;
         }
 
         private void LogTimeMan_Click(object sender, RoutedEventArgs e)

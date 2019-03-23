@@ -65,6 +65,7 @@ namespace WpfTest
             }
             var filter= WP.Where(WP_item => WP_item._links.version.title.Contains(version_name));
             wpListView.ItemsSource = filter;
+            Title.Text = "Work packages of project: " + (App.Current as App).project_name + ", version: " + (App.Current as App).version_name;
         }
 
         private void LogTimeAuto_Click(object sender, RoutedEventArgs e)

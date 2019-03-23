@@ -53,6 +53,7 @@ namespace WpfTest
            
             ObservableCollection<Project> Project = new ObservableCollection<Project>(obj._embedded.elements);
             projectListView.ItemsSource = Project;
+            Title.Text = "Projects";
       
         }
 

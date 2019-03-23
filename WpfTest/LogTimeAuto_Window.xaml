@@ -68,7 +68,7 @@
             x:Name="MyNotifyIcon"
             IconSource="/Icons/Error.ico"
             ToolTipText="Balloon Sample Icon" Grid.ColumnSpan="2" />
-            <TextBlock Name="tbTime" Grid.Row="6"  />
+            <!--<TextBlock Name="tbTime" Grid.Row="6"  />-->
             <Label Grid.Row="0" Content="Project" />
             <TextBlock Grid.Row="0" Grid.Column="1" Name="Project"></TextBlock>
             <Label Grid.Row="1" Content="WorkPackage" />
@@ -90,7 +90,7 @@
                     ValidatesOnDataErrors=true, NotifyOnValidationError=true}" />
             <!--<Label Content="LogHour"  Target="{Binding ElementName=elapsedtimeitem}" Canvas.Top="198" Height="30" Width="67" Canvas.Left="5" RenderTransformOrigin="2.015,0.683" Margin="0" />-->
             <!--<TextBox x:Name="elapsedtimeitem" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="176" Canvas.Left="72" Canvas.Top="198"/>-->
-            <Label Content="Comment"  Target="{Binding ElementName=tb_Comment}" Grid.Row="5" Grid.Column="1"/>
+            <Label Content="Comment"  Target="{Binding ElementName=tb_Comment}" Grid.Row="5" Grid.Column="0"/>
             <TextBox Grid.Row="5" Grid.Column="1" x:Name="tb_Comment" HorizontalAlignment="Left" Height="100" Width="250" Validation.Error="Validation_Error" TextWrapping="Wrap" AcceptsReturn="True" SpellCheck.IsEnabled="True" Text="{Binding UpdateSourceTrigger=PropertyChanged, Path=Comment,
                     ValidatesOnDataErrors=true, NotifyOnValidationError=true}" Grid.ColumnSpan="2"></TextBox>
             <Label Content="Date"  Grid.Row="3" Grid.ColumnSpan="2" />

@@ -20,6 +20,10 @@ using System.Threading;
 using System.Windows.Navigation;
 using System.Threading;
 using System.Collections.ObjectModel;
+using RestSharp;
+using RestSharp.Authenticators;
+using Newtonsoft.Json;
+using System.Net;
 
 namespace WpfTest
 {
@@ -41,17 +45,13 @@ namespace WpfTest
             public string id { get; set; }
             public string name { get; set; }
         }
-        //public class WTF
-        //{
-        //    public TE_Setting Obj;
-          
-        //    public void SetObject(TE_Setting obj)
-        //    {
-        //        Obj = obj;
-        //    }
-        //}
+        public class TE_Activity
+        {
 
-
+            public string id { get; set; }
+            public string name { get; set; }
+        
+        }
         FileSystemWatcher fileWatcher = new FileSystemWatcher();
         public void ReadFile()
         {
@@ -79,9 +79,7 @@ namespace WpfTest
         
         }
 
-      
-
-        //List<App.TE_Settingg> Setting = new List<App.TE_Settingg>();
+        
         public void FileWatherConfigure()
         {
             string directory = System.IO.Directory.GetParent(System.IO.Directory.GetParent(Environment.CurrentDirectory).ToString()).ToString();
@@ -102,10 +100,9 @@ namespace WpfTest
         {
            
         }
-        
-        public void Insert_Click(object sender, RoutedEventArgs e)
+        public void ValidateOnInsert()
         {
-            List <App.TE_Settingg> Setting = (App.Current as App).elements;
+            List<App.TE_Settingg> Setting = (App.Current as App).elements;
 
             App.TE_Settingg new_setting = new App.TE_Settingg()
             {
@@ -114,14 +111,39 @@ namespace WpfTest
             };
             Setting.Add(new_setting);
             WriteFile();
+        }
+        public void Insert_Click(object sender, RoutedEventArgs e)
+        {
+            string username = "apikey";
+            string api_key = (App.Current as App).api_key;
+            string api_server = (App.Current as App).api_server;
+            var client = new RestClient(api_server);
+            client.Authenticator = new HttpBasicAuthenticator(username, api_key);
 
+            //  get
+            var request = new RestRequest("/time_entries/activities/" + ID.Text, Method.GET);
+            //  add header
+            request.AddHeader("Content-Type", "application/json");
+            //  execute request
+            IRestResponse response = client.Execute(request);
+            //get User id 
 
-            //var directory2 = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
-            //var file = Path.Combine(directory2, "TE_Activities.txt");
-            //string directory = System.IO.Directory.GetParent(System.IO.Directory.GetParent(Environment.CurrentDirectory).ToString()).ToString();
-            //MessageBox.Show(directory.ToString()+ "++" + file.ToString());
-            //TE_Insert_Window Window = new TE_Insert_Window(Setting);
-            //Window.ShowDialog();
+            HttpStatusCode statusCode = response.StatusCode;
+            int numbericStatusCode = (int)statusCode;
+            if (numbericStatusCode != 200)
+            {
+                MessageBox.Show("Something went wrong");
+            }
+            else
+            {
+                var obj = JsonConvert.DeserializeObject<TE_Activity>(response.Content);
+                if (ID.Text == obj.id)
+                {
+                    ValidateOnInsert();
+                }
+             
+            }
+
 
         }
 

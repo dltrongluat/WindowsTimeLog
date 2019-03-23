@@ -50,6 +50,7 @@ namespace WpfTest
             var obj = JsonConvert.DeserializeObject<RootObject>(response.Content);
             ObservableCollection<Version> Version = new ObservableCollection<Version>(obj._embedded.elements);
             versionListView.ItemsSource = Version;
+            Title.Text = "Versions of project: "+(App.Current as App).project_name;
         }
 
         private void ViewWP_Click(object sender, RoutedEventArgs e)

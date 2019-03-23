@@ -17,10 +17,10 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="300" />
         </Grid.RowDefinitions>
-  
-            <TextBlock FontSize="30" Margin="393,0,-303,218" HorizontalAlignment="Center" FontFamily="Segoe UI">View Project Screen</TextBlock>
-            <Button Name="wwtf" Click="Wwtf_Click" Margin="0,0,0,237"></Button>
-                <DataGrid Name="projectListView" CanUserAddRows="false" HeadersVisibility="Column" IsReadOnly="True" AutoGenerateColumns="False" Margin="0,82,-449,0">
+
+        <TextBlock FontSize="20" Margin="267,0,-176,239" HorizontalAlignment="Center" Name="Title" FontFamily="Segoe UI"></TextBlock>
+            <!--<Button Name="wwtf" Click="Wwtf_Click" Margin="0,0,0,237"></Button>-->
+                <DataGrid Name="projectListView" CanUserAddRows="false" HeadersVisibility="Column" IsReadOnly="True" AutoGenerateColumns="False" Margin="0,66,-449,0">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="id" Binding="{Binding id}" >
                     </DataGridTextColumn>

@@ -19,7 +19,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Margin="0,0,-439,251">
-            <TextBlock FontSize="30" Margin="30,0,0,0" HorizontalAlignment="Center" FontFamily="Segoe UI">View Versions Screen</TextBlock>
+            <TextBlock Name="Title" FontSize="20" Margin="30,0,0,0" HorizontalAlignment="Center" FontFamily="Segoe UI"></TextBlock>
         </StackPanel>
         <DataGrid Name="versionListView" CanUserAddRows="false" HeadersVisibility="Column" IsReadOnly="True" AutoGenerateColumns="False" Margin="10,55,-459,-55">
                 <DataGrid.Columns>

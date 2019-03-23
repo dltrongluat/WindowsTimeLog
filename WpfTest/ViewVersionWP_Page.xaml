@@ -18,7 +18,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Margin="0,0,-439,251">
-            <TextBlock FontSize="30" Margin="30,0,0,0" HorizontalAlignment="Center" FontFamily="Segoe UI">View Work Packages of Version Screen</TextBlock>
+            <TextBlock Name="Title" FontSize="20" Margin="30,0,0,0" HorizontalAlignment="Center" FontFamily="Segoe UI"></TextBlock>
         </StackPanel>
             
             <DataGrid Name="wpListView"  CanUserAddRows="false" HeadersVisibility="Column" IsReadOnly="True" AutoGenerateColumns="False" Grid.Column="0" Grid.Row="0" ScrollViewer.CanContentScroll="True" 

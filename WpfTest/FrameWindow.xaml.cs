@@ -27,7 +27,8 @@ namespace WpfTest
 
         public void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Main.Content = new ViewProject_Page();
+            //Main.Content = new ViewProject_Page();
+            Main.Content = new Setting_Page();
             
         }
     }

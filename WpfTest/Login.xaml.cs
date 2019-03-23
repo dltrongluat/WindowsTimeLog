@@ -115,8 +115,9 @@ namespace WpfTest
 
             //Setting_Window window = new Setting_Window();
             //window.ShowDialog();
-            //Setting_Page page = new Setting_Page();
-            //page.Sh
+            FrameWindow window = new FrameWindow();
+            window.Show();
+            (App.Current as App).window = window;
 
         }
     }
