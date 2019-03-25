@@ -24,8 +24,8 @@
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
                                 <Button Name="Insert_Click" Content="Insert" Click="Insert_Click"/>
-                                <!--<Button Name="Update_Click" Content="Update" Click="Update_Click"/>
-                                <Button Name="Delete_Click" Content="Delete" Click="Delete_Click"/>-->
+                                <Button Name="Update_Click" Content="Update" Click="Update_Click"/>
+                                <!--<Button Name="Delete_Click" Content="Delete" Click="Delete_Click"/>-->
 
                             </StackPanel>
                         </DataTemplate>
@@ -35,7 +35,7 @@
         </DataGrid>
         <TextBox Name="ID" Margin="406,207,-258,68" Width="203">ID</TextBox>
         <TextBox Name="Subject" Margin="406,233,-201,42" Width="146">Subjec</TextBox>
-        <Button Click="Insert_Click" Margin="418,182,-134,94"></Button>
+        <Button Click="Insert_Click" Margin="516,162,-232,114" RenderTransformOrigin="-1.213,0.476"></Button>
     </Grid>
 
   

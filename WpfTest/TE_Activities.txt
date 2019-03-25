@@ -1,7 +1,5 @@
 1,Management
-2,Specification
-3,Development
-4,Testing
-5,Support
-6,Other
-14,Subjec
+2,Subjec
+3,Subjec
+5,Subjec
+6,Subjec
