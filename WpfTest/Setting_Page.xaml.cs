@@ -148,9 +148,15 @@ namespace WpfTest
         }
         public void Update_Click(object sender, RoutedEventArgs e)
         {
+
+            //dynamic selected_Project = (App.TE_Settingg)listBox.SelectedItem;
+            //var project_id = selected_Project.id.ToString();
+            int index = listBox.SelectedIndex +1;
+
             string directory = System.IO.Directory.GetParent(System.IO.Directory.GetParent(Environment.CurrentDirectory).ToString()).ToString();
             var file = Path.Combine(directory, "TE_Activities.txt");
-            int Line = 2;
+
+         
             StringBuilder sb = new StringBuilder();
             using (StreamReader sr = new StreamReader(file))
             {
@@ -158,7 +164,7 @@ namespace WpfTest
                 while (!sr.EndOfStream)
                 {
                     Countup++;
-                    if (Countup != Line)
+                    if (Countup != index)
                     {
                         using (StringWriter sw = new StringWriter(sb))
                         {

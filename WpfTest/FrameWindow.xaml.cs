@@ -27,9 +27,22 @@ namespace WpfTest
 
         public void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            //Main.Content = new ViewProject_Page();
-            Main.Content = new Setting_Page();
-            
+            Main.Content = new ViewProject_Page();
+            //Main.Content = new Setting_Page();
+
+        }
+
+        private void ButtonOpen_Click(object sender, RoutedEventArgs e)
+        {
+            ButtonOpen.Visibility = Visibility.Collapsed;
+            ButtonClose.Visibility = Visibility.Visible;  
+        }
+
+        private void ButtonClose_Click(object sender, RoutedEventArgs e)
+        {
+            ButtonOpen.Visibility = Visibility.Visible;
+            ButtonClose.Visibility = Visibility.Collapsed;
+
         }
     }
 }

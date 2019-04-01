@@ -3,14 +3,79 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:local="clr-namespace:WpfTest"
         mc:Ignorable="d"
        Title="{Binding Main.Title, RelativeSource={RelativeSource Self}}" Height="450" Width="800" Loaded="Window_Loaded">
+    <Window.Resources>
+        <Storyboard x:Key="OpenMenu">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="70"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="200"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="CloseMenu">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="200"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="70"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonOpen">
+            <BeginStoryboard Storyboard="{StaticResource OpenMenu}"></BeginStoryboard>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonClose">
+            <BeginStoryboard Storyboard="{StaticResource CloseMenu}"></BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
     <Grid>
-        <StackPanel>
-            <Frame x:Name="Main" Canvas.Top="271" Width="746" Canvas.Left="4" Margin="23,24,23,10"/>
-        </StackPanel>
-        
+        <Grid x:Name="GridMenu" Width="50"  HorizontalAlignment="Left" Background="#FF31577E">
+            <Grid.Effect>
+                <DropShadowEffect BlurRadius="2" ShadowDepth="1" Color="#FFAEAEAE"/>
+            </Grid.Effect>
+            <StackPanel>
+                <Grid Height="150" Background="White">
+                    <Button x:Name="ButtonClose" Click="ButtonClose_Click" Visibility="Collapsed" Foreground="#FF31577E" HorizontalAlignment="Right" VerticalAlignment="Top" Width="50" Height="50" Background="{x:Null}" BorderBrush="{x:Null}">
+                        <materialDesign:PackIcon Kind="ArrowLeft" Foreground="#FF1B3861">
+                            
+                        </materialDesign:PackIcon>
+                    </Button>
+                    <Button x:Name="ButtonOpen" Click="ButtonOpen_Click" HorizontalAlignment="Right" VerticalAlignment="Top" Width="50" Height="50" >
+                        <materialDesign:PackIcon Kind="Menu" Foreground="#FF1B3861">
+
+                        </materialDesign:PackIcon>
+                    </Button>
+                </Grid>
+                <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Foreground="#FF1B3861" Background="#FF31577E">
+                    <ListViewItem Height="70" Background="#FF31577E">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="ViewDashboard" Height="25" Width="25" Margin="10"/>
+                            <TextBlock Text="Home" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="70" Background="#FF31577E">
+                        <StackPanel Orientation="Horizontal" >
+                            <materialDesign:PackIcon Kind="ViewDashboard" Height="25" Width="25" Margin="10"/>
+                            <TextBlock Text="Home" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="70 " Background="#FF31577E">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="ViewDashboard" Height="25" Width="25" Margin="10"/>
+                            <TextBlock Text="Home" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                </ListView>
+            </StackPanel>
+        </Grid>
+        <Grid Margin="55,0,0,0">
+            <StackPanel>
+                <Frame  NavigationUIVisibility="Hidden" x:Name="Main" Canvas.Top="271" Width="746" Canvas.Left="4" Margin="23,24,23,10"/>
+            </StackPanel>
+        </Grid>
+
+
     </Grid>
 </Controls:MetroWindow>
