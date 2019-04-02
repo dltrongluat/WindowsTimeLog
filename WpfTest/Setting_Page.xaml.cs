@@ -17,8 +17,8 @@ using Microsoft.Win32;
 using System.Reflection;
 using Path = System.IO.Path;
 using System.Threading;
-using System.Windows.Navigation;
-using System.Threading;
+
+
 using System.Collections.ObjectModel;
 using RestSharp;
 using RestSharp.Authenticators;
@@ -32,14 +32,46 @@ namespace WpfTest
     /// </summary>
     public partial class Setting_Page : Page
     {
+
+        ////validate
+        private int _noOfErrorsOnScreen = 0;
+        private TE_Setting_Validate TE_Setting_Validate = new TE_Setting_Validate();
+    
         public Setting_Page()
         {
             InitializeComponent();
             ReadFile();
             FileWatherConfigure();
-         
-             
+            grid.DataContext = TE_Setting_Validate;
+
         }
+        private void Validation_Error(object sender, ValidationErrorEventArgs e)
+        {
+            if (e.Action == ValidationErrorEventAction.Added)
+                _noOfErrorsOnScreen++;
+            else
+                _noOfErrorsOnScreen--;
+        }
+
+        private void Add_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = _noOfErrorsOnScreen == 0;
+            e.Handled = true;
+        }
+
+        private void Add_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            TE_Setting_Validate cust = grid.DataContext as TE_Setting_Validate;
+            // reset UI
+            TE_Setting_Validate = new TE_Setting_Validate();
+            grid.DataContext = TE_Setting_Validate;
+            e.Handled = true;
+
+        }
+
+
+
+
         public class TE_Setting
         {
             public string id { get; set; }
@@ -55,7 +87,8 @@ namespace WpfTest
         FileSystemWatcher fileWatcher = new FileSystemWatcher();
         public void ReadFile()
         {
-           
+            //grid.DataContext = TE_Setting_Validate;
+
             string directory = System.IO.Directory.GetParent(System.IO.Directory.GetParent(Environment.CurrentDirectory).ToString()).ToString();
             var file = Path.Combine(directory, "TE_Activities.txt");
             List<string> lines = File.ReadAllLines(file.ToString()).ToList();
@@ -75,13 +108,14 @@ namespace WpfTest
             (App.Current as App).elements = Setting;
 
             listBox.Dispatcher.Invoke(() => { this.listBox.ItemsSource = Setting; });
-        
-        
+      
+
         }
 
         
         public void FileWatherConfigure()
         {
+           
             string directory = System.IO.Directory.GetParent(System.IO.Directory.GetParent(Environment.CurrentDirectory).ToString()).ToString();
             var file = Path.Combine(directory, "TE_Activities.txt");
             fileWatcher.Path = System.IO.Path.GetDirectoryName(file);
@@ -106,8 +140,8 @@ namespace WpfTest
 
             App.TE_Settingg new_setting = new App.TE_Settingg()
             {
-                id = ID.Text,
-                name = Subject.Text
+                id = tb_ID.Text,
+                name = tb_Subject.Text
             };
             Setting.Add(new_setting);
             WriteFile();
@@ -121,7 +155,7 @@ namespace WpfTest
             client.Authenticator = new HttpBasicAuthenticator(username, api_key);
 
             //  get
-            var request = new RestRequest("/time_entries/activities/" + ID.Text, Method.GET);
+            var request = new RestRequest("/time_entries/activities/" + tb_ID.Text, Method.GET);
             //  add header
             request.AddHeader("Content-Type", "application/json");
             //  execute request
@@ -137,7 +171,7 @@ namespace WpfTest
             else
             {
                 var obj = JsonConvert.DeserializeObject<TE_Activity>(response.Content);
-                if (ID.Text == obj.id)
+                if (tb_ID.Text == obj.id)
                 {
                     ValidateOnInsert();
                 }

@@ -10,6 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MahApps.Metro.Controls;
 using MessageBox = System.Windows.Forms.MessageBox;
@@ -42,6 +43,21 @@ namespace WpfTest
         {
             ButtonOpen.Visibility = Visibility.Visible;
             ButtonClose.Visibility = Visibility.Collapsed;
+
+        }
+
+        private void ViewProject_Click(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new ViewProject_Page();
+        }
+
+        private void Setting_Click(object sender, RoutedEventArgs e)
+        {
+            //Main.Content = new Setting_Page();
+        }
+
+        private void SignOut_Click(object sender, RoutedEventArgs e)
+        {
 
         }
     }

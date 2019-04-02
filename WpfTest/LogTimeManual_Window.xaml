@@ -75,7 +75,7 @@
             <TextBox Grid.Row="4"  Grid.Column="1" x:Name="tb_LogHour"  Validation.Error="Validation_Error"  Width="300" HorizontalAlignment="Left" Text="{Binding UpdateSourceTrigger=PropertyChanged, Path=LogHour,
                     ValidatesOnDataErrors=true, NotifyOnValidationError=true}" Margin="0" />
             <Label Grid.Row="5" Content="Comment"  Target="{Binding ElementName=tb_Comment}"/>
-            <TextBox Grid.Row="5" Grid.Column="1" x:Name="tb_Comment" HorizontalAlignment="Left" Height="100" Width="300" Validation.Error="Validation_Error" TextWrapping="Wrap" AcceptsReturn="True" SpellCheck.IsEnabled="True" Text="{Binding UpdateSourceTrigger=PropertyChanged, Path=Comment,
+            <TextBox Grid.Row="5" Grid.Column="1" x:Name="tb_Comment" HorizontalAlignment="Left" Height="100" Width="300" Validation.Error="Validation_Error" TextWrapping="Wrap" AcceptsReturn="True" Text="{Binding UpdateSourceTrigger=PropertyChanged, Path=Comment,
                     ValidatesOnDataErrors=true, NotifyOnValidationError=true}"></TextBox>
             <Label Grid.Row="3" Content="Date" />
             <DatePicker  Grid.Row="3" Grid.Column="1" x:Name="datePicker" HorizontalAlignment="Left"   SelectedDate="{x:Static sys:DateTime.Now}"  />

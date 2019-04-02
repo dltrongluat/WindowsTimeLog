@@ -276,8 +276,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Class\EventArgs.cs" />
-    <Compile Include="Class\Log.cs" />
+    <Compile Include="Class\Log_Time.cs" />
     <Compile Include="Class\Project.cs" />
+    <Compile Include="Class\TE_Setting_Validate.cs" />
     <Compile Include="Class\Version.cs" />
     <Compile Include="Class\Work_Package.cs" />
     <Compile Include="Class\Work_Package_Version.cs" />
@@ -301,7 +302,7 @@
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Class\Log_Hour.cs" />
+    <Compile Include="Class\Log_Hour_Validate.cs" />
     <Compile Include="LogTimeAuto_Window.xaml.cs">
       <DependentUpon>LogTimeAuto_Window.xaml</DependentUpon>
     </Compile>

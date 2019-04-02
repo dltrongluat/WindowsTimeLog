@@ -19,7 +19,8 @@ using System.Text.RegularExpressions;
 using DataFormat = RestSharp.DataFormat;
 using System.Net;
 using MahApps.Metro.Controls;
-using WpfTest.Class.Log;
+using WpfTest.Class.Log_Time;
+
 using System.IO;
 using Path = System.IO.Path;
 using System.Reflection;
@@ -32,10 +33,8 @@ namespace WpfTest
     public partial class LogTimeManual_Window : MetroWindow
     {
         //validate
-        private ViewWP_Page viewWP;
-        private FrameWindow frameWindow;
         private int _noOfErrorsOnScreen = 0;
-        private Log_Hour _logtime = new Log_Hour();
+        private Log_Hour_Validate _logtime = new Log_Hour_Validate();
 
         public LogTimeManual_Window()
         {
@@ -59,9 +58,9 @@ namespace WpfTest
 
         private void Add_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            Log_Hour cust = grid.DataContext as Log_Hour;
+            Log_Hour_Validate cust = grid.DataContext as Log_Hour_Validate;
             // reset UI
-            _logtime = new Log_Hour();
+            _logtime = new Log_Hour_Validate();
             grid.DataContext = _logtime;
             e.Handled = true;
 
