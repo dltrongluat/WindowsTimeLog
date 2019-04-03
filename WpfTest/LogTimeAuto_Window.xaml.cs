@@ -44,12 +44,16 @@ namespace WpfTest
         DispatcherTimer dt = new DispatcherTimer();
         Stopwatch sw = new Stopwatch();
         string currentTime = string.Empty;
-    //    bool stat = false;
-        //countdown timer for popup
-        DispatcherTimer _timer;
-        TimeSpan _time;
+   
+        //countdown timer for popup appearance
+        DispatcherTimer popup_timer;
+        TimeSpan popup_time;
 
-    
+        //countdown timer for popup timeout, if not action then default proceeds to stop log time clock
+        DispatcherTimer timeout_timer;
+        TimeSpan timeout_time;
+
+
         public LogTimeAuto_Window()
         {
             InitializeComponent();
@@ -101,19 +105,21 @@ namespace WpfTest
         }
         public void countdown_Start()
         {
-            _time = TimeSpan.FromSeconds(10);
-            _timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
+            popup_time = TimeSpan.FromSeconds(10);
+            popup_timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
             {
                 //tbTime.Text = _time.ToString("c");
-                if (_time == TimeSpan.Zero)
+                if (popup_time == TimeSpan.Zero)
                 {
-                    _timer.Stop();
+                    popup_timer.Stop();
+                
                     ShowStandardBalloon();
+
                 }
-                _time = _time.Add(TimeSpan.FromSeconds(-1));
+                popup_time = popup_time.Add(TimeSpan.FromSeconds(-1));
             }, Application.Current.Dispatcher);
 
-            _timer.Start();
+            popup_timer.Start();
         }
        
         public void stopbtn_Click(object sender, RoutedEventArgs e)
@@ -129,20 +135,48 @@ namespace WpfTest
 
                 tb_LogHour.Text = dec.ToString(new CultureInfo("en-US"));
             }
-            _timer.Stop();
+            popup_timer.Stop();
         }
         private void resetbtn_Click(object sender, RoutedEventArgs e)
         {
             sw.Reset();
             clocktxtblock.Text = "00:00:00";
         }
-        private void ShowStandardBalloon()
+        
+        public void ShowStandardBalloon()
         {
+            FancyBalloon balloon = new FancyBalloon();
 
+            MyNotifyIcon.ShowCustomBalloon(balloon, PopupAnimation.Fade, 10000);
+
+            timeout_time = TimeSpan.FromSeconds(10);
+            timeout_timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
+            {
+                if (timeout_time == TimeSpan.Zero)
+                {
+                    timeout_timer.Stop();
+
+                    if (sw.IsRunning)
+                    {
+                        sw.Stop();
+                        //format HH:MM:SS to decimal   
+                        decimal dec = Convert.ToDecimal(TimeSpan.Parse(currentTime).TotalHours);
+                        //roundup to 2 decimal place
+                        dec = Math.Round(dec, 2);
+
+                        tb_LogHour.Text = dec.ToString(new CultureInfo("en-US"));
+                    }
+                    popup_timer.Stop();
+                    MyNotifyIcon.CloseBalloon();
+
+                }
+                timeout_time = timeout_time.Add(TimeSpan.FromSeconds(-1));
+            }, Application.Current.Dispatcher);
+
+            timeout_timer.Start();
             //TaskbarIcon tb = new TaskbarIcon();
             //tb = (TaskbarIcon)FindResource("NotifyIcon");
-            FancyBalloon balloon = new FancyBalloon();
-            MyNotifyIcon.ShowCustomBalloon(balloon, PopupAnimation.Fade, 15000);
+
 
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -157,8 +191,8 @@ namespace WpfTest
             string workpackage_name = (App.Current as App).workpackage_name;
             Project.Text = project_name;
             WorkPackage.Text = workpackage_name;
-
-            string directory = System.IO.Directory.GetParent(System.IO.Directory.GetParent(Environment.CurrentDirectory).ToString()).ToString();
+            var directory = System.AppDomain.CurrentDomain.BaseDirectory;
+            //string directory = System.IO.Directory.GetParent(System.IO.Directory.GetParent(Environment.CurrentDirectory).ToString()).ToString();
             var file = Path.Combine(directory, "TE_Activities.txt");
 
             List<TE_Setting> setting = new List<TE_Setting>();

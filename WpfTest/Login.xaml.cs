@@ -88,7 +88,8 @@ namespace WpfTest
 
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            var directory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+            //var directory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+            var directory = System.AppDomain.CurrentDomain.BaseDirectory;
             var file = Path.Combine(directory, "Test.txt");
 
             //string fil_path = @"\Test.txt";

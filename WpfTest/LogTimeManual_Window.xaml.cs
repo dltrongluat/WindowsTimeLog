@@ -76,7 +76,8 @@ namespace WpfTest
             Project.Text = project_name;
             WorkPackage.Text = workpackage_name;
             ///
-            string directory = System.IO.Directory.GetParent(System.IO.Directory.GetParent(Environment.CurrentDirectory).ToString()).ToString();
+             var directory = System.AppDomain.CurrentDomain.BaseDirectory;
+            //string directory = System.IO.Directory.GetParent(System.IO.Directory.GetParent(Environment.CurrentDirectory).ToString()).ToString();
             var file = Path.Combine(directory, "TE_Activities.txt");
 
             List<TE_Setting> setting = new List<TE_Setting>();

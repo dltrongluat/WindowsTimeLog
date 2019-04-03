@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:tb="http://www.hardcodet.net/taskbar"
              x:Name="me"
-             Height="120"
-             Width="240">
+             Height="150"
+             Width="300">
     <UserControl.Resources>
         <Storyboard x:Key="FadeIn">
             <DoubleAnimationUsingKeyFrames BeginTime="00:00:00"
@@ -98,9 +98,9 @@
             <Border.Background>
                 <LinearGradientBrush EndPoint="0.5,1"
                                      StartPoint="0.5,0">
-                    <GradientStop Color="#FF4B4B4B"
+                    <GradientStop Color="#FF31577E"
                                   Offset="0" />
-                    <GradientStop Color="#FF8F8F8F"
+                    <GradientStop Color="White"
                                   Offset="1" />
                 </LinearGradientBrush>
             </Border.Background>
@@ -112,18 +112,17 @@
                Stretch="Fill"
                Height="72"
                VerticalAlignment="Top" />
-        <Button Width="50" Margin="63,90,127,5" Click="Yes_Click" Content="Yes"/>
+        <Button Width="50" Margin="93,90,157,10" Click="Yes_Click" Content="Yes" BorderBrush="Black"/>
 
-        <Button Width="50" Margin="118,90,72,5" Click="No_Click" Content="No"/>
-        <TextBlock Margin="72,44,10,0"
+        <Button Width="50" Margin="191,90,59,10" Click="No_Click" Content="No" BorderBrush="Black"/>
+        <TextBlock Margin="72,40,10,0"
                    VerticalAlignment="Top"
-                   Foreground="#FFECAD25"
+                   Foreground="Black"
+                   FontSize="17"
+                  
                    TextWrapping="Wrap">
-            <Run Text="Are you still working in this project? press no if not! " />
-            <!--<Run FontStyle="Italic"
-                 FontWeight="Bold"
-                 Text="BalloonShowing" />-->
-            <!--<Run Text="event." />-->
+            <Run Text="Are you still working in this project? press NO if not! " />
+       
         </TextBlock>
         <Path Fill="#FFFFFFFF"
               Stretch="Fill"
@@ -152,8 +151,8 @@
         <Image HorizontalAlignment="Right"
                Margin="0,10,10,0"
                VerticalAlignment="Top"
-               Width="16"
-               Height="16"
+               Width="20"
+               Height="20"
                Source="/Images/Close.png"
                Stretch="Fill"
                Opacity="0.4"

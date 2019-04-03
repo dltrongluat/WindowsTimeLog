@@ -67,7 +67,7 @@
             <tb:TaskbarIcon
             x:Name="MyNotifyIcon"
             IconSource="/Icons/Error.ico"
-            ToolTipText="Balloon Sample Icon" Grid.ColumnSpan="2" />
+            ToolTipText="Windows Time Log App" Grid.ColumnSpan="2" />
             <!--<TextBlock Name="tbTime" Grid.Row="6"  />-->
             <Label Grid.Row="0" Content="Project" />
             <TextBlock Grid.Row="0" Grid.Column="1" Name="Project"></TextBlock>

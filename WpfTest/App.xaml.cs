@@ -1,6 +1,7 @@
 ﻿using Hardcodet.Wpf.TaskbarNotification;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Configuration;
 using System.Data;
 using System.Linq;
@@ -46,7 +47,7 @@ namespace WpfTest
             public string name { get; set; }
         }
 
-        public List<TE_Settingg> elements { get; set; }
+        public ObservableCollection<TE_Settingg> elements { get; set; }
         public FrameWindow window { get; set; }
 
 
