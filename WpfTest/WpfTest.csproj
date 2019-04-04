@@ -310,6 +310,18 @@
     <Compile Include="Class\Version.cs" />
     <Compile Include="Class\Work_Package.cs" />
     <Compile Include="Class\Work_Package_Version.cs" />
+    <Compile Include="DigitalClockControl.xaml.cs">
+      <DependentUpon>DigitalClockControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DigitalClockDots.xaml.cs">
+      <DependentUpon>DigitalClockDots.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DigitalClockElement.xaml.cs">
+      <DependentUpon>DigitalClockElement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DigitalControlWindow.xaml.cs">
+      <DependentUpon>DigitalControlWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FancyBalloon.xaml.cs" />
     <Compile Include="FrameWindow.xaml.cs">
       <DependentUpon>FrameWindow.xaml</DependentUpon>
@@ -365,6 +377,22 @@
     <Compile Include="ViewWP_Page.xaml.cs">
       <DependentUpon>ViewWP_Page.xaml</DependentUpon>
     </Compile>
+    <Page Include="DigitalClockControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DigitalClockDots.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DigitalClockElement.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DigitalControlWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="FancyBalloon.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

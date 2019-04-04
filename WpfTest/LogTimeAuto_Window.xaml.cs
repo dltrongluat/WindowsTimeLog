@@ -92,7 +92,8 @@ namespace WpfTest
             {
                 TimeSpan ts = sw.Elapsed;
                 currentTime = String.Format("{0:00}:{1:00}:{2:00}",ts.Hours, ts.Minutes, ts.Seconds);
-                clocktxtblock.Text = currentTime;
+                (App.Current as App).dt = DateTime.ParseExact(currentTime, "HH:mm:ss", CultureInfo.InvariantCulture);
+                //clocktxtblock.Text = currentTime;
             }
         }
         private void startbtn_Click(object sender, RoutedEventArgs e)
@@ -128,11 +129,12 @@ namespace WpfTest
             if (sw.IsRunning)
             {
                 sw.Stop();
+                  (App.Current as App).dt = DateTime.ParseExact(currentTime, "HH:mm:ss", CultureInfo.InvariantCulture);
                 //format HH:MM:SS to decimal   
                 decimal dec = Convert.ToDecimal(TimeSpan.Parse(currentTime).TotalHours);
                 //roundup to 2 decimal place
                 dec = Math.Round(dec, 2);
-
+              
                 tb_LogHour.Text = dec.ToString(new CultureInfo("en-US"));
             }
             popup_timer.Stop();
@@ -140,7 +142,11 @@ namespace WpfTest
         private void resetbtn_Click(object sender, RoutedEventArgs e)
         {
             sw.Reset();
-            clocktxtblock.Text = "00:00:00";
+            (App.Current as App).dt = new DateTime(2015, 1, 1, 0, 0, 0);
+            //clocktxtblock.Text = "00:00:00";
+
+            
+            
         }
         
         public void ShowStandardBalloon()

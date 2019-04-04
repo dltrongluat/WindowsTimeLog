@@ -8,9 +8,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfTest"
         mc:Ignorable="d"
-                
+                  
         Title="Log Time Auto Window" Height="450" Width="800" Loaded="Window_Loaded" >
-
+    
     <Window.Resources>
         <Style TargetType="{x:Type Label}">
             <!--<Setter Property="Margin" Value="5,0,5,0" />
@@ -41,6 +41,7 @@
 
     </Window.Resources>
     <StackPanel>
+       
         <Grid x:Name="grid" Margin="20" Height="395">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -63,7 +64,7 @@
                 <CommandBinding Command="New" CanExecute="Add_CanExecute" Executed="Add_Executed" />
             </Grid.CommandBindings>
 
-
+           
             <tb:TaskbarIcon
             x:Name="MyNotifyIcon"
             IconSource="/Icons/Error.ico"
@@ -77,9 +78,9 @@
             <Label Content="Activity" Grid.Row="2"  />
             <ComboBox Name="Activity"  Grid.Row="2" Grid.Column="1" SelectedIndex="0" IsSynchronizedWithCurrentItem="True"></ComboBox>
 
-            <TextBlock Grid.Row="5" Grid.Column="2" HorizontalAlignment="Center" x:Name="clocktxtblock" FontSize="70" Grid.ColumnSpan="2">Timer</TextBlock>
+            <!--<TextBlock Grid.Row="5" Grid.Column="2" HorizontalAlignment="Center" x:Name="clocktxtblock" FontSize="70" Grid.ColumnSpan="2">Timer</TextBlock>-->
 
-
+            <local:DigitalClockControl x:Name="clock" Grid.Row="5" Grid.Column="2" Width="400" Height="80" ></local:DigitalClockControl>
             <Button x:Name="startbtn" Grid.Row="6" HorizontalAlignment="Left" Grid.Column="2" Background="SkyBlue" Content="Start" FontSize="30" Click="startbtn_Click" Width="100" Height="50"    />
             <Button x:Name="stopbtn" Grid.Row="6" Grid.Column="2" Width="100" Height="50" Background="SkyBlue" Content="Stop" FontSize="30" Click="stopbtn_Click"  />
             <Button x:Name="resetbtn" Grid.Row="6" Grid.Column="2" HorizontalAlignment="Right" Width="100" Height="50" Background="SkyBlue" Content="Reset" FontSize="30" Click="resetbtn_Click"  Margin="0,11"  />

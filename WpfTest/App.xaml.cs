@@ -40,7 +40,7 @@ namespace WpfTest
         public string u_id { get; set; }
         //define Taskbar icon for app resource
         private TaskbarIcon tb;
-
+        public DateTime dt { get; set; }
         public class TE_Settingg
         {
             public string id { get; set; }
