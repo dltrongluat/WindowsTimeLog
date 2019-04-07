@@ -1,20 +1,6 @@
 1,Management
-2,MS
-3,WDWA
-4,WDWAss
-5,wewS
-6,Subjec
-6,Subjec
-6,Subjec
-5,Subjec
-2,Subjec
-2,Subjec
-5,we
-5,we
-5,we we
-6,we ewe w
-6,we ewe w wewew
-6,we ewe w wewew
-6,we ewe w wewew
-6,we ewe w wewew
-2,2qwe 
+2,Specification
+3,Development
+4,Testing
+5,Support
+6,Other

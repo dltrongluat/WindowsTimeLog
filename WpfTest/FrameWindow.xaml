@@ -7,7 +7,7 @@
         xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:local="clr-namespace:WpfTest"
         mc:Ignorable="d"
-       Title="{Binding Main.Title, RelativeSource={RelativeSource Self}}" Height="600" Width="1080" Loaded="Window_Loaded">
+       Title="{Binding Main.Title, RelativeSource={RelativeSource Self}}" Height="600" Width="1080" Loaded="Window_Loaded" Closing="MetroWindow_Closing">
     <Window.Resources>
         <Storyboard x:Key="OpenMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">

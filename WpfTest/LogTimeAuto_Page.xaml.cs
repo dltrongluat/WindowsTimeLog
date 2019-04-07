@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Globalization;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,6 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using Newtonsoft.Json;
@@ -29,13 +27,15 @@ using Hardcodet.Wpf.TaskbarNotification;
 using System.IO;
 using System.Reflection;
 using Path = System.IO.Path;
+using System.Diagnostics;
+using System.Globalization;
 
 namespace WpfTest
 {
     /// <summary>
-    /// Interaction logic for LogTimeAuto_Window.xaml
+    /// Interaction logic for LogTimeAuto_Page.xaml
     /// </summary>
-    public partial class LogTimeAuto_Window : MetroWindow
+    public partial class LogTimeAuto_Page : Page
     {
         //validate
         private int _noOfErrorsOnScreen = 0;
@@ -44,23 +44,21 @@ namespace WpfTest
         DispatcherTimer dt = new DispatcherTimer();
         Stopwatch sw = new Stopwatch();
         string currentTime = string.Empty;
-   
+
         //countdown timer for popup appearance
         DispatcherTimer popup_timer;
         TimeSpan popup_time;
 
-      
-
-
-        public LogTimeAuto_Window()
+        //countdown timer for popup timeout, if not action then default proceeds to stop log time clock
+        DispatcherTimer timeout_timer;
+        TimeSpan timeout_time;
+        public LogTimeAuto_Page()
         {
             InitializeComponent();
-          
+
             grid.DataContext = _logtime;
             dt.Tick += new EventHandler(dt_Tick);
             dt.Interval = new TimeSpan(0, 0, 0, 1);
-            this.Closing += new System.ComponentModel.CancelEventHandler(MetroWindow_Closing);
-
         }
         private void Validation_Error(object sender, ValidationErrorEventArgs e)
         {
@@ -90,7 +88,7 @@ namespace WpfTest
             if (sw.IsRunning)
             {
                 TimeSpan ts = sw.Elapsed;
-                currentTime = String.Format("{0:00}:{1:00}:{2:00}",ts.Hours, ts.Minutes, ts.Seconds);
+                currentTime = String.Format("{0:00}:{1:00}:{2:00}", ts.Hours, ts.Minutes, ts.Seconds);
                 (App.Current as App).dt = DateTime.ParseExact(currentTime, "HH:mm:ss", CultureInfo.InvariantCulture);
                 //clocktxtblock.Text = currentTime;
             }
@@ -112,7 +110,7 @@ namespace WpfTest
                 if (popup_time == TimeSpan.Zero)
                 {
                     popup_timer.Stop();
-                
+
                     ShowStandardBalloon();
 
                 }
@@ -121,22 +119,22 @@ namespace WpfTest
 
             popup_timer.Start();
         }
-       
+
         public void stopbtn_Click(object sender, RoutedEventArgs e)
         {
-            popup_timer.Stop();
+
             if (sw.IsRunning)
             {
                 sw.Stop();
-                  (App.Current as App).dt = DateTime.ParseExact(currentTime, "HH:mm:ss", CultureInfo.InvariantCulture);
+                (App.Current as App).dt = DateTime.ParseExact(currentTime, "HH:mm:ss", CultureInfo.InvariantCulture);
                 //format HH:MM:SS to decimal   
                 decimal dec = Convert.ToDecimal(TimeSpan.Parse(currentTime).TotalHours);
                 //roundup to 2 decimal place
                 dec = Math.Round(dec, 2);
-              
+
                 tb_LogHour.Text = dec.ToString(new CultureInfo("en-US"));
             }
-           
+            popup_timer.Stop();
         }
         private void resetbtn_Click(object sender, RoutedEventArgs e)
         {
@@ -144,25 +142,48 @@ namespace WpfTest
             (App.Current as App).dt = new DateTime(2015, 1, 1, 0, 0, 0);
             //clocktxtblock.Text = "00:00:00";
 
-            
-            
+
+
         }
-        
+
         public void ShowStandardBalloon()
         {
             FancyBalloon balloon = new FancyBalloon();
 
             MyNotifyIcon.ShowCustomBalloon(balloon, PopupAnimation.Fade, 10000);
 
-          
+            timeout_time = TimeSpan.FromSeconds(10);
+            timeout_timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
+            {
+                if (timeout_time == TimeSpan.Zero)
+                {
+                    timeout_timer.Stop();
+
+                    if (sw.IsRunning)
+                    {
+                        sw.Stop();
+                        //format HH:MM:SS to decimal   
+                        decimal dec = Convert.ToDecimal(TimeSpan.Parse(currentTime).TotalHours);
+                        //roundup to 2 decimal place
+                        dec = Math.Round(dec, 2);
+
+                        tb_LogHour.Text = dec.ToString(new CultureInfo("en-US"));
+                    }
+                    popup_timer.Stop();
+                    MyNotifyIcon.CloseBalloon();
+
+                }
+                timeout_time = timeout_time.Add(TimeSpan.FromSeconds(-1));
+            }, Application.Current.Dispatcher);
+
+            timeout_timer.Start();
+            //TaskbarIcon tb = new TaskbarIcon();
+            //tb = (TaskbarIcon)FindResource("NotifyIcon");
 
 
         }
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-
-            //TaskbarIcon tb = new TaskbarIcon();
-          
 
             string project_id = (App.Current as App).project_id;
             string workpackage_id = (App.Current as App).workpackage_id;
@@ -199,7 +220,6 @@ namespace WpfTest
             Activity.SelectedValuePath = "key";
             Activity.ItemsSource = cbA;
         }
-
         private void LogTime_Click(object sender, RoutedEventArgs e)
         {
             string project_id = (App.Current as App).project_id;
@@ -213,7 +233,7 @@ namespace WpfTest
             DateTime date = (DateTime)datePicker.SelectedDate;
             string result = date.ToString("yyyy-MM-dd");
             string user_id = (App.Current as App).u_id;
-  
+
             RootObject time_entry = new RootObject()
             {
                 _links = new Links
@@ -256,45 +276,14 @@ namespace WpfTest
             if (numbericStatusCode == 200 || numbericStatusCode == 201 || numbericStatusCode == 301)
             {
                 MessageBox.Show("Log time success!");
-                this.Close();
+              
             }
             else
             {
                 MessageBox.Show("Log time failed!");
-                this.Close();
+               
             }
 
-        }
-
-        private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-           
-            e.Cancel = true;
-            this.WindowState = WindowState.Minimized;
-        }
-
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            //this.Focus();
-            if (!this.IsVisible)
-            {
-                this.Show();
-            }
-
-            if (this.WindowState == WindowState.Minimized)
-            {
-                this.WindowState = WindowState.Normal;
-            }
-
-            this.Activate();
-            this.Topmost = true;  // important
-            this.Topmost = false; // important
-            this.Focus();         // important
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
         }
     }
 }

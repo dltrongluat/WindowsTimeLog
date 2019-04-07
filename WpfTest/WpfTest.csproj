@@ -343,8 +343,14 @@
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
     <Compile Include="Class\Log_Hour_Validate.cs" />
+    <Compile Include="LogTimeAuto_Page.xaml.cs">
+      <DependentUpon>LogTimeAuto_Page.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LogTimeAuto_Window.xaml.cs">
       <DependentUpon>LogTimeAuto_Window.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LogTimeManual_Page.xaml.cs">
+      <DependentUpon>LogTimeManual_Page.xaml</DependentUpon>
     </Compile>
     <Compile Include="LogTimeManual_Window.xaml.cs">
       <DependentUpon>LogTimeManual_Window.xaml</DependentUpon>
@@ -405,7 +411,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="LogTimeAuto_Page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LogTimeAuto_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LogTimeManual_Page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

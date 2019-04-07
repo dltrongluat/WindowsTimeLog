@@ -1,17 +1,14 @@
-﻿<Controls:MetroWindow x:Class="WpfTest.LogTimeManual_Window"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:sys="clr-namespace:System;assembly=mscorlib"
-        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfTest"
-        mc:Ignorable="d"
-        Title="Log Time Manual Window" Height="457.311" Width="681.176" Loaded="Window_Loaded">
-    <Window.Resources>
-        <Style TargetType="{x:Type Label}">
-          
-        </Style>
+﻿<Page x:Class="WpfTest.LogTimeManual_Page"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
+      xmlns:local="clr-namespace:WpfTest"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="LogTimeManual_Page" Loaded="Page_Loaded">
+    <Page.Resources>
         <Style TargetType="{x:Type TextBox}">
             <!--<Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="Margin" Value="0,2,40,2" />-->
@@ -34,8 +31,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
-    </Window.Resources>
+    </Page.Resources>
     <StackPanel>
         <Grid x:Name="grid" Margin="20" >
             <Grid.RowDefinitions>
@@ -54,7 +50,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.CommandBindings>
-            <CommandBinding Command="New" CanExecute="Add_CanExecute" Executed="Add_Executed" />
+                <CommandBinding Command="New" CanExecute="Add_CanExecute" Executed="Add_Executed" />
             </Grid.CommandBindings>
 
 
@@ -77,12 +73,12 @@
             <TextBox Grid.Row="5" Grid.Column="1" x:Name="tb_Comment" HorizontalAlignment="Left" Height="100" Width="300" Validation.Error="Validation_Error" TextWrapping="Wrap" AcceptsReturn="True" Text="{Binding UpdateSourceTrigger=PropertyChanged, Path=Comment,
                     ValidatesOnDataErrors=true, NotifyOnValidationError=true}"></TextBox>
             <Label Grid.Row="3" Content="Date" />
-            <DatePicker  Grid.Row="3" Grid.Column="1" x:Name="datePicker" HorizontalAlignment="Left"   SelectedDate="{x:Static sys:DateTime.Now}"  />
+            <DatePicker  Grid.Row="3" Grid.Column="1" x:Name="datePicker" HorizontalAlignment="Left" SelectedDate="{x:Static sys:DateTime.Now}"  />
             <Button Content="Log Time" Grid.Row="7" Grid.Column="1"
                 HorizontalAlignment="Right" VerticalAlignment="Center" Command="New" Click="LogTime_Click" />
-          
-      
-          
-    </Grid>
+
+
+
+        </Grid>
     </StackPanel>
-</Controls:MetroWindow>
+</Page>

@@ -32,7 +32,7 @@ namespace WpfTest
             //Main.Content = new Setting_Page();
 
         }
-
+        //Slider
         private void ButtonOpen_Click(object sender, RoutedEventArgs e)
         {
             ButtonOpen.Visibility = Visibility.Collapsed;
@@ -53,12 +53,17 @@ namespace WpfTest
 
         private void Setting_Click(object sender, RoutedEventArgs e)
         {
-            //Main.Content = new Setting_Page();
+            Main.Content = new Setting_Page();
         }
 
         private void SignOut_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+          
         }
     }
 }

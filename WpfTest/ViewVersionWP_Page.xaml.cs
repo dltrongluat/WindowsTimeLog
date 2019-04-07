@@ -79,6 +79,8 @@ namespace WpfTest
 
             LogTimeAuto_Window LogTimeAuto_window = new LogTimeAuto_Window();
             LogTimeAuto_window.ShowDialog();
+            //NavigationService nav = NavigationService.GetNavigationService(this);
+            //nav.Navigate(new Uri("LogTimeAuto_Page.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void LogTimeMan_Click(object sender, RoutedEventArgs e)
@@ -92,8 +94,10 @@ namespace WpfTest
             (App.Current as App).workpackage_name = workpackage_name;
 
             //display a new MainWindow
-            LogTimeManual_Window LogTimeMan_window = new LogTimeManual_Window();
-            LogTimeMan_window.ShowDialog();
+            //LogTimeManual_Window LogTimeMan_window = new LogTimeManual_Window();
+            //LogTimeMan_window.ShowDialog();
+            NavigationService nav = NavigationService.GetNavigationService(this);
+            nav.Navigate(new Uri("LogTimeManual_Page.xaml", UriKind.RelativeOrAbsolute));
         }
     }
 }
